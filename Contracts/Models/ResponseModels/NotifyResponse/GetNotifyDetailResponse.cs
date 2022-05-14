@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Contracts.Models.ResponseModels.NotifyResponse
 {
-    public class GetNotifyDeatilResponse : ApiResponse<NotifyDetail>
+    public class GetNotifyDetailResponse : ApiResponse<NotifyDetail>
     {
         public int totalCount { get; set; }
 

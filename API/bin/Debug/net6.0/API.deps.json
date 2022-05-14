@@ -8,12 +8,22 @@
     ".NETCoreApp,Version=v6.0": {
       "API/1.0.0": {
         "dependencies": {
+          "Contracts": "1.0.0",
           "DataModel": "1.0.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.5",
+          "Repository": "1.0.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
           "API.dll": {}
+        }
+      },
+      "FluentValidation/11.0.1": {
+        "runtime": {
+          "lib/net6.0/FluentValidation.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.1.0"
+          }
         }
       },
       "Humanizer.Core/2.8.26": {
@@ -475,6 +485,14 @@
           }
         }
       },
+      "Contracts/1.0.0": {
+        "dependencies": {
+          "DataModel": "1.0.0"
+        },
+        "runtime": {
+          "Contracts.dll": {}
+        }
+      },
       "DataModel/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "6.0.5",
@@ -482,6 +500,16 @@
         },
         "runtime": {
           "DataModel.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "DataModel": "1.0.0",
+          "FluentValidation": "11.0.1"
+        },
+        "runtime": {
+          "Repository.dll": {}
         }
       }
     }
@@ -491,6 +519,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "FluentValidation/11.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fcL5zF/glDwskUtpL0IfBupVWTChxOOvVs+dAA7Gme5NjIeJBiFKWq3eZV1O+AigucnBTr8SWG7wRRn+PgFnTw==",
+      "path": "fluentvalidation/11.0.1",
+      "hashPath": "fluentvalidation.11.0.1.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
@@ -828,7 +863,17 @@
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
     },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "DataModel/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repository/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

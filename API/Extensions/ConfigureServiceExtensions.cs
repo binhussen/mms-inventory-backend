@@ -1,5 +1,7 @@
 ﻿using DataModel;
+using Contracts.Interfaces;
 using Microsoft.OpenApi.Models;
+using Repository.RequestHandlers;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -67,7 +69,8 @@ namespace API.Extensions
             services.AddDbContext<MMSDbContext>(opts =>
                 opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("DataModel")));
 
-
+        public static void ConfigureRepositoryManager(this IServiceCollection services) =>
+          services.AddScoped<IRepositoryManager, RepositoryManager>();
 
     }
 }

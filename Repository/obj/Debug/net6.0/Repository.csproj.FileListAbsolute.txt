@@ -10,3 +10,8 @@ C:\Users\yesuf\Music\mms-backend\Repository\obj\Debug\net6.0\Repository.dll
 C:\Users\yesuf\Music\mms-backend\Repository\obj\Debug\net6.0\refint\Repository.dll
 C:\Users\yesuf\Music\mms-backend\Repository\obj\Debug\net6.0\Repository.pdb
 C:\Users\yesuf\Music\mms-backend\Repository\obj\Debug\net6.0\ref\Repository.dll
+C:\Users\yesuf\Music\mms-backend\Repository\bin\Debug\net6.0\Contracts.dll
+C:\Users\yesuf\Music\mms-backend\Repository\bin\Debug\net6.0\DataModel.dll
+C:\Users\yesuf\Music\mms-backend\Repository\bin\Debug\net6.0\Contracts.pdb
+C:\Users\yesuf\Music\mms-backend\Repository\bin\Debug\net6.0\DataModel.pdb
+C:\Users\yesuf\Music\mms-backend\Repository\obj\Debug\net6.0\Repository.csproj.CopyComplete

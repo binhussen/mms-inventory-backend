@@ -7,7 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="RequestHandlers\RepositoryBase.cs~RF1f4aece.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\DataModel\DataModel.csproj" />
   </ItemGroup>
 
 </Project>

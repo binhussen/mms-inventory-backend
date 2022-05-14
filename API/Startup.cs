@@ -17,6 +17,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddResponseCaching();
+            services.ConfigureRepositoryManager();
             services.AddControllers();
 
             services.AddSwaggerExtension();

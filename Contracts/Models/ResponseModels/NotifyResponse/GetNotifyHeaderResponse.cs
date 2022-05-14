@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace Contracts.Models.ResponseModels.NotifyResponse
 {
-    public class GetNotifyHeaderRequest : ApiResponse<NotifyHeader>
+    public class GetNotifyHeaderResponse : ApiResponse<NotifyHeader>
     {
         public int id { get; set; }
 
-        public List<GetNotifyHeaderRequest> items { get; set; }
+        public List<GetNotifyHeaderResponse> items { get; set; }
     }
 }
