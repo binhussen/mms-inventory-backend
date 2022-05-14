@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "B1gfdcROGGX9UqxKDKpmnh8ld3SpvGNp7nLNoHNGeIBJQTxzGQP8SgJj881IKgO8xHQiMLBHy+tF9qMe8Jv6jg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-backend\\Repository\\Repository.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yesuf\\.nuget\\packages\\fluentvalidation\\11.0.1\\fluentvalidation.11.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

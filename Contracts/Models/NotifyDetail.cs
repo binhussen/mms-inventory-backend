@@ -1,6 +1,4 @@
-using DataModel.Models.Common;
-
-namespace DataModel.Models.Entities
+namespace Contracts.Models
 {
     public class NotifyDetail
     {

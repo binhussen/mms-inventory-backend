@@ -1,8 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using DataModel.Models.Entities;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataModel
 {
@@ -13,9 +15,13 @@ namespace DataModel
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+        }
 
         public DbSet<NotifyHeader> NotifyHeaders { get; set; }
-        public DbSet<NotifyDetail> NOtifyDetails { get; set; }
+        public DbSet<NotifyDetail> NotifyDetails { get; set; }
 
     }
 }
