@@ -208,26 +208,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yesuf\\.nuget\\packages\\": {}
+    "/home/binhussen/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\MMS BackEnd\\API\\API\\API.csproj",
+      "projectUniqueName": "/home/binhussen/Documents/github/federal-police/mms-backend/API/API.csproj",
       "projectName": "API",
-      "projectPath": "E:\\MMS BackEnd\\API\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\yesuf\\.nuget\\packages\\",
-      "outputPath": "E:\\MMS BackEnd\\API\\API\\obj\\",
+      "projectPath": "/home/binhussen/Documents/github/federal-police/mms-backend/API/API.csproj",
+      "packagesPath": "/home/binhussen/.nuget/packages/",
+      "outputPath": "/home/binhussen/Documents/github/federal-police/mms-backend/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\yesuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/binhussen/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -269,7 +267,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.300/RuntimeIdentifierGraph.json"
       }
     }
   }
