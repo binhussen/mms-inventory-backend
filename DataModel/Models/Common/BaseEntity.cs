@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace DataModel.Models.Common
 {
     public class BaseEntity

@@ -1,7 +1,7 @@
 ﻿using DataModel;
 using Contracts.Interfaces;
 using Microsoft.OpenApi.Models;
-using Repository.RequestHandlers;
+using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions

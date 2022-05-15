@@ -88,8 +88,13 @@ C:\Users\yesuf\Music\mms-backend\API\obj\Debug\net6.0\API.genruntimeconfig.cache
 C:\Users\yesuf\Music\mms-backend\API\obj\Debug\net6.0\ref\API.dll
 C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Humanizer.dll
 C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\FluentValidation.dll
 C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Contracts.dll
-C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Repository.dll
 C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Contracts.pdb
-C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Repository.pdb
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Infrastructure.dll
+C:\Users\yesuf\Music\mms-backend\API\bin\Debug\net6.0\Infrastructure.pdb

@@ -18,13 +18,13 @@ namespace API
         {
             services.AddResponseCaching();
             services.ConfigureRepositoryManager();
-            services.AddControllers();
-
             services.AddSwaggerExtension();
             services.ConfigureDI();
             services.ConfigureCors();
-
             services.ConfigureSqlContext(Configuration);
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddControllers();
 
         }
 

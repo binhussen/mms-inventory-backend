@@ -26,81 +26,44 @@ namespace DataModel.Migrations
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("notifyDetailId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<int>("CreatedBy")
+                    b.Property<int?>("notifyHeaderId")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ModifiedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("ModifiedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("notifyHeaderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("quantity")
+                    b.Property<int?>("quantity")
                         .HasColumnType("int");
 
                     b.Property<string>("weaponName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("weaponType")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
 
                     b.HasIndex("notifyHeaderId");
 
-                    b.ToTable("NOtifyDetails");
+                    b.ToTable("NotifyDetails");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyHeader", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("notifyHeaderId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("CreatedDate")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ModifiedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("ModifiedDate")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<string>("attachments")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("weaponDescription")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -110,16 +73,18 @@ namespace DataModel.Migrations
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyDetail", b =>
                 {
-                    b.HasOne("DataModel.Models.Entities.NotifyHeader", null)
-                        .WithMany("NotifyDetail")
+                    b.HasOne("DataModel.Models.Entities.NotifyHeader", "NotifyHeader")
+                        .WithMany("NotifyDetails")
                         .HasForeignKey("notifyHeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("NotifyHeader");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyHeader", b =>
                 {
-                    b.Navigation("NotifyDetail");
+                    b.Navigation("NotifyDetails");
                 });
 #pragma warning restore 612, 618
         }

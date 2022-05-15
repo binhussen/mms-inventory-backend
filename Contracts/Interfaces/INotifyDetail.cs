@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using DataModel.Parameters;
 using System.Threading.Tasks;
 using DataModel.Models.Common;
 using DataModel.Models.Entities;
 using System.Collections.Generic;
-using Contracts.Models.RequestModels.NotifyRequest;
-using Contracts.Models.ResponseModels.NotifyResponse;
 
 namespace Contracts.Interfaces
 {
     public interface INotifyDetail
     {
-        Task<IEnumerable<NotifyDetail>> GetAllNotifyDetailsAsync(bool trackChanges);
-        Task<NotifyDetail> GetNotifyDetailAsync(int detailId, bool trackChanges);
-        void CreateNotifyDetail(int notifyDetailId, NotifyDetail detail);
-        void DeleteNotifyDetail(NotifyDetail detail);
+        Task<PagedList<NotifyDetail>> GetNotifyDetailsAsync(int notifyHeaderId, NotifyDetailParameters notifyDetailsParameters, bool trackChanges);
+        Task<NotifyDetail> GetNotifyDetailAsync(int notifyHeaderId, int id, bool trackChanges);
+        void CreateNotifyDetailForNotifyHeader(int notifyHeaderId, NotifyDetail notifyDetail);
+        void DeleteNotifyDetail(NotifyDetail notifyDetail);
     }
 }
