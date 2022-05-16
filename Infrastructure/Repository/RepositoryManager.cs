@@ -8,16 +8,26 @@ using System.Collections.Generic;
 
 namespace Infrastructure.Repository
 {
+    /// <summary>
+    /// The repository manager.
+    /// </summary>
     public class RepositoryManager : IRepositoryManager
     {
         private readonly MMSDbContext _repositoryContext;
         private INotifyHeader  _notifyHeaderRepository;
         private INotifyDetail _notifyDetailRepository;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
+        /// </summary>
+        /// <param name="repositoryContext">The repository context.</param>
         public RepositoryManager(MMSDbContext repositoryContext)
         {
             _repositoryContext = repositoryContext;
         }
 
+        /// <summary>
+        /// Gets the notify header.
+        /// </summary>
         public INotifyHeader NotifyHeader
         {
             get
@@ -29,6 +39,9 @@ namespace Infrastructure.Repository
             }
         }
 
+        /// <summary>
+        /// Gets the notify detail.
+        /// </summary>
         public INotifyDetail NotifyDetail
         {
             get
@@ -39,6 +52,10 @@ namespace Infrastructure.Repository
                 return _notifyDetailRepository;
             }
         }
-        public Task SaveAsync() =>  _repositoryContext.SaveChangesAsync();
+        /// <summary>
+        /// Saves the async.
+        /// </summary>
+        /// <returns>A Task.</returns>
+        public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
     }
 }

@@ -21,6 +21,10 @@ namespace API.Controllers
             _repository = repository;
             _mapper = mapper;
         }
+        /// <summary>
+        /// Gets the notify headers.
+        /// </summary>
+        /// <returns>A Task.</returns>
         [HttpGet(Name = "GetNotifyHeaders")]
         public async Task<IActionResult> GetNotifyHeaders()
         {
@@ -48,6 +52,18 @@ namespace API.Controllers
         [HttpPost(Name = "CreateNotifyHeader")]
         public async Task<IActionResult> CreateNotifyHeader([FromBody] NotifyHeaderForCreationDto notifyHeader)
         {
+            if (notifyHeader == null)
+            {
+                //TODO: here add message response or logger message
+                return BadRequest("NotifyHeaderForCreationDto object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                //TODO: here add message response or logger message;
+                return UnprocessableEntity(ModelState);
+            }
+
             var notifyHeaderEntity = _mapper.Map<NotifyHeader>(notifyHeader);
 
             _repository.NotifyHeader.CreateNotifyHeader(notifyHeaderEntity);
@@ -55,22 +71,45 @@ namespace API.Controllers
 
             var notifyHeaderToReturn = _mapper.Map<NotifyHeaderDto>(notifyHeaderEntity);
 
+            // Disable BCC4002
             return CreatedAtRoute("notifyHeaderById", new { id = notifyHeaderToReturn.id }, notifyHeaderToReturn);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateNotifyHeader(int id, [FromBody] NotifyHeaderForUpdateDto notifyHeader)
         {
-            var notifyHeaderEntity = HttpContext.Items["notifyHeader"] as NotifyHeader;
+            if (notifyHeader == null)
+            {
+                //TODO: here add message response or logger message;
+                return BadRequest("NotifyHeaderForUpdateDto object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                //TODO: here add message response or logger message;
+                return UnprocessableEntity(ModelState);
+            }
+            var notifyHeaderEntity = await _repository.NotifyHeader.GetNotifyHeaderAsync(id, trackChanges: true);
+            if (notifyHeaderEntity == null)
+            {
+                //TODO: here add message response or logger message;
+                return NotFound();
+            }
 
             _mapper.Map(notifyHeader, notifyHeaderEntity);
             await _repository.SaveAsync();
 
             return NoContent();
         }
-        [HttpDelete("{id}")]
+
+         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNotifyHeader(int id)
         {
-            var notifyHeader = HttpContext.Items["notifyHeader"] as NotifyHeader;
+            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(id, trackChanges: false);
+            if (notifyHeader == null)
+            {
+                //TODO: here add message response or logger message;
+                return NotFound();
+            }
 
             _repository.NotifyHeader.DeleteNotifyHeader(notifyHeader);
             await _repository.SaveAsync();

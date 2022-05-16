@@ -11,9 +11,10 @@ namespace Contracts.Interfaces
 {
     public interface INotifyDetail
     {
-        Task<PagedList<NotifyDetail>> GetNotifyDetailsAsync(int notifyHeaderId, NotifyDetailParameters notifyDetailsParameters, bool trackChanges);
+        Task<IEnumerable<NotifyDetail>> GetNotifyDetailsAsync(int notifyHeaderId, bool trackChanges);
         Task<NotifyDetail> GetNotifyDetailAsync(int notifyHeaderId, int id, bool trackChanges);
         void CreateNotifyDetailForNotifyHeader(int notifyHeaderId, NotifyDetail notifyDetail);
         void DeleteNotifyDetail(NotifyDetail notifyDetail);
     }
 }
+

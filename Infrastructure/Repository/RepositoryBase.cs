@@ -19,12 +19,23 @@ namespace Infrastructure.Repository
             RepositoryContext = repositoryContext;
         }
 
+        /// <summary>
+        /// Finds the all.
+        /// </summary>
+        /// <param name="trackChanges">If true, track changes.</param>
+        /// <returns>An IQueryable.</returns>
         public IQueryable<T> FindAll(bool trackChanges) =>
             !trackChanges ?
               RepositoryContext.Set<T>()
                 .AsNoTracking() :
               RepositoryContext.Set<T>();
 
+        /// <summary>
+        /// Finds the by condition.
+        /// </summary>
+        /// <param name="expression">The expression.</param>
+        /// <param name="trackChanges">If true, track changes.</param>
+        /// <returns>An IQueryable.</returns>
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression,
         bool trackChanges) =>
             !trackChanges ?

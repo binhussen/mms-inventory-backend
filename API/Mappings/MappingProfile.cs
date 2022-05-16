@@ -11,11 +11,11 @@ namespace API.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<NotifyHeader, NotifyHeaderDto>().ReverseMap();
-            CreateMap<NotifyDetail, NotifyDetailDto>().ReverseMap();
-            CreateMap<NotifyHeaderForCreationDto, NotifyHeader>().ReverseMap();
-            CreateMap<NotifyDetailForCreationDto, NotifyDetail>().ReverseMap();
-            CreateMap<NotifyHeaderForUpdateDto, NotifyHeader>().ReverseMap();
+            CreateMap<NotifyHeader, NotifyHeaderDto>();
+            CreateMap<NotifyDetail, NotifyDetailDto>();
+            CreateMap<NotifyHeaderForCreationDto, NotifyHeader>();
+            CreateMap<NotifyDetailForCreationDto, NotifyDetail>();
+            CreateMap<NotifyHeaderForUpdateDto, NotifyHeader>();
             CreateMap<NotifyDetailForUpdateDto, NotifyDetail>().ReverseMap();
         }
     }
