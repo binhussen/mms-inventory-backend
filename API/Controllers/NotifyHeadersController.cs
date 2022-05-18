@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
+using Contracts.Service;
 using Contracts.Interfaces;
 using DataModel.Parameters;
 using DataModel.Models.DTOs;
@@ -14,11 +15,13 @@ namespace API.Controllers
     public class NotifyHeadersController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
+        private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public NotifyHeadersController(IRepositoryManager repository, IMapper mapper)
+        public NotifyHeadersController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
+            _logger = logger;
             _mapper = mapper;
         }
         /// <summary>
@@ -40,7 +43,7 @@ namespace API.Controllers
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(id, trackChanges: false);
             if (notifyHeader == null)
             {
-                //TODO: here add message response or logger message
+                 _logger.LogInfo($"NotifyHeader with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             else
@@ -54,13 +57,13 @@ namespace API.Controllers
         {
             if (notifyHeader == null)
             {
-                //TODO: here add message response or logger message
+                _logger.LogError("NotifyHeaderForCreationDto object sent from client is null.");
                 return BadRequest("NotifyHeaderForCreationDto object is null");
             }
 
             if (!ModelState.IsValid)
             {
-                //TODO: here add message response or logger message;
+                _logger.LogError("Invalid model state for the NotifyHeaderForCreationDto object");
                 return UnprocessableEntity(ModelState);
             }
 
@@ -79,19 +82,19 @@ namespace API.Controllers
         {
             if (notifyHeader == null)
             {
-                //TODO: here add message response or logger message;
+                _logger.LogError("NotifyHeaderForUpdateDto object sent from client is null.");
                 return BadRequest("NotifyHeaderForUpdateDto object is null");
             }
 
             if (!ModelState.IsValid)
             {
-                //TODO: here add message response or logger message;
+                _logger.LogError("Invalid model state for the NotifyHeaderForUpdateDto object");
                 return UnprocessableEntity(ModelState);
             }
             var notifyHeaderEntity = await _repository.NotifyHeader.GetNotifyHeaderAsync(id, trackChanges: true);
             if (notifyHeaderEntity == null)
             {
-                //TODO: here add message response or logger message;
+                _logger.LogInfo($"NotifyHeader with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 
@@ -107,7 +110,7 @@ namespace API.Controllers
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(id, trackChanges: false);
             if (notifyHeader == null)
             {
-                //TODO: here add message response or logger message;
+                _logger.LogInfo($"NotifyHeader with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 

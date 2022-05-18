@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yesuf\\Music\\mms-backend\\API\\API.csproj": {}
+    "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yesuf\\Music\\mms-backend\\API\\API.csproj": {
+    "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yesuf\\Music\\mms-backend\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\API\\API.csproj",
+        "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\API\\API.csproj",
         "packagesPath": "C:\\Users\\yesuf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yesuf\\Music\\mms-backend\\API\\obj\\",
+        "outputPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yesuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,14 +28,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj"
+              "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\Contracts.csproj"
               },
-              "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj": {
-                "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj"
+              "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\DataModel.csproj": {
+                "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\DataModel.csproj"
               },
-              "C:\\Users\\yesuf\\Music\\mms-backend\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -91,14 +91,14 @@
         }
       }
     },
-    "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj": {
+    "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj",
+        "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\Contracts.csproj",
         "packagesPath": "C:\\Users\\yesuf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\obj\\",
+        "outputPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yesuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -115,8 +115,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj": {
-                "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj"
+              "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\DataModel.csproj": {
+                "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\DataModel.csproj"
               }
             }
           }
@@ -149,14 +149,14 @@
         }
       }
     },
-    "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj": {
+    "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\DataModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj",
+        "projectUniqueName": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\DataModel.csproj",
         "projectName": "DataModel",
-        "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj",
+        "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\DataModel.csproj",
         "packagesPath": "C:\\Users\\yesuf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\obj\\",
+        "outputPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\DataModel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yesuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -223,14 +223,14 @@
         }
       }
     },
-    "C:\\Users\\yesuf\\Music\\mms-backend\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yesuf\\Music\\mms-backend\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\yesuf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\yesuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -247,8 +247,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj"
+              "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Contracts\\Contracts.csproj"
               }
             }
           }
@@ -262,6 +262,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "NLog.Extensions.Logging": {
+              "target": "Package",
+              "version": "[1.7.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

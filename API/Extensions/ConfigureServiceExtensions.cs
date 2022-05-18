@@ -1,5 +1,7 @@
 ﻿using DataModel;
+using Contracts.Service;
 using Contracts.Interfaces;
+using Infrastructure.Service;
 using Microsoft.OpenApi.Models;
 using Infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -71,6 +73,8 @@ namespace API.Extensions
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
           services.AddScoped<IRepositoryManager, RepositoryManager>();
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+           services.AddScoped<ILoggerManager, LoggerManager>();
 
     }
 }

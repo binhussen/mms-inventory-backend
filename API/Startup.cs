@@ -1,4 +1,5 @@
-﻿using DataModel;
+﻿using NLog;
+using DataModel;
 using API.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,7 @@ namespace API
     {
         public Startup(IConfiguration configuration)
         {
+            LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
             Configuration = configuration;
         }
 
@@ -22,6 +24,7 @@ namespace API
             services.ConfigureDI();
             services.ConfigureCors();
             services.ConfigureSqlContext(Configuration);
+            services.ConfigureLoggerService();
             services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();

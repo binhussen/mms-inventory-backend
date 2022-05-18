@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Newtonsoft.Json;
+using Contracts.Service;
 using Contracts.Interfaces;
 using DataModel.Parameters;
 using DataModel.Models.DTOs;
@@ -15,10 +16,12 @@ namespace API.Controllers
     public class NotifyDetailsController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
+        private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public NotifyDetailsController(IRepositoryManager repository, IMapper mapper)
+        public NotifyDetailsController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
+            _logger = logger;
             _mapper = mapper;
         }
         [HttpGet]
@@ -28,7 +31,7 @@ namespace API.Controllers
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
             if (notifyHeader == null)
             {
-                //TODO: here add message response or logger message
+                _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
                 return NotFound();
             }
 
@@ -45,14 +48,14 @@ namespace API.Controllers
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
             if (notifyHeader == null)
             {
-                //TODO: here add message response or logger message
+                _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
                 return NotFound();
             }
 
             var notifyDetailDb = await _repository.NotifyDetail.GetNotifyDetailAsync(notifyHeaderId, id, trackChanges: false);
             if (notifyDetailDb == null)
             {
-               //TODO: here add message response or logger message
+               _logger.LogInfo($"NotifyDetail with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 
@@ -66,19 +69,19 @@ namespace API.Controllers
         {
             if (notifyDetail == null)
             {
-                //TODO: here add message response or logger message
+                _logger.LogError("NotifyDetailForCreationDto object sent from client is null.");
                 return BadRequest("NotifyDetailForCreationDto object is null");
             }
 
             if (!ModelState.IsValid)
             {
-                //TODO: here add message response or logger message
+                _logger.LogError("Invalid model state for the NotifyDetailForCreationDto object");
                 return UnprocessableEntity(ModelState);
             }
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
             if(notifyHeader == null)
             {
-                 //TODO: here add message response or logger message
+                 _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
                 return NotFound();
             }
 
@@ -97,26 +100,26 @@ namespace API.Controllers
         {
             if (notifyDetail == null)
             {
-                //TODO: here add message response or logger message
+                _logger.LogError("NotifyDetailForUpdateDto object sent from client is null.");
                 return BadRequest("NotifyDetailForUpdateDto object is null");
             }
 
             if (!ModelState.IsValid)
             {
-                 //TODO: here add message response or logger message
+                 _logger.LogError("Invalid model state for the NotifyDetailForUpdateDto object");
                 return UnprocessableEntity(ModelState);
             }
 
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
             if (notifyHeader == null)
             {
-                //TODO: here add message response or logger message
+                _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
                 return NotFound();
             }
             var notifyDetailEntity = await _repository.NotifyDetail.GetNotifyDetailAsync(notifyHeaderId, id, trackChanges: true);
             if (notifyDetailEntity == null)
             {
-                //TODO: here add message response or logger message
+                 _logger.LogInfo($"NotifyDetail with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 
@@ -133,14 +136,14 @@ namespace API.Controllers
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
             if (notifyHeader == null)
             {
-                 //TODO: here add message response or logger message
+                 _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
                 return NotFound();
             }
 
             var notifyDetailForNotifyHeader = await _repository.NotifyDetail.GetNotifyDetailAsync(notifyHeaderId, id, trackChanges: false);
             if (notifyDetailForNotifyHeader == null)
             {
-                 //TODO: here add message response or logger message
+                 _logger.LogInfo($"NotifyDetail with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 

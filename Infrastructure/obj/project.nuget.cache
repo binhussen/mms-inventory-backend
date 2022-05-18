@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3KKWXIHpKbaSe9sHR0/ZLzDuJ6urgtbjTsCCHmv5yC6jdMcRY+YkfCNFe/tJxDGlqXPPRq0D9nvbfEvIECPw7g==",
+  "dgSpecHash": "ZzgJrYM7cbwG8iACSEfdcXdorzzvN5ql8ra5kXMVFpVTElLjA+figq/oXWTCgFBZj6e5PfBsmERxxw1GYhz/GQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-backend\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -54,6 +54,8 @@
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
+    "C:\\Users\\yesuf\\.nuget\\packages\\nlog\\4.7.11\\nlog.4.7.11.nupkg.sha512",
+    "C:\\Users\\yesuf\\.nuget\\packages\\nlog.extensions.logging\\1.7.4\\nlog.extensions.logging.1.7.4.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
