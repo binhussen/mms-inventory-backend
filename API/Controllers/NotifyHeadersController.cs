@@ -10,7 +10,7 @@ using DataModel.Models.Entities;
 
 namespace API.Controllers
 {
-    [Route("api/notifyHeaders")]
+    [Route("api/notifyheaders")]
     [ApiController]
     public class NotifyHeadersController : ControllerBase
     {

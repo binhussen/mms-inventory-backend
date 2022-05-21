@@ -5,7 +5,7 @@ namespace API.Properties
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NotifyDetailsController : ControllerBase
+    public class NotifyItemsController : ControllerBase
     {
     }
 }

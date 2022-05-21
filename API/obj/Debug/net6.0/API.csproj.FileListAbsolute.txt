@@ -236,7 +236,6 @@ C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\API.GeneratedMSBu
 C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\API.AssemblyInfoInputs.cache
 C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\API.AssemblyInfo.cs
 C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\API.csproj.CoreCompileInputs.cache
-C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\yesuf\Videos\Project\mms-backend\API\obj\Debug\net6.0\staticwebassets.development.json

@@ -11,119 +11,119 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace API.Controllers
 {
-    [Route("api/notifyDetails/{notifyHeaderId}/notifyDetails")]
+    [Route("api/notifyheaders/{notifyheaderid}/notifyitems")]
     [ApiController]
-    public class NotifyDetailsController : ControllerBase
+    public class NotifyItemsController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public NotifyDetailsController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        public NotifyItemsController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetNotifyDetailsForNotifyHeader(int notifyHeaderId)
+        public async Task<IActionResult> GetNotifyItemsForNotifyHeader(int notifyheaderid)
         {
 
-            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
+            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyheaderid, trackChanges: false);
             if (notifyHeader == null)
             {
-                _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
+                _logger.LogInfo($"NotifyHeader with id: {notifyheaderid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var notifyDetailsFromDb = await _repository.NotifyDetail.GetNotifyDetailsAsync(notifyHeaderId, trackChanges: false);
+            var notifyItemsFromDb = await _repository.NotifyItem.GetNotifyItemsAsync(notifyheaderid, trackChanges: false);
 
-            var notifyDetailsDto = _mapper.Map<IEnumerable<NotifyDetailDto>>(notifyDetailsFromDb);
-            return Ok(notifyDetailsDto);
+            var notifyItemsDto = _mapper.Map<IEnumerable<NotifyItemDto>>(notifyItemsFromDb);
+            return Ok(notifyItemsDto);
 
         }
 
-        [HttpGet("{id}", Name = "GetNotifyDetailForNotifyHeader")]
-        public async Task<IActionResult> GetNotifyDetailForNotifyHeader(int notifyHeaderId, int id)
+        [HttpGet("{id}", Name = "GetNotifyItemForNotifyHeader")]
+        public async Task<IActionResult> GetNotifyItemForNotifyHeader(int notifyheaderid, int id)
         {
-            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
+            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyheaderid, trackChanges: false);
             if (notifyHeader == null)
             {
-                _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
+                _logger.LogInfo($"NotifyHeader with id: {notifyheaderid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var notifyDetailDb = await _repository.NotifyDetail.GetNotifyDetailAsync(notifyHeaderId, id, trackChanges: false);
-            if (notifyDetailDb == null)
+            var notifyItemDb = await _repository.NotifyItem.GetNotifyItemAsync(notifyheaderid, id, trackChanges: false);
+            if (notifyItemDb == null)
             {
-               _logger.LogInfo($"NotifyDetail with id: {id} doesn't exist in the database.");
+               _logger.LogInfo($"NotifyItem with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var notifyDetail = _mapper.Map<NotifyDetailDto>(notifyDetailDb);
+            var notifyItem = _mapper.Map<NotifyItemDto>(notifyItemDb);
 
-            return Ok(notifyDetail);
+            return Ok(notifyItem);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateNotifyDetailForNotifyHeader(int notifyHeaderId, [FromBody] NotifyDetailForCreationDto notifyDetail)
+        public async Task<IActionResult> CreateNotifyItemForNotifyHeader(int notifyheaderid, [FromBody] NotifyItemForCreationDto notifyItem)
         {
-            if (notifyDetail == null)
+            if (notifyItem == null)
             {
-                _logger.LogError("NotifyDetailForCreationDto object sent from client is null.");
-                return BadRequest("NotifyDetailForCreationDto object is null");
+                _logger.LogError("NotifyItemForCreationDto object sent from client is null.");
+                return BadRequest("NotifyItemForCreationDto object is null");
             }
 
             if (!ModelState.IsValid)
             {
-                _logger.LogError("Invalid model state for the NotifyDetailForCreationDto object");
+                _logger.LogError("Invalid model state for the NotifyItemForCreationDto object");
                 return UnprocessableEntity(ModelState);
             }
-            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
+            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyheaderid, trackChanges: false);
             if(notifyHeader == null)
             {
-                 _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
+                 _logger.LogInfo($"NotifyHeader with id: {notifyheaderid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var notifyDetailEntity = _mapper.Map<NotifyDetail>(notifyDetail);
+            var notifyItemEntity = _mapper.Map<NotifyItem>(notifyItem);
 
-            _repository.NotifyDetail.CreateNotifyDetailForNotifyHeader(notifyHeaderId, notifyDetailEntity);
+            _repository.NotifyItem.CreateNotifyItemForNotifyHeader(notifyheaderid, notifyItemEntity);
             await _repository.SaveAsync();
-            var notifyDetailToReturn = _mapper.Map<NotifyDetailDto>(notifyDetailEntity);
-            return CreatedAtRoute("GetNotifyDetailForNotifyHeader", new { notifyHeaderId, id = notifyDetailToReturn.id }, notifyDetailToReturn);
+            var notifyItemToReturn = _mapper.Map<NotifyItemDto>(notifyItemEntity);
+            return CreatedAtRoute("GetNotifyItemForNotifyHeader", new { notifyheaderid, id = notifyItemToReturn.id }, notifyItemToReturn);
 
         }
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateNotifyDetailForNotifyHeader(int notifyHeaderId, int id, [FromBody] NotifyDetailForUpdateDto notifyDetail)
+        public async Task<IActionResult> UpdateNotifyItemForNotifyHeader(int notifyheaderid, int id, [FromBody] NotifyItemForUpdateDto notifyItem)
         {
-            if (notifyDetail == null)
+            if (notifyItem == null)
             {
-                _logger.LogError("NotifyDetailForUpdateDto object sent from client is null.");
-                return BadRequest("NotifyDetailForUpdateDto object is null");
+                _logger.LogError("NotifyItemForUpdateDto object sent from client is null.");
+                return BadRequest("NotifyItemForUpdateDto object is null");
             }
 
             if (!ModelState.IsValid)
             {
-                 _logger.LogError("Invalid model state for the NotifyDetailForUpdateDto object");
+                 _logger.LogError("Invalid model state for the NotifyItemForUpdateDto object");
                 return UnprocessableEntity(ModelState);
             }
 
-            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
+            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyheaderid, trackChanges: false);
             if (notifyHeader == null)
             {
-                _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
+                _logger.LogInfo($"NotifyHeader with id: {notifyheaderid} doesn't exist in the database.");
                 return NotFound();
             }
-            var notifyDetailEntity = await _repository.NotifyDetail.GetNotifyDetailAsync(notifyHeaderId, id, trackChanges: true);
-            if (notifyDetailEntity == null)
+            var notifyItemEntity = await _repository.NotifyItem.GetNotifyItemAsync(notifyheaderid, id, trackChanges: true);
+            if (notifyItemEntity == null)
             {
-                 _logger.LogInfo($"NotifyDetail with id: {id} doesn't exist in the database.");
+                 _logger.LogInfo($"NotifyItem with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 
-            _mapper.Map(notifyDetail, notifyDetailEntity);
+            _mapper.Map(notifyItem, notifyItemEntity);
             await _repository.SaveAsync();
 
             return NoContent();
@@ -131,23 +131,23 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteNotifyHeader(int notifyHeaderId, int id)
+        public async Task<IActionResult> DeleteNotifyHeader(int notifyheaderid, int id)
         {
-            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyHeaderId, trackChanges: false);
+            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyheaderid, trackChanges: false);
             if (notifyHeader == null)
             {
-                 _logger.LogInfo($"NotifyHeader with id: {notifyHeaderId} doesn't exist in the database.");
+                 _logger.LogInfo($"NotifyHeader with id: {notifyheaderid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var notifyDetailForNotifyHeader = await _repository.NotifyDetail.GetNotifyDetailAsync(notifyHeaderId, id, trackChanges: false);
-            if (notifyDetailForNotifyHeader == null)
+            var notifyItemForNotifyHeader = await _repository.NotifyItem.GetNotifyItemAsync(notifyheaderid, id, trackChanges: false);
+            if (notifyItemForNotifyHeader == null)
             {
-                 _logger.LogInfo($"NotifyDetail with id: {id} doesn't exist in the database.");
+                 _logger.LogInfo($"NotifyItem with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 
-            _repository.NotifyDetail.DeleteNotifyDetail(notifyDetailForNotifyHeader);
+            _repository.NotifyItem.DeleteNotifyItem(notifyItemForNotifyHeader);
             await _repository.SaveAsync();
 
             return NoContent();

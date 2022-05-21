@@ -4,6 +4,7 @@ using DataModel.Models.DTOs;
 using System.Threading.Tasks;
 using DataModel.Models.Entities;
 using System.Collections.Generic;
+using DataModel.Models.DTOs.Requests;
 
 namespace API.Mappings
 {
@@ -11,12 +12,27 @@ namespace API.Mappings
     {
         public MappingProfile()
         {
+            //Notifies
             CreateMap<NotifyHeader, NotifyHeaderDto>();
-            CreateMap<NotifyDetail, NotifyDetailDto>();
+            CreateMap<NotifyItem, NotifyItemDto>();
             CreateMap<NotifyHeaderForCreationDto, NotifyHeader>();
-            CreateMap<NotifyDetailForCreationDto, NotifyDetail>();
+            CreateMap<NotifyItemForCreationDto, NotifyItem>();
             CreateMap<NotifyHeaderForUpdateDto, NotifyHeader>();
-            CreateMap<NotifyDetailForUpdateDto, NotifyDetail>().ReverseMap();
+            CreateMap<NotifyItemForUpdateDto, NotifyItem>().ReverseMap();
+            //Stores
+            CreateMap<StoreHeader, StoreHeaderDto>();
+            CreateMap<StoreItem, StoreItemDto>();
+            CreateMap<StoreHeaderForCreationDto, StoreHeader>();
+             CreateMap<StoreItemForCreationDto, StoreItem>();
+            CreateMap<StoreHeaderForUpdateDto, StoreHeader>();
+            CreateMap<StoreItemForUpdateDto, StoreItem>().ReverseMap();
+            //Requests
+            CreateMap<RequestHeader, RequestHeaderDto>();
+            CreateMap<RequestItem, RequestItemDto>();
+            CreateMap<RequestHeaderForCreationDto, RequestHeader>();
+            CreateMap<RequestItemForCreationDto, RequestItem>();
+            CreateMap<RequestHeaderForUpdateDto, RequestHeader>();
+            CreateMap<RequestItemForUpdateDto, RequestItemForUpdateDto>().ReverseMap();
         }
     }
 }
