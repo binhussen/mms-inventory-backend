@@ -8,7 +8,7 @@ namespace DataModel.Models.DTOs
 {
    public class NotifyHeaderForUpdateDto : NotifyHeaderForManipulationDto
     {
-        public IEnumerable<NotifyDetailForCreationDto> NotifyDetails { get; set; }
+        public IEnumerable<NotifyItemForCreationDto>? NotifyItems { get; set; }
     }
 
 }

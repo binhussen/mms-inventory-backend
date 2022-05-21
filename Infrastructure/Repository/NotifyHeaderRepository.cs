@@ -14,7 +14,7 @@ namespace Infrastructure.Repository
         }
         public async Task<IEnumerable<NotifyHeader>> GetAllNotifyHeadersAsync(bool trackChanges) =>
                await FindAll(trackChanges)
-                   .OrderBy(c => c.weaponDescription)
+                   .OrderBy(c => c.itemDescription)
                    .ToListAsync();
         public async Task<NotifyHeader> GetNotifyHeaderAsync(int notifyHeaderId, bool trackChanges) =>
             await FindByCondition(c => c.id.Equals(notifyHeaderId), trackChanges)

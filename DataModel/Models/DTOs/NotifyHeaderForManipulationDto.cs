@@ -8,7 +8,7 @@ namespace DataModel.Models.DTOs
 {
     public class NotifyHeaderForManipulationDto
     {
-        public string weaponDescription { get; set; }
+        public string itemDescription { get; set; }
         public string attachments { get; set; }
     }
 }

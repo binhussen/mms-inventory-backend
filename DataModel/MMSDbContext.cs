@@ -21,7 +21,12 @@ namespace DataModel
         }
 
         public DbSet<NotifyHeader> NotifyHeaders { get; set; }
-        public DbSet<NotifyDetail> NotifyDetails { get; set; }
+        public DbSet<NotifyItem> NotifyItems { get; set; }
+        public DbSet<StoreHeader> StoreHeaders { get; set; }
+        public DbSet<StoreItem> StoreItems { get; set; }
+        public DbSet<RequestHeader> RequestHeaders { get; set; }
+        public DbSet<RequestItem> RequestItems { get; set; }
+
 
     }
 }

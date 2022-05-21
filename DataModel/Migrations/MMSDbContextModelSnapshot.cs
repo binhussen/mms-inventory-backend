@@ -22,35 +22,6 @@ namespace DataModel.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("DataModel.Models.Entities.NotifyDetail", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("notifyDetailId");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<int?>("notifyHeaderId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("weaponName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("weaponType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("notifyHeaderId");
-
-                    b.ToTable("NotifyDetails");
-                });
-
             modelBuilder.Entity("DataModel.Models.Entities.NotifyHeader", b =>
                 {
                     b.Property<int>("id")
@@ -63,7 +34,7 @@ namespace DataModel.Migrations
                     b.Property<string>("attachments")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("weaponDescription")
+                    b.Property<string>("itemDescription")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
@@ -71,10 +42,175 @@ namespace DataModel.Migrations
                     b.ToTable("NotifyHeaders");
                 });
 
-            modelBuilder.Entity("DataModel.Models.Entities.NotifyDetail", b =>
+            modelBuilder.Entity("DataModel.Models.Entities.NotifyItem", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("notifyItemId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("notifyHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("weaponName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("notifyHeaderId");
+
+                    b.ToTable("NotifyItems");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.RequestHeader", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("requestHeaderId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("attachments")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("requestStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("RequestHeaders");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.RequestItem", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("requestItemId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("requestHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("weaponName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("weaponQuantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("requestHeaderId");
+
+                    b.ToTable("RequestItems");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.StoreHeader", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("storeHeaderId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("donor")
+                        .HasColumnType("int");
+
+                    b.Property<string>("itemNoInExpenditureRegister")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("noOfEntryInTheRegisterOfIncomingGoods")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("notifyHeaderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("notifyHeaderId");
+
+                    b.ToTable("StoreHeaders");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.StoreItem", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("storeItemId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("availability")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("itemDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("serialNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("shelfNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("storeHeaderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("storeNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("storeHeaderId");
+
+                    b.ToTable("StoreItems");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.NotifyItem", b =>
                 {
                     b.HasOne("DataModel.Models.Entities.NotifyHeader", "NotifyHeader")
-                        .WithMany("NotifyDetails")
+                        .WithMany("NotifyItems")
                         .HasForeignKey("notifyHeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -82,9 +218,54 @@ namespace DataModel.Migrations
                     b.Navigation("NotifyHeader");
                 });
 
+            modelBuilder.Entity("DataModel.Models.Entities.RequestItem", b =>
+                {
+                    b.HasOne("DataModel.Models.Entities.RequestHeader", "RequestHeader")
+                        .WithMany("RequestItems")
+                        .HasForeignKey("requestHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RequestHeader");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.StoreHeader", b =>
+                {
+                    b.HasOne("DataModel.Models.Entities.NotifyHeader", "NotifyHeader")
+                        .WithMany("StoreHeaders")
+                        .HasForeignKey("notifyHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NotifyHeader");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.StoreItem", b =>
+                {
+                    b.HasOne("DataModel.Models.Entities.StoreHeader", "StoreHeader")
+                        .WithMany("StoreItems")
+                        .HasForeignKey("storeHeaderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("StoreHeader");
+                });
+
             modelBuilder.Entity("DataModel.Models.Entities.NotifyHeader", b =>
                 {
-                    b.Navigation("NotifyDetails");
+                    b.Navigation("NotifyItems");
+
+                    b.Navigation("StoreHeaders");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.RequestHeader", b =>
+                {
+                    b.Navigation("RequestItems");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.StoreHeader", b =>
+                {
+                    b.Navigation("StoreItems");
                 });
 #pragma warning restore 612, 618
         }

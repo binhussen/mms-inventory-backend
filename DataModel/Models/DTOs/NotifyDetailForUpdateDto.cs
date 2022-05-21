@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace DataModel.Models.DTOs
 {
-    public class NotifyDetailForUpdateDto : NotifyDetailForManipulationDto
+    public class NotifyItemForUpdateDto : NotifyItemForManipulationDto
     {
     }
 }

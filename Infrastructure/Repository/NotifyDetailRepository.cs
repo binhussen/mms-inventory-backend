@@ -7,29 +7,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
 {
-    public class NotifyDetailRepository : RepositoryBase<NotifyDetail>, INotifyDetail
+    public class NotifyItemRepository : RepositoryBase<NotifyItem>, INotifyItem
     {
-        public NotifyDetailRepository(MMSDbContext repositoryContext)
+        public NotifyItemRepository(MMSDbContext repositoryContext)
             : base(repositoryContext)
         {
         }
 
-        public void CreateNotifyDetailForNotifyHeader(int notifyHeaderId, NotifyDetail notifyDetail)
+        public void CreateNotifyItemForNotifyHeader(int notifyHeaderId, NotifyItem notifyItem)
         {
-            notifyDetail.notifyHeaderId = notifyHeaderId;
-            Create(notifyDetail);
+            notifyItem.notifyHeaderId = notifyHeaderId;
+            Create(notifyItem);
         }
 
-        public void DeleteNotifyDetail(NotifyDetail notifyDetail)
+        public void DeleteNotifyItem(NotifyItem notifyItem)
         {
-             Delete(notifyDetail);
+             Delete(notifyItem);
         }
 
-        public async Task<NotifyDetail> GetNotifyDetailAsync(int notifyHeaderId, int id, bool trackChanges) =>
+        public async Task<NotifyItem> GetNotifyItemAsync(int notifyHeaderId, int id, bool trackChanges) =>
          await FindByCondition(e => e.notifyHeaderId.Equals(notifyHeaderId) && e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<NotifyDetail>> GetNotifyDetailsAsync(int notifyHeaderId, bool trackChanges)=>
+        public async Task<IEnumerable<NotifyItem>> GetNotifyItemsAsync(int notifyHeaderId, bool trackChanges)=>
             await FindByCondition(e => e.notifyHeaderId.Equals(notifyHeaderId), trackChanges)
             .OrderBy(e => e.weaponName)
             .ToListAsync();

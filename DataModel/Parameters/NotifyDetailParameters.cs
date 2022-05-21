@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace DataModel.Parameters
 {
-    public class NotifyDetailParameters : RequestParameters
+    public class NotifyItemParameters : RequestParameters
     {
-        public NotifyDetailParameters()
+        public NotifyItemParameters()
         {
             OrderBy = "Name";
         }

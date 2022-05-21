@@ -15,7 +15,11 @@ namespace Infrastructure.Repository
     {
         private readonly MMSDbContext _repositoryContext;
         private INotifyHeader  _notifyHeaderRepository;
-        private INotifyDetail _notifyDetailRepository;
+        private INotifyItem _notifyItemRepository;
+        private IStoreHeader _storeHeaderRepository;
+        private IStoreItem _storeItemRepository;
+        private IRequestItem _requestItemRepository;
+        private IRequestHeader _requestHeaderRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
         /// </summary>
@@ -40,18 +44,57 @@ namespace Infrastructure.Repository
         }
 
         /// <summary>
-        /// Gets the notify detail.
+        /// Gets the notify item.
         /// </summary>
-        public INotifyDetail NotifyDetail
+        public INotifyItem NotifyItem
         {
             get
             {
-                if (_notifyDetailRepository == null)
-                    _notifyDetailRepository = new NotifyDetailRepository(_repositoryContext);
+                if (_notifyItemRepository == null)
+                    _notifyItemRepository = new NotifyItemRepository(_repositoryContext);
 
-                return _notifyDetailRepository;
+                return _notifyItemRepository;
             }
         }
+        public IStoreHeader StoreHeader
+        {
+            get
+            {
+                if (_storeHeaderRepository == null)
+                    _storeHeaderRepository = new StoreHeaderRepository(_repositoryContext);
+                return _storeHeaderRepository;
+            }
+        }
+        public IStoreItem StoreItem
+        {
+            get
+            {
+                if (_storeItemRepository == null)
+                    _storeItemRepository = new StoreItemRepository(_repositoryContext);
+                return _storeItemRepository;
+            }
+        }
+
+        public IRequestHeader RequestHeader
+        {
+            get
+            {
+                if (_requestHeaderRepository == null)
+                    _requestHeaderRepository = new RequestHeaderRepository(_repositoryContext);
+                return _requestHeaderRepository;
+            }
+        }
+
+        public IRequestItem RequestItem
+        {
+            get
+            {
+                if (_requestItemRepository ==null)
+                    _requestItemRepository = new RequestDetailRepository(_repositoryContext);
+                return _requestItemRepository;
+            }
+        }
+
         /// <summary>
         /// Saves the async.
         /// </summary>

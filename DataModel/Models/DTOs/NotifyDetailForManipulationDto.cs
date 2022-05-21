@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace DataModel.Models.DTOs
 {
-    public class NotifyDetailForManipulationDto
+    public class NotifyItemForManipulationDto
     {
-        public string weaponType { get; set; }
+        public string type { get; set; }
         public string weaponName { get; set; }
         public int quantity { get; set; }
     }

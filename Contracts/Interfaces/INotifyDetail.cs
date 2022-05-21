@@ -9,12 +9,12 @@ using System.Collections.Generic;
 
 namespace Contracts.Interfaces
 {
-    public interface INotifyDetail
+    public interface INotifyItem
     {
-        Task<IEnumerable<NotifyDetail>> GetNotifyDetailsAsync(int notifyHeaderId, bool trackChanges);
-        Task<NotifyDetail> GetNotifyDetailAsync(int notifyHeaderId, int id, bool trackChanges);
-        void CreateNotifyDetailForNotifyHeader(int notifyHeaderId, NotifyDetail notifyDetail);
-        void DeleteNotifyDetail(NotifyDetail notifyDetail);
+        Task<IEnumerable<NotifyItem>> GetNotifyItemsAsync(int notifyHeaderId, bool trackChanges);
+        Task<NotifyItem> GetNotifyItemAsync(int notifyHeaderId, int id, bool trackChanges);
+        void CreateNotifyItemForNotifyHeader(int notifyHeaderId, NotifyItem notifyItem);
+        void DeleteNotifyItem(NotifyItem notifyItem);
     }
 }
 
