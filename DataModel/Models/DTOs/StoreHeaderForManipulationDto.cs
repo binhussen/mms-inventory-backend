@@ -10,6 +10,6 @@ namespace DataModel.Models.DTOs
     {
         public string itemNoInExpenditureRegister { get; set; }
         public string noOfEntryInTheRegisterOfIncomingGoods { get; set; }
-        public int donor { get; set; }
+        public string donor { get; set; }
     }
 }

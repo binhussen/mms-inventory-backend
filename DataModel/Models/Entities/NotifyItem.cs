@@ -7,9 +7,9 @@ namespace DataModel.Models.Entities
     {
         [Column("notifyItemId")]
         public int id { get; set; }
-        public string? type { get; set; }
-        public string? weaponName { get; set; }
-        public int? quantity { get; set; }
+        public string type { get; set; }
+        public string weaponName { get; set; }
+        public int quantity { get; set; }
         [ForeignKey(nameof(NotifyHeader))]
         public int notifyHeaderId { get; set; }
         public NotifyHeader NotifyHeader { get; set; }

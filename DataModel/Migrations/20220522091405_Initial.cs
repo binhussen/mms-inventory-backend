@@ -14,8 +14,8 @@ namespace DataModel.Migrations
                 {
                     notifyHeaderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    itemDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    attachments = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    itemDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    attachments = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -38,28 +38,6 @@ namespace DataModel.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "NotifyItems",
-                columns: table => new
-                {
-                    notifyItemId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    weaponName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    quantity = table.Column<int>(type: "int", nullable: true),
-                    notifyHeaderId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_NotifyItems", x => x.notifyItemId);
-                    table.ForeignKey(
-                        name: "FK_NotifyItems_NotifyHeaders_notifyHeaderId",
-                        column: x => x.notifyHeaderId,
-                        principalTable: "NotifyHeaders",
-                        principalColumn: "notifyHeaderId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "StoreHeaders",
                 columns: table => new
                 {
@@ -67,14 +45,30 @@ namespace DataModel.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     itemNoInExpenditureRegister = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     noOfEntryInTheRegisterOfIncomingGoods = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    donor = table.Column<int>(type: "int", nullable: false),
+                    donor = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     notifyHeaderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StoreHeaders", x => x.storeHeaderId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NotifyItems",
+                columns: table => new
+                {
+                    notifyItemId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    weaponName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    quantity = table.Column<int>(type: "int", nullable: false),
+                    notifyHeaderId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NotifyItems", x => x.notifyItemId);
                     table.ForeignKey(
-                        name: "FK_StoreHeaders_NotifyHeaders_notifyHeaderId",
+                        name: "FK_NotifyItems_NotifyHeaders_notifyHeaderId",
                         column: x => x.notifyHeaderId,
                         principalTable: "NotifyHeaders",
                         principalColumn: "notifyHeaderId",
@@ -141,11 +135,6 @@ namespace DataModel.Migrations
                 column: "requestHeaderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_StoreHeaders_notifyHeaderId",
-                table: "StoreHeaders",
-                column: "notifyHeaderId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_StoreItems_storeHeaderId",
                 table: "StoreItems",
                 column: "storeHeaderId");
@@ -163,13 +152,13 @@ namespace DataModel.Migrations
                 name: "StoreItems");
 
             migrationBuilder.DropTable(
+                name: "NotifyHeaders");
+
+            migrationBuilder.DropTable(
                 name: "RequestHeaders");
 
             migrationBuilder.DropTable(
                 name: "StoreHeaders");
-
-            migrationBuilder.DropTable(
-                name: "NotifyHeaders");
         }
     }
 }

@@ -152,5 +152,46 @@ namespace API.Controllers
 
             return NoContent();
         }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PartiallyUpdateNotifyItemForNotifyHeader(int notifyheaderid, int id, [FromBody] JsonPatchDocument<NotifyItemForUpdateDto> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                _logger.LogError("patchDoc object sent from client is null.");
+                return BadRequest("patchDoc object is null");
+            }
+
+            var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyheaderid, trackChanges: false);
+            if (notifyHeader == null)
+            {
+                _logger.LogInfo($"NotifyHeader with id: {notifyheaderid} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            var notifyItemEntity = await _repository.NotifyItem.GetNotifyItemAsync(notifyheaderid, id, trackChanges: true);
+            if (notifyItemEntity == null)
+            {
+                _logger.LogInfo($"NotifyItem with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            var notifyItemToPatch = _mapper.Map<NotifyItemForUpdateDto>(notifyItemEntity);
+
+            patchDoc.ApplyTo(notifyItemToPatch, ModelState);
+
+            TryValidateModel(notifyItemToPatch);
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
+
+            _mapper.Map(notifyItemToPatch, notifyItemEntity);
+
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
     }
 }

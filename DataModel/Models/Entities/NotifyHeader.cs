@@ -7,10 +7,8 @@ namespace DataModel.Models.Entities
     {
         [Column("notifyHeaderId")]
         public int id { get; set; }
-        public string? itemDescription { get; set; }
-        public string? attachments { get; set; }
+        public string itemDescription { get; set; }
+        public string attachments { get; set; }
         public ICollection<NotifyItem> NotifyItems { get; set; }
-        public ICollection<StoreHeader> StoreHeaders { get; set; }
-
     }
 }

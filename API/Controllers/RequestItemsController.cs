@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using DataModel.Models.Entities;
 using DataModel.Models.DTOs.Requests;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace API.Controllers
 {
@@ -145,6 +146,47 @@ namespace API.Controllers
             }
 
             _repository.RequestItem.DeleteRequestItem(requestItemForRequestHeader);
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> PartiallyUpdateRequestItemForRequestHeader(int requestheaderid, int id, [FromBody] JsonPatchDocument<RequestItemForUpdateDto> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                _logger.LogError("patchDoc object sent from client is null.");
+                return BadRequest("patchDoc object is null");
+            }
+
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
+            if (requestHeader == null)
+            {
+                _logger.LogInfo($"RequestHeader with id: {requestheaderid} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            var requestItemEntity = await _repository.RequestItem.GetRequestItemAsync(requestheaderid, id, trackChanges: true);
+            if (requestItemEntity == null)
+            {
+                _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            var requestItemToPatch = _mapper.Map<RequestItemForUpdateDto>(requestItemEntity);
+
+            patchDoc.ApplyTo(requestItemToPatch, ModelState);
+
+            TryValidateModel(requestItemToPatch);
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
+
+            _mapper.Map(requestItemToPatch, requestItemEntity);
+
             await _repository.SaveAsync();
 
             return NoContent();

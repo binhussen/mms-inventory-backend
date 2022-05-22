@@ -11,6 +11,6 @@ namespace DataModel.Models.DTOs
         public int id { get; set; }
         public string itemNoInExpenditureRegister { get; set; }
         public string noOfEntryInTheRegisterOfIncomingGoods { get; set; }
-        public int donor { get; set; }
+        public string donor { get; set; }
     }
 }

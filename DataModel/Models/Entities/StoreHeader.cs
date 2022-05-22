@@ -13,11 +13,9 @@ namespace DataModel.Models.Entities
         public int id { get; set; }
         public string itemNoInExpenditureRegister { get; set; }
         public string noOfEntryInTheRegisterOfIncomingGoods { get; set; }
-        public int donor { get; set; }
+        public string donor { get; set; }
         [ForeignKey(nameof(NotifyHeader))]
         public int notifyHeaderId { get; set; }
         public ICollection<StoreItem> StoreItems { get; set; }
-        public NotifyHeader NotifyHeader { get; set; }
-
     }
 }
