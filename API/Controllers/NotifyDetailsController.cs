@@ -25,7 +25,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetNotifyItemsForNotifyHeader(int notifyheaderid)
+        public async Task<IActionResult> GetNotifyItemsForNotifyHeader(int notifyheaderid, [FromQuery] NotifyItemParameters notifyItemParameters)
         {
 
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(notifyheaderid, trackChanges: false);
@@ -35,7 +35,8 @@ namespace API.Controllers
                 return NotFound();
             }
 
-            var notifyItemsFromDb = await _repository.NotifyItem.GetNotifyItemsAsync(notifyheaderid, trackChanges: false);
+            var notifyItemsFromDb = await _repository.NotifyItem.GetNotifyItemsAsync(notifyheaderid, notifyItemParameters, trackChanges: false);
+             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(notifyItemsFromDb.MetaData));
 
             var notifyItemsDto = _mapper.Map<IEnumerable<NotifyItemDto>>(notifyItemsFromDb);
             return Ok(notifyItemsDto);

@@ -3,6 +3,7 @@ using DataModel;
 using System.Linq;
 using System.Text;
 using Contracts.Interfaces;
+using DataModel.Parameters;
 using System.Threading.Tasks;
 using DataModel.Models.Entities;
 using System.Collections.Generic;
@@ -26,21 +27,26 @@ namespace Infrastructure.Repository
         {
               Delete(storeItem);
         }
-
-        public async Task<IEnumerable<StoreItem>> GetAllStoreItemsAsync(bool trackChanges)
+       public async Task<PagedList<StoreItem>> GetAllStoreItemsAsync(StoreItemParameters storeItemParameters, bool trackChanges)
         {
-           return await FindAll(trackChanges)
+            var storeItem = await FindAll(trackChanges)
                        .OrderBy(c => c.model)
                        .ToListAsync();
+            return PagedList<StoreItem>
+                .ToPagedList(storeItem, storeItemParameters.PageNumber, storeItemParameters.PageSize);
         }
 
         public async Task<StoreItem> GetStoreItemAsync(int storeHeaderId, int id, bool trackChanges) =>
             await FindByCondition(e => e.storeHeaderId.Equals(storeHeaderId) && e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<StoreItem>> GetStoreItemsAsync(int storeHeaderId, bool trackChanges) =>
-            await FindByCondition(e => e.storeHeaderId.Equals(storeHeaderId), trackChanges)
-            .OrderBy(e => e.type)
-            .ToListAsync();
+        public async Task<PagedList<StoreItem>> GetStoreItemsAsync(int storeHeaderId, StoreItemParameters storeItemParameters, bool trackChanges)
+        {
+            var storeItems = await FindByCondition(e => e.storeHeaderId.Equals(storeHeaderId), trackChanges)
+             .OrderBy(e => e.model)
+             .ToListAsync();
+            return PagedList<StoreItem>
+             .ToPagedList(storeItems, storeItemParameters.PageNumber, storeItemParameters.PageSize);
+        }
     }
 }

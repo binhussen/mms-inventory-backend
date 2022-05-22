@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using Contracts.Service;
 using Contracts.Interfaces;
+using DataModel.Parameters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using DataModel.Models.Entities;
@@ -23,7 +25,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetRequestItemsForRequestHeader(int requestheaderid)
+        public async Task<IActionResult> GetRequestItemsForRequestHeader(int requestheaderid, [FromQuery] RequestItemParameters requestItemParameters)
         {
 
             var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
@@ -33,7 +35,8 @@ namespace API.Controllers
                 return NotFound();
             }
 
-            var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(requestheaderid, trackChanges: false);
+            var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(requestheaderid,requestItemParameters, trackChanges: false);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestItemsFromDb.MetaData));
 
             var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb);
             return Ok(requestItemsDto);

@@ -10,11 +10,9 @@ namespace DataModel.Parameters
     public abstract class RequestParameters
     {
         const int maxPageSize = 50;
-         // [FromQuery]
         public int PageNumber { get; set; } = 1;
 
         private int _pageSize = 10;
-         // [FromQuery]
         public int PageSize
         {
             get
@@ -26,7 +24,5 @@ namespace DataModel.Parameters
                 _pageSize = (value > maxPageSize) ? maxPageSize : value;
             }
         }
-
-        public string OrderBy { get; set; }
     }
 }

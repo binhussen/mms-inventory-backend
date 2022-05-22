@@ -29,11 +29,14 @@ namespace Infrastructure.Repository
          await FindByCondition(e => e.notifyHeaderId.Equals(notifyHeaderId) && e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<NotifyItem>> GetNotifyItemsAsync(int notifyHeaderId, bool trackChanges)=>
-            await FindByCondition(e => e.notifyHeaderId.Equals(notifyHeaderId), trackChanges)
-            .OrderBy(e => e.weaponName)
-            .ToListAsync();
-
+        public async Task<PagedList<NotifyItem>> GetNotifyItemsAsync(int notifyHeaderId, NotifyItemParameters notifyItemParameters, bool trackChanges)
+        {
+            var notifyItems = await FindByCondition(e => e.notifyHeaderId.Equals(notifyHeaderId), trackChanges)
+              .OrderBy(e => e.weaponName)
+              .ToListAsync();
+            return PagedList<NotifyItem>
+              .ToPagedList(notifyItems, notifyItemParameters.PageNumber, notifyItemParameters.PageSize);
+        }
     }
 }
 
