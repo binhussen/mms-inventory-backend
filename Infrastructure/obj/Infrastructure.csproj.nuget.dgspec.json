@@ -176,6 +176,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.0.1, )"
+            },
             "NLog.Extensions.Logging": {
               "target": "Package",
               "version": "[1.7.4, )"

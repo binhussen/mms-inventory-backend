@@ -29,9 +29,10 @@ namespace API.Controllers
         /// </summary>
         /// <returns>A Task.</returns>
         [HttpGet(Name = "GetNotifyHeaders")]
-        public async Task<IActionResult> GetNotifyHeaders()
+        public async Task<IActionResult> GetNotifyHeaders([FromQuery] NotifyHeaderParameters notifyHeaderParameters)
         {
-            var notifyHeaders = await _repository.NotifyHeader.GetAllNotifyHeadersAsync(trackChanges: false);
+            var notifyHeaders = await _repository.NotifyHeader.GetAllNotifyHeadersAsync(notifyHeaderParameters, trackChanges: false);
+             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(notifyHeaders.MetaData));
 
             var notifyHeaderDtos = _mapper.Map<IEnumerable<NotifyHeaderDto>>(notifyHeaders);
 

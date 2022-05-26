@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Newtonsoft.Json;
 using Contracts.Service;
 using Contracts.Interfaces;
+using DataModel.Parameters;
 using DataModel.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
@@ -22,9 +24,10 @@ namespace API.Controllers
             _mapper = mapper;
         }
         [HttpGet(Name = "GetStoreHeaders")]
-        public async Task<IActionResult> GetStoreHeaders()
+        public async Task<IActionResult> GetStoreHeaders([FromQuery] StoreHeaderParameters storeHeaderParameters)
         {
-            var storeHeaders = await _repository.StoreHeader.GetAllStoreHeadersAsync(trackChanges: false);
+            var storeHeaders = await _repository.StoreHeader.GetAllStoreHeadersAsync(storeHeaderParameters, trackChanges: false);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeHeaders.MetaData));
 
             var storeHeaderDtos = _mapper.Map<IEnumerable<StoreHeaderDto>>(storeHeaders);
 

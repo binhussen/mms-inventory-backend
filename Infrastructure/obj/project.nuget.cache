@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZzgJrYM7cbwG8iACSEfdcXdorzzvN5ql8ra5kXMVFpVTElLjA+figq/oXWTCgFBZj6e5PfBsmERxxw1GYhz/GQ==",
+  "dgSpecHash": "oMsGvK9wAoLpP62DICr/4cJZsYo0BVfJPmzwtKgUenf3c3GL2ecpEtc2fiqm1+bUD1r9qN1vWDtIsgY3kmY++g==",
   "success": true,
   "projectFilePath": "C:\\Users\\yesuf\\Videos\\Project\\mms-backend\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\yesuf\\.nuget\\packages\\fluentvalidation\\11.0.1\\fluentvalidation.11.0.1.nupkg.sha512",
+    "C:\\Users\\yesuf\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.0.1\\fluentvalidation.dependencyinjectionextensions.11.0.1.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",

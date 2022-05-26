@@ -3,6 +3,7 @@ using DataModel;
 using System.Linq;
 using System.Text;
 using Contracts.Interfaces;
+using DataModel.Parameters;
 using System.Threading.Tasks;
 using DataModel.Models.Entities;
 using System.Collections.Generic;
@@ -25,12 +26,13 @@ namespace Infrastructure.Repository
         {
              Delete(requestHeader);
         }
-
-        public async Task<IEnumerable<RequestHeader>> GetAllRequestHeadersAsync(bool trackChanges)
+        public async Task<PagedList<RequestHeader>> GetAllRequestHeadersAsync(RequestHeaderParameters requestHeaderParameters, bool trackChanges)
         {
-          return await FindAll(trackChanges)
+            var requestHeader = await FindAll(trackChanges)
                    .OrderBy(c => c.id)
                    .ToListAsync();
+            return PagedList<RequestHeader>
+                  .ToPagedList(requestHeader, requestHeaderParameters.PageNumber, requestHeaderParameters.PageSize);
         }
 
         public async Task<RequestHeader> GetRequestHeaderAsync(int requestHeaderId, bool trackChanges) =>

@@ -12,10 +12,6 @@ namespace Infrastructure.Repository
             : base(repositoryContext)
         {
         }
-        public async Task<IEnumerable<NotifyHeader>> GetAllNotifyHeadersAsync(bool trackChanges) =>
-               await FindAll(trackChanges)
-                   .OrderBy(c => c.itemDescription)
-                   .ToListAsync();
         public async Task<NotifyHeader> GetNotifyHeaderAsync(int notifyHeaderId, bool trackChanges) =>
             await FindByCondition(c => c.id.Equals(notifyHeaderId), trackChanges)
             .SingleOrDefaultAsync();
@@ -23,7 +19,14 @@ namespace Infrastructure.Repository
         public void CreateNotifyHeader(NotifyHeader notifyHeader) => Create(notifyHeader);
         public void DeleteNotifyHeader(NotifyHeader notifyHeader) => Delete(notifyHeader);
 
-
+        public async Task<PagedList<NotifyHeader>> GetAllNotifyHeadersAsync(NotifyHeaderParameters notifyHeaderParameters, bool trackChanges)
+        {
+           var notifyHeader= await FindAll(trackChanges)
+                   .OrderBy(c => c.itemDescription)
+                   .ToListAsync();
+            return PagedList<NotifyHeader>
+                .ToPagedList(notifyHeader,notifyHeaderParameters.PageNumber, notifyHeaderParameters.PageSize);
+        }
     }
 }
 
