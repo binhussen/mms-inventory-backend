@@ -4,6 +4,7 @@ using System.Text;
 using DataModel.Response;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using DataModel.Models.Entities;
 
 namespace DataModel.Parameters
 {
@@ -32,6 +33,11 @@ namespace DataModel.Parameters
                 .Take(pageSize).ToList();
 
             return new PagedList<T>(items, count, pageNumber, pageSize);
+        }
+
+        public static PagedList<StoreItem> ToPagedList(List<object> storeItem, int pageNumber, int pageSize)
+        {
+            throw new NotImplementedException();
         }
     }
 }

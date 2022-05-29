@@ -183,6 +183,9 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("quantity")
+                        .HasColumnType("int");
+
                     b.Property<string>("serialNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

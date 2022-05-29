@@ -1,4 +1,3 @@
-using DataModel.Models.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel.Models.Entities

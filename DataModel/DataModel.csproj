@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\DTOs\Stores\" />
     <Folder Include="Models\DTOs\Notifies\" />
   </ItemGroup>
 

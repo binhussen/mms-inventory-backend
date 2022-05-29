@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using Newtonsoft.Json;
-using Contracts.Service;
 using Contracts.Interfaces;
-using DataModel.Parameters;
+using Contracts.Service;
 using DataModel.Models.DTOs;
+using DataModel.Parameters;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -27,11 +26,33 @@ namespace API.Controllers
         public async Task<IActionResult> GetAllStoreItems([FromQuery] StoreItemParameters storeItemParameters)
         {
             var storeItems = await _repository.StoreItem.GetAllStoreItemsAsync(storeItemParameters, trackChanges: false);
-             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItems.MetaData));
 
-            var storeItemDtos = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems);
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItems.MetaData));
+
+            var storeItemDtos = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
+                                  .GroupBy(m => m.model)
+                                  .Select(g => new { model = g.Key, quantity = g.Sum(x => x.quantity) });
+
+
 
             return Ok(storeItemDtos);
         }
+
     }
 }
+
+
+
+
+
+
+//List<StoreItemDto> Lines = new List<StoreItemDto>();
+//storeItemDtos = Lines
+//          .GroupBy(m => m.model)
+//          //.Select(g => new { model = g.Key, quantity = g.Sum(x => x.quantity) });
+//          .Select(c => new StoreItemDto
+//          {
+//              itemDescription = c.First().itemDescription,
+//              type = c.Count().ToString(),
+//              quantity = c.Sum(c => c.quantity).ToString(),
+//          }).ToListAsync();

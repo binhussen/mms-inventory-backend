@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-
-namespace DataModel.Models.DTOs
+﻿namespace DataModel.Models.DTOs
 {
     public class StoreItemForManipulationDto
     {
@@ -15,5 +9,6 @@ namespace DataModel.Models.DTOs
         public string storeNo { get; set; }
         public string shelfNo { get; set; }
         public string availability { get; set; }
+        public int quantity { get; set; }
     }
 }

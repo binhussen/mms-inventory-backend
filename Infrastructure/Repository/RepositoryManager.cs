@@ -1,10 +1,5 @@
-﻿using System;
+﻿using Contracts.Interfaces;
 using DataModel;
-using System.Linq;
-using System.Text;
-using Contracts.Interfaces;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Infrastructure.Repository
 {
@@ -14,7 +9,7 @@ namespace Infrastructure.Repository
     public class RepositoryManager : IRepositoryManager
     {
         private readonly MMSDbContext _repositoryContext;
-        private INotifyHeader  _notifyHeaderRepository;
+        private INotifyHeader _notifyHeaderRepository;
         private INotifyItem _notifyItemRepository;
         private IStoreHeader _storeHeaderRepository;
         private IStoreItem _storeItemRepository;
@@ -89,7 +84,7 @@ namespace Infrastructure.Repository
         {
             get
             {
-                if (_requestItemRepository ==null)
+                if (_requestItemRepository == null)
                     _requestItemRepository = new RequestDetailRepository(_repositoryContext);
                 return _requestItemRepository;
             }

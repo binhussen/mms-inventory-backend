@@ -1,14 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel.Models.Entities
 {
     public class StoreItem
     {
+        public StoreItem()
+        {
+
+        }
         [Column("storeItemId")]
         public int id { get; set; }
         public string itemDescription { get; set; }
@@ -18,8 +17,14 @@ namespace DataModel.Models.Entities
         public string storeNo { get; set; }
         public string shelfNo { get; set; }
         public string availability { get; set; }
-         [ForeignKey(nameof(StoreHeader))]
+        public int quantity { get; set; }
+        [ForeignKey(nameof(StoreHeader))]
         public int storeHeaderId { get; set; }
         public StoreHeader StoreHeader { get; set; }
+
+        public static IEnumerable<object> GroupBy(Func<object, object> value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

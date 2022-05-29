@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
-using Newtonsoft.Json;
-using Contracts.Service;
 using Contracts.Interfaces;
-using DataModel.Parameters;
+using Contracts.Service;
 using DataModel.Models.DTOs;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using DataModel.Models.Entities;
+using DataModel.Parameters;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -32,7 +31,7 @@ namespace API.Controllers
         public async Task<IActionResult> GetNotifyHeaders([FromQuery] NotifyHeaderParameters notifyHeaderParameters)
         {
             var notifyHeaders = await _repository.NotifyHeader.GetAllNotifyHeadersAsync(notifyHeaderParameters, trackChanges: false);
-             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(notifyHeaders.MetaData));
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(notifyHeaders.MetaData));
 
             var notifyHeaderDtos = _mapper.Map<IEnumerable<NotifyHeaderDto>>(notifyHeaders);
 
@@ -44,7 +43,7 @@ namespace API.Controllers
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(id, trackChanges: false);
             if (notifyHeader == null)
             {
-                 _logger.LogInfo($"NotifyHeader with id: {id} doesn't exist in the database.");
+                _logger.LogInfo($"NotifyHeader with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
             else
@@ -105,7 +104,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-         [HttpDelete("{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteNotifyHeader(int id)
         {
             var notifyHeader = await _repository.NotifyHeader.GetNotifyHeaderAsync(id, trackChanges: false);

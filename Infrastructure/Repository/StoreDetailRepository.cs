@@ -1,12 +1,7 @@
-﻿using System;
+﻿using Contracts.Interfaces;
 using DataModel;
-using System.Linq;
-using System.Text;
-using Contracts.Interfaces;
-using DataModel.Parameters;
-using System.Threading.Tasks;
 using DataModel.Models.Entities;
-using System.Collections.Generic;
+using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -25,15 +20,18 @@ namespace Infrastructure.Repository
 
         public void DeleteStoreItem(StoreItem storeItem)
         {
-              Delete(storeItem);
+            Delete(storeItem);
         }
-       public async Task<PagedList<StoreItem>> GetAllStoreItemsAsync(StoreItemParameters storeItemParameters, bool trackChanges)
+        public async Task<PagedList<StoreItem>> GetAllStoreItemsAsync(StoreItemParameters storeItemParameters, bool trackChanges)
         {
             var storeItem = await FindAll(trackChanges)
-                       .OrderBy(c => c.model)
+                        .OrderBy(c => c.model)
+                       //.GroupBy(m => m.model)
+                       //.Select(g => new { model = g.Key, count = g.Sum(c => c.quantity) })
                        .ToListAsync();
             return PagedList<StoreItem>
                 .ToPagedList(storeItem, storeItemParameters.PageNumber, storeItemParameters.PageSize);
+
         }
 
         public async Task<StoreItem> GetStoreItemAsync(int storeHeaderId, int id, bool trackChanges) =>
