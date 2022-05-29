@@ -30,11 +30,15 @@ namespace API.Controllers
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItems.MetaData));
 
             var storeItemDtos = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
-                                  .GroupBy(m => m.model)
-                                  .Select(g => new { model = g.Key, quantity = g.Sum(x => x.quantity) });
-
-
-
+                               .GroupBy(m => m.model)
+                               .Select(g => new
+                               {
+                                   SerialNo = g.Select(x => x.serialNo).FirstOrDefault(),
+                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
+                                   ItemDescription = g.Select(x => x.itemDescription).FirstOrDefault(),
+                                   model = g.Key,
+                                   quantity = g.Sum(x => x.quantity)
+                               }).ToList();
             return Ok(storeItemDtos);
         }
 
@@ -46,13 +50,3 @@ namespace API.Controllers
 
 
 
-//List<StoreItemDto> Lines = new List<StoreItemDto>();
-//storeItemDtos = Lines
-//          .GroupBy(m => m.model)
-//          //.Select(g => new { model = g.Key, quantity = g.Sum(x => x.quantity) });
-//          .Select(c => new StoreItemDto
-//          {
-//              itemDescription = c.First().itemDescription,
-//              type = c.Count().ToString(),
-//              quantity = c.Sum(c => c.quantity).ToString(),
-//          }).ToListAsync();

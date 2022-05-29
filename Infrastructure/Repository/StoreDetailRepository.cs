@@ -26,8 +26,6 @@ namespace Infrastructure.Repository
         {
             var storeItem = await FindAll(trackChanges)
                         .OrderBy(c => c.model)
-                       //.GroupBy(m => m.model)
-                       //.Select(g => new { model = g.Key, count = g.Sum(c => c.quantity) })
                        .ToListAsync();
             return PagedList<StoreItem>
                 .ToPagedList(storeItem, storeItemParameters.PageNumber, storeItemParameters.PageSize);

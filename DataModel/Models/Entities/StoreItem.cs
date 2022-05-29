@@ -21,10 +21,5 @@ namespace DataModel.Models.Entities
         [ForeignKey(nameof(StoreHeader))]
         public int storeHeaderId { get; set; }
         public StoreHeader StoreHeader { get; set; }
-
-        public static IEnumerable<object> GroupBy(Func<object, object> value)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
