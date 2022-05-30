@@ -8,7 +8,6 @@
         public string type { get; set; }
         public string storeNo { get; set; }
         public string shelfNo { get; set; }
-        public string availability { get; set; }
         public int quantity { get; set; }
     }
 }
