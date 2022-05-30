@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace API.Controllers
 {
-    [Route("api/requestheaders/{requestheaderid}/requestitems")]
+    [Route("api/requestheaders/{headerid}/items")]
     [ApiController]
     public class RequestItemsController : ControllerBase
     {
@@ -24,17 +24,17 @@ namespace API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetRequestItemsForRequestHeader(int requestheaderid, [FromQuery] RequestItemParameters requestItemParameters)
+        public async Task<IActionResult> GetRequestItemsForRequestHeader(int headerid, [FromQuery] RequestItemParameters requestItemParameters)
         {
 
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
             if (requestHeader == null)
             {
-                _logger.LogInfo($"RequestHeader with id: {requestheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(requestheaderid, requestItemParameters, trackChanges: false);
+            var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestItemsFromDb.MetaData));
 
             var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb);
@@ -43,16 +43,16 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetRequestItemForRequestHeader")]
-        public async Task<IActionResult> GetRequestItemForRequestHeader(int requestheaderid, int id)
+        public async Task<IActionResult> GetRequestItemForRequestHeader(int headerid, int id)
         {
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
             if (requestHeader == null)
             {
-                _logger.LogInfo($"RequestHeader with id: {requestheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var requestItemDb = await _repository.RequestItem.GetRequestItemAsync(requestheaderid, id, trackChanges: false);
+            var requestItemDb = await _repository.RequestItem.GetRequestItemAsync(headerid, id, trackChanges: false);
             if (requestItemDb == null)
             {
                 _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
@@ -65,7 +65,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRequestItemForRequestHeader(int requestheaderid, [FromBody] RequestItemForCreationDto requestItem)
+        public async Task<IActionResult> CreateRequestItemForRequestHeader(int headerid, [FromBody] RequestItemForCreationDto requestItem)
         {
             if (requestItem == null)
             {
@@ -78,25 +78,25 @@ namespace API.Controllers
                 _logger.LogError("Invalid model state for the RequestItemForCreationDto object");
                 return UnprocessableEntity(ModelState);
             }
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
             if (requestHeader == null)
             {
-                _logger.LogInfo($"RequestHeader with id: {requestheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
             var requestItemEntity = _mapper.Map<RequestItem>(requestItem);
 
-            _repository.RequestItem.CreateRequestItemForRequestHeader(requestheaderid, requestItemEntity);
+            _repository.RequestItem.CreateRequestItemForRequestHeader(headerid, requestItemEntity);
             await _repository.SaveAsync();
             var requestItemToReturn = _mapper.Map<RequestItemDto>(requestItemEntity);
-            return CreatedAtRoute("GetRequestItemForRequestHeader", new { requestheaderid, id = requestItemToReturn.id }, requestItemToReturn);
+            return CreatedAtRoute("GetRequestItemForRequestHeader", new { headerid, id = requestItemToReturn.id }, requestItemToReturn);
 
         }
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateRequestItemForRequestHeader(int requestheaderid, int id, [FromBody] RequestItemForUpdateDto requestItem)
+        public async Task<IActionResult> UpdateRequestItemForRequestHeader(int headerid, int id, [FromBody] RequestItemForUpdateDto requestItem)
         {
             if (requestItem == null)
             {
@@ -110,13 +110,13 @@ namespace API.Controllers
                 return UnprocessableEntity(ModelState);
             }
 
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
             if (requestHeader == null)
             {
-                _logger.LogInfo($"RequestHeader with id: {requestheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
-            var requestItemEntity = await _repository.RequestItem.GetRequestItemAsync(requestheaderid, id, trackChanges: true);
+            var requestItemEntity = await _repository.RequestItem.GetRequestItemAsync(headerid, id, trackChanges: true);
             if (requestItemEntity == null)
             {
                 _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
@@ -131,16 +131,16 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRequestHeader(int requestheaderid, int id)
+        public async Task<IActionResult> DeleteRequestHeader(int headerid, int id)
         {
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
             if (requestHeader == null)
             {
-                _logger.LogInfo($"RequestHeader with id: {requestheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var requestItemForRequestHeader = await _repository.RequestItem.GetRequestItemAsync(requestheaderid, id, trackChanges: false);
+            var requestItemForRequestHeader = await _repository.RequestItem.GetRequestItemAsync(headerid, id, trackChanges: false);
             if (requestItemForRequestHeader == null)
             {
                 _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
@@ -153,7 +153,7 @@ namespace API.Controllers
             return NoContent();
         }
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PartiallyUpdateRequestItemForRequestHeader(int requestheaderid, int id, [FromBody] JsonPatchDocument<RequestItemForUpdateDto> patchDoc)
+        public async Task<IActionResult> PartiallyUpdateRequestItemForRequestHeader(int headerid, int id, [FromBody] JsonPatchDocument<RequestItemForUpdateDto> patchDoc)
         {
             if (patchDoc == null)
             {
@@ -161,14 +161,55 @@ namespace API.Controllers
                 return BadRequest("patchDoc object is null");
             }
 
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(requestheaderid, trackChanges: false);
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
             if (requestHeader == null)
             {
-                _logger.LogInfo($"RequestHeader with id: {requestheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var requestItemEntity = await _repository.RequestItem.GetRequestItemAsync(requestheaderid, id, trackChanges: true);
+            var requestItemEntity = await _repository.RequestItem.GetRequestItemAsync(headerid, id, trackChanges: true);
+            if (requestItemEntity == null)
+            {
+                _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            var requestItemToPatch = _mapper.Map<RequestItemForUpdateDto>(requestItemEntity);
+
+            patchDoc.ApplyTo(requestItemToPatch, ModelState);
+
+            TryValidateModel(requestItemToPatch);
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the patch document");
+                return UnprocessableEntity(ModelState);
+            }
+
+            _mapper.Map(requestItemToPatch, requestItemEntity);
+
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
+        [HttpPatch("approve/{id}")]
+        public async Task<IActionResult> RequestApproveReject(int headerid, int id, [FromBody] JsonPatchDocument<RequestItemForUpdateDto> patchDoc)
+        {
+            if (patchDoc == null)
+            {
+                _logger.LogError("patchDoc object sent from client is null.");
+                return BadRequest("patchDoc object is null");
+            }
+
+            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
+            if (requestHeader == null)
+            {
+                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            var requestItemEntity = await _repository.RequestItem.GetRequestItemAsync(headerid, id, trackChanges: true);
             if (requestItemEntity == null)
             {
                 _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");

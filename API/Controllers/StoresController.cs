@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace API.Controllers
 {
-    [Route("api/storeitems")]
+    [Route("api/items")]
     [ApiController]
     public class StoresController : ControllerBase
     {
@@ -33,9 +33,7 @@ namespace API.Controllers
                                .GroupBy(m => m.model)
                                .Select(g => new
                                {
-                                   SerialNo = g.Select(x => x.serialNo).FirstOrDefault(),
                                    ItemType = g.Select(x => x.type).FirstOrDefault(),
-                                   ItemDescription = g.Select(x => x.itemDescription).FirstOrDefault(),
                                    model = g.Key,
                                    quantity = g.Sum(x => x.quantity)
                                }).ToList();

@@ -1,4 +1,3 @@
-using DataModel.Models.Common;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel.Models.Entities
@@ -8,7 +7,7 @@ namespace DataModel.Models.Entities
         [Column("notifyItemId")]
         public int id { get; set; }
         public string type { get; set; }
-        public string weaponName { get; set; }
+        public string name { get; set; }
         public int quantity { get; set; }
         [ForeignKey(nameof(NotifyHeader))]
         public int notifyHeaderId { get; set; }

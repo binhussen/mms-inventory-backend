@@ -1,10 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Text;
+﻿using DataModel.Models.Entities;
 using DataModel.Parameters;
-using System.Threading.Tasks;
-using DataModel.Models.Entities;
-using System.Collections.Generic;
 
 namespace Contracts.Interfaces
 {

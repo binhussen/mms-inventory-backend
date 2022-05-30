@@ -1,8 +1,7 @@
-﻿using DataModel;
-using Contracts.Interfaces;
-using DataModel.Parameters;
-using DataModel.Models.Common;
+﻿using Contracts.Interfaces;
+using DataModel;
 using DataModel.Models.Entities;
+using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -22,7 +21,7 @@ namespace Infrastructure.Repository
 
         public void DeleteNotifyItem(NotifyItem notifyItem)
         {
-             Delete(notifyItem);
+            Delete(notifyItem);
         }
 
         public async Task<NotifyItem> GetNotifyItemAsync(int notifyHeaderId, int id, bool trackChanges) =>
@@ -32,7 +31,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<NotifyItem>> GetNotifyItemsAsync(int notifyHeaderId, NotifyItemParameters notifyItemParameters, bool trackChanges)
         {
             var notifyItems = await FindByCondition(e => e.notifyHeaderId.Equals(notifyHeaderId), trackChanges)
-              .OrderBy(e => e.weaponName)
+              .OrderBy(e => e.name)
               .ToListAsync();
             return PagedList<NotifyItem>
               .ToPagedList(notifyItems, notifyItemParameters.PageNumber, notifyItemParameters.PageSize);

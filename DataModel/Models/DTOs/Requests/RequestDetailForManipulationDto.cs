@@ -1,16 +1,13 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+﻿using DataModel.Enums;
 
 namespace DataModel.Models.DTOs.Requests
 {
     public class RequestItemForManipulationDto
     {
-        public string weaponName { get; set; }
+        public string name { get; set; }
         public string type { get; set; }
         public string model { get; set; }
-        public int weaponQuantity { get; set; }
+        public int quantity { get; set; }
+        public RequestStatuses status { get; set; }
     }
 }

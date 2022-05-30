@@ -1,12 +1,7 @@
-﻿using System;
+﻿using Contracts.Interfaces;
 using DataModel;
-using System.Linq;
-using System.Text;
-using Contracts.Interfaces;
-using DataModel.Parameters;
-using System.Threading.Tasks;
 using DataModel.Models.Entities;
-using System.Collections.Generic;
+using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -36,7 +31,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<RequestItem>> GetRequestItemsAsync(int requestHeaderId, RequestItemParameters requestItemParameters, bool trackChanges)
         {
             var requestItems = await FindByCondition(e => e.requestHeaderId.Equals(requestHeaderId), trackChanges)
-            .OrderBy(e => e.weaponName)
+            .OrderBy(e => e.name)
             .ToListAsync();
             return PagedList<RequestItem>
                 .ToPagedList(requestItems, requestItemParameters.PageNumber, requestItemParameters.PageSize);

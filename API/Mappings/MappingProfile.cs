@@ -1,10 +1,7 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using DataModel.Models.DTOs;
-using System.Threading.Tasks;
-using DataModel.Models.Entities;
-using System.Collections.Generic;
 using DataModel.Models.DTOs.Requests;
+using DataModel.Models.Entities;
 
 namespace API.Mappings
 {
@@ -23,7 +20,7 @@ namespace API.Mappings
             CreateMap<StoreHeader, StoreHeaderDto>();
             CreateMap<StoreItem, StoreItemDto>();
             CreateMap<StoreHeaderForCreationDto, StoreHeader>();
-             CreateMap<StoreItemForCreationDto, StoreItem>();
+            CreateMap<StoreItemForCreationDto, StoreItem>();
             CreateMap<StoreHeaderForUpdateDto, StoreHeader>();
             CreateMap<StoreItemForUpdateDto, StoreItem>().ReverseMap();
             //Requests
@@ -32,7 +29,7 @@ namespace API.Mappings
             CreateMap<RequestHeaderForCreationDto, RequestHeader>();
             CreateMap<RequestItemForCreationDto, RequestItem>();
             CreateMap<RequestHeaderForUpdateDto, RequestHeader>();
-            CreateMap<RequestItemForUpdateDto, RequestItemForUpdateDto>().ReverseMap();
+            CreateMap<RequestItemForUpdateDto, RequestItem>().ReverseMap();
         }
     }
 }

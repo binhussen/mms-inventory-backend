@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace API.Controllers
 {
-    [Route("api/storeheaders/{storeheaderid}/storeitems")]
+    [Route("api/storeheaders/{headerid}/items")]
     [ApiController]
     public class StoreItemsController : ControllerBase
     {
@@ -24,34 +24,41 @@ namespace API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetStoreItemsForStoreHeader(int storeheaderid, [FromQuery] StoreItemParameters storeItemParameters)
+        public async Task<IActionResult> GetStoreItemsForStoreHeader(int headerid, [FromQuery] StoreItemParameters storeItemParameters)
         {
 
-            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(storeheaderid, trackChanges: false);
+            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(headerid, trackChanges: false);
             if (storeHeader == null)
             {
-                _logger.LogInfo($"StoreHeader with id: {storeheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"StoreHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var storeItemsFromDb = await _repository.StoreItem.GetStoreItemsAsync(storeheaderid, storeItemParameters, trackChanges: false);
+            var storeItemsFromDb = await _repository.StoreItem.GetStoreItemsAsync(headerid, storeItemParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItemsFromDb.MetaData));
 
-            var storeItemsDto = _mapper.Map<IEnumerable<StoreItemDto>>(storeItemsFromDb);
+            var storeItemsDto = _mapper.Map<IEnumerable<StoreItemDto>>(storeItemsFromDb)
+                                .GroupBy(m => m.model)
+                               .Select(g => new
+                               {
+                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
+                                   model = g.Key,
+                                   quantity = g.Sum(x => x.quantity)
+                               }).ToList();
             return Ok(storeItemsDto);
 
         }
         [HttpGet("{id}", Name = "GetStoreItemForStoreHeader")]
-        public async Task<IActionResult> GetStoreItemForStoreHeader(int storeheaderid, int id)
+        public async Task<IActionResult> GetStoreItemForStoreHeader(int headerid, int id)
         {
-            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(storeheaderid, trackChanges: false);
+            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(headerid, trackChanges: false);
             if (storeHeader == null)
             {
-                _logger.LogInfo($"StoreHeader with id: {storeheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"StoreHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var storeItemDb = await _repository.StoreItem.GetStoreItemAsync(storeheaderid, id, trackChanges: false);
+            var storeItemDb = await _repository.StoreItem.GetStoreItemAsync(headerid, id, trackChanges: false);
             if (storeItemDb == null)
             {
                 _logger.LogInfo($"StoreItem with id: {id} doesn't exist in the database.");
@@ -63,7 +70,7 @@ namespace API.Controllers
             return Ok(storeItem);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateStoreItemForStoreHeader(int storeheaderid, [FromBody] StoreItemForCreationDto storeItem)
+        public async Task<IActionResult> CreateStoreItemForStoreHeader(int headerid, [FromBody] StoreItemForCreationDto storeItem)
         {
             if (storeItem == null)
             {
@@ -76,23 +83,23 @@ namespace API.Controllers
                 _logger.LogError("Invalid model state for the StoreItemForCreationDto object");
                 return UnprocessableEntity(ModelState);
             }
-            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(storeheaderid, trackChanges: false);
+            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(headerid, trackChanges: false);
             if (storeHeader == null)
             {
-                _logger.LogInfo($"StoreHeader with id: {storeheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"StoreHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
             var storeItemEntity = _mapper.Map<StoreItem>(storeItem);
 
-            _repository.StoreItem.CreateStoreItemForStoreHeader(storeheaderid, storeItemEntity);
+            _repository.StoreItem.CreateStoreItemForStoreHeader(headerid, storeItemEntity);
             await _repository.SaveAsync();
             var storeItemToReturn = _mapper.Map<StoreItemDto>(storeItemEntity);
-            return CreatedAtRoute("GetStoreItemForStoreHeader", new { storeheaderid, id = storeItemToReturn.id }, storeItemToReturn);
+            return CreatedAtRoute("GetStoreItemForStoreHeader", new { headerid, id = storeItemToReturn.id }, storeItemToReturn);
 
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateStoreItemForStoreHeader(int storeheaderid, int id, [FromBody] StoreItemForUpdateDto storeItem)
+        public async Task<IActionResult> UpdateStoreItemForStoreHeader(int headerid, int id, [FromBody] StoreItemForUpdateDto storeItem)
         {
             if (storeItem == null)
             {
@@ -106,13 +113,13 @@ namespace API.Controllers
                 return UnprocessableEntity(ModelState);
             }
 
-            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(storeheaderid, trackChanges: false);
+            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(headerid, trackChanges: false);
             if (storeHeader == null)
             {
-                _logger.LogInfo($"StoreHeader with id: {storeheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"StoreHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
-            var storeItemEntity = await _repository.StoreItem.GetStoreItemAsync(storeheaderid, id, trackChanges: true);
+            var storeItemEntity = await _repository.StoreItem.GetStoreItemAsync(headerid, id, trackChanges: true);
             if (storeItemEntity == null)
             {
                 _logger.LogInfo($"StoreItem with id: {id} doesn't exist in the database.");
@@ -126,16 +133,16 @@ namespace API.Controllers
 
         }
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStoreHeader(int storeheaderid, int id)
+        public async Task<IActionResult> DeleteStoreHeader(int headerid, int id)
         {
-            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(storeheaderid, trackChanges: false);
+            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(headerid, trackChanges: false);
             if (storeHeader == null)
             {
-                _logger.LogInfo($"StoreHeader with id: {storeheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"StoreHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var storeItemForStoreHeader = await _repository.StoreItem.GetStoreItemAsync(storeheaderid, id, trackChanges: false);
+            var storeItemForStoreHeader = await _repository.StoreItem.GetStoreItemAsync(headerid, id, trackChanges: false);
             if (storeItemForStoreHeader == null)
             {
                 _logger.LogInfo($"StoreItem with id: {id} doesn't exist in the database.");
@@ -148,7 +155,7 @@ namespace API.Controllers
             return NoContent();
         }
         [HttpPatch("{id}")]
-        public async Task<IActionResult> PartiallyUpdateStoreItemForStoreHeader(int storeheaderid, int id, [FromBody] JsonPatchDocument<StoreItemForUpdateDto> patchDoc)
+        public async Task<IActionResult> PartiallyUpdateStoreItemForStoreHeader(int headerid, int id, [FromBody] JsonPatchDocument<StoreItemForUpdateDto> patchDoc)
         {
             if (patchDoc == null)
             {
@@ -156,14 +163,14 @@ namespace API.Controllers
                 return BadRequest("patchDoc object is null");
             }
 
-            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(storeheaderid, trackChanges: false);
+            var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(headerid, trackChanges: false);
             if (storeHeader == null)
             {
-                _logger.LogInfo($"StoreHeader with id: {storeheaderid} doesn't exist in the database.");
+                _logger.LogInfo($"StoreHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
 
-            var storeItemEntity = await _repository.StoreItem.GetStoreItemAsync(storeheaderid, id, trackChanges: true);
+            var storeItemEntity = await _repository.StoreItem.GetStoreItemAsync(headerid, id, trackChanges: true);
             if (storeItemEntity == null)
             {
                 _logger.LogInfo($"StoreItem with id: {id} doesn't exist in the database.");

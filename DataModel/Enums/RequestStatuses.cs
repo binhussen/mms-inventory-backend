@@ -1,6 +1,6 @@
 namespace DataModel.Enums
 {
-    public enum RequestStatus
+    public enum RequestStatuses
     {
         Requested = 0, Approved = 1, Rejected = 2
     }

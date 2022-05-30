@@ -4,7 +4,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class Intial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,6 @@ namespace DataModel.Migrations
                 {
                     requestHeaderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    requestStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     attachments = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -60,7 +59,7 @@ namespace DataModel.Migrations
                     notifyItemId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     type = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    weaponName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     notifyHeaderId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -81,10 +80,11 @@ namespace DataModel.Migrations
                 {
                     requestItemId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    weaponName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     model = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    weaponQuantity = table.Column<int>(type: "int", nullable: false),
+                    quantity = table.Column<int>(type: "int", nullable: false),
+                    status = table.Column<int>(type: "int", nullable: false),
                     requestHeaderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -110,7 +110,7 @@ namespace DataModel.Migrations
                     type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     storeNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     shelfNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    availability = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    availability = table.Column<bool>(type: "bit", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     storeHeaderId = table.Column<int>(type: "int", nullable: false)
                 },
