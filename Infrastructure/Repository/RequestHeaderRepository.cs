@@ -1,12 +1,7 @@
-﻿using System;
+﻿using Contracts.Interfaces;
 using DataModel;
-using System.Linq;
-using System.Text;
-using Contracts.Interfaces;
-using DataModel.Parameters;
-using System.Threading.Tasks;
 using DataModel.Models.Entities;
-using System.Collections.Generic;
+using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -24,7 +19,7 @@ namespace Infrastructure.Repository
 
         public void DeleteRequestHeader(RequestHeader requestHeader)
         {
-             Delete(requestHeader);
+            Delete(requestHeader);
         }
         public async Task<PagedList<RequestHeader>> GetAllRequestHeadersAsync(RequestHeaderParameters requestHeaderParameters, bool trackChanges)
         {

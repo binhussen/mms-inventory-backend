@@ -2,6 +2,6 @@
 {
     public class StoreHeaderForCreationDto : StoreHeaderForManipulationDto
     {
-        public IEnumerable<StoreItemForCreationDto> StoreItems { get; set; }
+        public IEnumerable<StoreItemForCreationDto>? StoreItems { get; set; }
     }
 }

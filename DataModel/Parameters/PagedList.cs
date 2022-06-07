@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using DataModel.Response;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using DataModel.Models.Entities;
+﻿using DataModel.Models.Entities;
 
 namespace DataModel.Parameters
 {

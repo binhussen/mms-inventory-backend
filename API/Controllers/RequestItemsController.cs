@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
+using DataModel.Enums;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
@@ -24,8 +25,9 @@ namespace API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetRequestItemsForRequestHeader(int headerid, [FromQuery] RequestItemParameters requestItemParameters)
+        public async Task<IActionResult?> GetRequestItemsForRequestHeader(int headerid, [FromQuery] RequestItemParameters requestItemParameters)
         {
+
 
             var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
             if (requestHeader == null)
@@ -37,8 +39,23 @@ namespace API.Controllers
             var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestItemsFromDb.MetaData));
 
+            //status = (status == null ? "Pending" : status);
+
+            //if (status == null)
+            //{
+            //    var register = _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false)
+            //            .Where(x => x.status == "Pending").ToList();
+            //    return register;
+            //}
+            //else
+            //{
+            //    var registers = _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false)
+            //                    .Where(x => x.status == status).ToList();
+            //    return registers;
+            //}
             var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb);
             return Ok(requestItemsDto);
+
 
         }
 
@@ -193,47 +210,24 @@ namespace API.Controllers
 
             return NoContent();
         }
-        [HttpPatch("approve/{id}")]
-        public async Task<IActionResult> RequestApproveReject(int headerid, int id, [FromBody] JsonPatchDocument<RequestItemForUpdateDto> patchDoc)
+        [HttpPut("approve/{id}")]
+
+        public async Task<IActionResult> Approve(int headerid, int id, [FromBody] RequestItemForApproveDto RequestItem)
         {
-            if (patchDoc == null)
-            {
-                _logger.LogError("patchDoc object sent from client is null.");
-                return BadRequest("patchDoc object is null");
-            }
 
-            var requestHeader = await _repository.RequestHeader.GetRequestHeaderAsync(headerid, trackChanges: false);
-            if (requestHeader == null)
-            {
-                _logger.LogInfo($"RequestHeader with id: {headerid} doesn't exist in the database.");
-                return NotFound();
-            }
-
-            var requestItemEntity = await _repository.RequestItem.GetRequestItemAsync(headerid, id, trackChanges: true);
-            if (requestItemEntity == null)
-            {
-                _logger.LogInfo($"RequestItem with id: {id} doesn't exist in the database.");
-                return NotFound();
-            }
-
-            var requestItemToPatch = _mapper.Map<RequestItemForUpdateDto>(requestItemEntity);
-
-            patchDoc.ApplyTo(requestItemToPatch, ModelState);
-
-            TryValidateModel(requestItemToPatch);
-
-            if (!ModelState.IsValid)
-            {
-                _logger.LogError("Invalid model state for the patch document");
-                return UnprocessableEntity(ModelState);
-            }
-
-            _mapper.Map(requestItemToPatch, requestItemEntity);
-
+            var myRegistration = HttpContext.Items["requestItem"] as RequestItem;
+            myRegistration.status = RequestStatuses.Approved;
             await _repository.SaveAsync();
-
             return NoContent();
         }
 
+        [HttpPut("reject/{id}")]
+        public async Task<IActionResult> Reject(int headerid, int id, [FromBody] BodyDto empity)
+        {
+            var RequestItemEntity = HttpContext.Items["requestItem"] as RequestItem;
+            RequestItemEntity.status = RequestStatuses.Rejected;
+            await _repository.SaveAsync();
+            return NoContent();
+        }
     }
 }

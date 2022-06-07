@@ -1,7 +1,7 @@
-﻿using NLog;
-using DataModel;
-using API.Extensions;
-using Microsoft.EntityFrameworkCore;
+﻿using API.Extensions;
+using DataModel.Identity.Services;
+using Microsoft.AspNetCore.HttpOverrides;
+using NLog;
 
 namespace API
 {
@@ -23,16 +23,23 @@ namespace API
             services.AddSwaggerExtension();
             services.ConfigureDI();
             services.ConfigureCors();
+            services.ConfigureIdentitySqlContext(Configuration);
             services.ConfigureSqlContext(Configuration);
             services.ConfigureLoggerService();
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddAuthentication();
+            services.ConfigureIdentity();
+            services.ConfigureJWT(Configuration);
+            services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             services.AddControllers(config =>
             {
                 config.RespectBrowserAcceptHeader = true;
                 config.ReturnHttpNotAcceptable = true;
             }).AddNewtonsoftJson()
-             .AddXmlDataContractSerializerFormatters();
+             .AddXmlDataContractSerializerFormatters();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +51,11 @@ namespace API
             }
 
             app.UseStaticFiles();
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.All
+            });
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -61,6 +73,7 @@ namespace API
             app.UseRouting();
 
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -2,7 +2,7 @@
 {
     public class RequestHeaderForCreationDto : RequestHeaderForManipulationDto
     {
-        public IEnumerable<RequestItemForCreationDto> RequestItems { get; set; }
+        public IEnumerable<RequestItemForCreationDto>? RequestItems { get; set; }
     }
 }
 

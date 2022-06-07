@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using DataModel.Identity.Models;
 using DataModel.Models.DTOs;
 using DataModel.Models.DTOs.Requests;
+using DataModel.Models.DTOs.User;
 using DataModel.Models.Entities;
 
 namespace API.Mappings
@@ -9,6 +11,9 @@ namespace API.Mappings
     {
         public MappingProfile()
         {
+            // Users
+            CreateMap<UserForRegistrationDto, ApplicationUser>();
+            CreateMap<UserForUpdateDto, ApplicationUser>();
             //Notifies
             CreateMap<NotifyHeader, NotifyHeaderDto>();
             CreateMap<NotifyItem, NotifyItemDto>();

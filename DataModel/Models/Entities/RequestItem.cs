@@ -11,6 +11,7 @@ namespace DataModel.Models.Entities
         public string type { get; set; }
         public string model { get; set; }
         public int quantity { get; set; }
+        public int remainQuantity { get; set; }
         public RequestStatuses status { get; set; }
         [ForeignKey(nameof(RequestHeader))]
         public int requestHeaderId { get; set; }
