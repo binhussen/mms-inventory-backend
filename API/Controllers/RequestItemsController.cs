@@ -204,7 +204,7 @@ namespace API.Controllers
 
             return NoContent();
         }
-        [HttpPost("approve/{model}")]
+        [HttpPost("approve")]
         public IActionResult RequestApproval(RequestItemApproveDto requestItemDto, string submit)
         {
             string value = string.Empty;
