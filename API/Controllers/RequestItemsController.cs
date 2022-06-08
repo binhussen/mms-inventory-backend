@@ -42,9 +42,10 @@ namespace API.Controllers
                                     .GroupBy(m => m.model)
                                    .Select(g => new
                                    {
+                                       Name = g.Select(x => x.name).FirstOrDefault(),
                                        ItemType = g.Select(x => x.type).FirstOrDefault(),
-                                       model = g.Key,
-                                       quantity = g.Sum(x => x.quantity),
+                                       Model = g.Key,
+                                       Quantity = g.Sum(x => x.quantity),
                                        Status = g.Select(x => x.status).FirstOrDefault(),
                                        RequestApprovalDate = g.Select(x => x.requestApprovalDate).FirstOrDefault()
                                    }).ToList();
