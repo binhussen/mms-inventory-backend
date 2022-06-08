@@ -1,6 +1,4 @@
-﻿using DataModel.Enums;
-
-namespace DataModel.Models.DTOs.Requests
+﻿namespace DataModel.Models.DTOs.Requests
 {
     public class RequestItemDto
     {
@@ -9,8 +7,7 @@ namespace DataModel.Models.DTOs.Requests
         public string type { get; set; }
         public string model { get; set; }
         public int quantity { get; set; }
-        public int remainQuantity { get; set; }
-
-        public RequestStatuses status { get; set; }
+        public string status { get; set; }
+        public DateTime? requestApprovalDate { get; set; }
     }
 }

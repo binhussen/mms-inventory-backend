@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
-using DataModel.Enums;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
@@ -39,21 +38,16 @@ namespace API.Controllers
             var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestItemsFromDb.MetaData));
 
-            //status = (status == null ? "Pending" : status);
-
-            //if (status == null)
-            //{
-            //    var register = _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false)
-            //            .Where(x => x.status == "Pending").ToList();
-            //    return register;
-            //}
-            //else
-            //{
-            //    var registers = _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false)
-            //                    .Where(x => x.status == status).ToList();
-            //    return registers;
-            //}
-            var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb);
+            var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb)
+                                    .GroupBy(m => m.model)
+                                   .Select(g => new
+                                   {
+                                       ItemType = g.Select(x => x.type).FirstOrDefault(),
+                                       model = g.Key,
+                                       quantity = g.Sum(x => x.quantity),
+                                       Status = g.Select(x => x.status).FirstOrDefault(),
+                                       RequestApprovalDate = g.Select(x => x.requestApprovalDate).FirstOrDefault()
+                                   }).ToList();
             return Ok(requestItemsDto);
 
 
@@ -210,24 +204,49 @@ namespace API.Controllers
 
             return NoContent();
         }
-        [HttpPut("approve/{id}")]
-
-        public async Task<IActionResult> Approve(int headerid, int id, [FromBody] RequestItemForApproveDto RequestItem)
+        [HttpPost("approve/{model}")]
+        public IActionResult RequestApproval(RequestItemApproveDto requestItemDto, string submit)
         {
+            string value = string.Empty;
 
-            var myRegistration = HttpContext.Items["requestItem"] as RequestItem;
-            myRegistration.status = RequestStatuses.Approved;
-            await _repository.SaveAsync();
-            return NoContent();
-        }
+            if (string.IsNullOrEmpty(requestItemDto.model))
+            {
+                return RedirectToAction("RequestHeaders", "RequestItems");
+            }
 
-        [HttpPut("reject/{id}")]
-        public async Task<IActionResult> Reject(int headerid, int id, [FromBody] BodyDto empity)
-        {
-            var RequestItemEntity = HttpContext.Items["requestItem"] as RequestItem;
-            RequestItemEntity.status = RequestStatuses.Rejected;
-            await _repository.SaveAsync();
-            return NoContent();
+            if (submit == "Approve")
+            {
+                value = "A";
+            }
+            else if (submit == "Reject")
+            {
+                value = "R";
+            }
+            else
+            {
+                value = "P";
+            }
+
+
+            var result = _repository.UpdateRequestItemStatus(requestItemDto.model, value);
+
+            if (result > 0)
+            {
+                if (submit == "Approve")
+                {
+                    _logger.LogInfo($"StatusMessage : {requestItemDto.id} has been Approved");
+                }
+                else if (submit == "Reject")
+                {
+                    _logger.LogInfo($"StatusMessage : {requestItemDto.id} has been Canceled");
+                }
+                return RedirectToAction();
+
+            }
+            else
+            {
+                return RedirectToAction();
+            }
         }
     }
 }

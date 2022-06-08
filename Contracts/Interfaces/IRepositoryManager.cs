@@ -9,5 +9,6 @@
         IRequestHeader RequestHeader { get; }
         IRequestItem RequestItem { get; }
         Task SaveAsync();
+        int UpdateRequestItemStatus(string model, string RequestStatus);
     }
 }

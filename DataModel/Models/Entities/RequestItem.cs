@@ -1,5 +1,4 @@
-﻿using DataModel.Enums;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel.Models.Entities
 {
@@ -11,8 +10,8 @@ namespace DataModel.Models.Entities
         public string type { get; set; }
         public string model { get; set; }
         public int quantity { get; set; }
-        public int remainQuantity { get; set; }
-        public RequestStatuses status { get; set; }
+        public string status { get; set; }
+        public DateTime? requestApprovalDate { get; set; }
         [ForeignKey(nameof(RequestHeader))]
         public int requestHeaderId { get; set; }
         public RequestHeader RequestHeader { get; set; }

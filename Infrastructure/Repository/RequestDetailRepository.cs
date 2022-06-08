@@ -1,6 +1,5 @@
 ﻿using Contracts.Interfaces;
 using DataModel;
-using DataModel.Enums;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +30,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<RequestItem>> GetRequestItemsAsync(int requestHeaderId, RequestItemParameters requestItemParameters, bool trackChanges)
         {
             var requestItems = await FindByCondition(e => e.requestHeaderId.Equals(requestHeaderId), trackChanges)
-            .Where(x => x.status == RequestStatuses.Pending || x.status == RequestStatuses.Approved || x.status == RequestStatuses.Rejected)
+            // .Where(x => x.status == RequestStatuses.Pending || x.status == RequestStatuses.Approved || x.status == RequestStatuses.Rejected)
             .OrderBy(e => e.name)
             .ToListAsync();
             return PagedList<RequestItem>

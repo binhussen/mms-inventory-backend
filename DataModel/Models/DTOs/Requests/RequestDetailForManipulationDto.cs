@@ -1,6 +1,4 @@
-﻿using DataModel.Enums;
-
-namespace DataModel.Models.DTOs.Requests
+﻿namespace DataModel.Models.DTOs.Requests
 {
     public class RequestItemForManipulationDto
     {
@@ -8,6 +6,6 @@ namespace DataModel.Models.DTOs.Requests
         public string type { get; set; }
         public string model { get; set; }
         public int quantity { get; set; }
-        public RequestStatuses status { get; set; }
+        public string status { get; set; }
     }
 }

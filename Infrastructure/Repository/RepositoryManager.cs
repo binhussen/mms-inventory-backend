@@ -1,5 +1,6 @@
 ﻿using Contracts.Interfaces;
 using DataModel;
+using DataModel.Models.Entities;
 
 namespace Infrastructure.Repository
 {
@@ -87,6 +88,28 @@ namespace Infrastructure.Repository
                 if (_requestItemRepository == null)
                     _requestItemRepository = new RequestDetailRepository(_repositoryContext);
                 return _requestItemRepository;
+            }
+        }
+
+        public int UpdateRequestItemStatus(string model, string RequestStatus)
+        {
+            try
+            {
+                RequestItem BD = (from BDs in _repositoryContext.RequestItems
+                                  where BDs.model == model
+                                  select BDs).Single();
+
+                BD.requestApprovalDate = DateTime.Now;
+                BD.status = RequestStatus;
+                _repositoryContext.RequestItems.Attach(BD);
+                _repositoryContext.Entry(BD).Property(x => x.requestApprovalDate).IsModified = true;
+                _repositoryContext.Entry(BD).Property(x => x.status).IsModified = true;
+                return _repositoryContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
