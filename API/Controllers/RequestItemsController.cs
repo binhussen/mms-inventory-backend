@@ -38,17 +38,7 @@ namespace API.Controllers
             var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestItemsFromDb.MetaData));
 
-            var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb)
-                                    .GroupBy(m => m.model)
-                                   .Select(g => new
-                                   {
-                                       Name = g.Select(x => x.name).FirstOrDefault(),
-                                       ItemType = g.Select(x => x.type).FirstOrDefault(),
-                                       Model = g.Key,
-                                       Quantity = g.Sum(x => x.quantity),
-                                       Status = g.Select(x => x.status).FirstOrDefault(),
-                                       RequestApprovalDate = g.Select(x => x.requestApprovalDate).FirstOrDefault()
-                                   }).ToList();
+            var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb);
             return Ok(requestItemsDto);
 
 

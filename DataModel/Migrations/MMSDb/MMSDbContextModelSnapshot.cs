@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataModel.Migrations
+namespace DataModel.Migrations.MMSDb
 {
     [DbContext(typeof(MMSDbContext))]
     partial class MMSDbContextModelSnapshot : ModelSnapshot
@@ -113,7 +113,10 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("quantity")
+                    b.Property<int>("quantityApproved")
+                        .HasColumnType("int");
+
+                    b.Property<int>("quantityRequest")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("requestApprovalDate")

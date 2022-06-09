@@ -9,10 +9,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataModel.Migrations
+namespace DataModel.Migrations.MMSDb
 {
     [DbContext(typeof(MMSDbContext))]
-    [Migration("20220608064429_InitialDb")]
+    [Migration("20220609143054_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -115,7 +115,10 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("quantity")
+                    b.Property<int>("quantityApproved")
+                        .HasColumnType("int");
+
+                    b.Property<int>("quantityRequest")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("requestApprovalDate")

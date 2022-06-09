@@ -1,6 +1,4 @@
-﻿using DataModel.Enums;
-
-namespace DataModel.Models.DTOs
+﻿namespace DataModel.Models.DTOs
 {
     public class NotifyItemDto
     {
@@ -9,7 +7,5 @@ namespace DataModel.Models.DTOs
         public string type { get; set; }
         public string model { get; set; }
         public int quantity { get; set; }
-        public int remainQuantity { get; set; }
-        public RequestStatuses status { get; set; }
     }
 }

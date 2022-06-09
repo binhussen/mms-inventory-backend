@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DataModel.Migrations
+namespace DataModel.Migrations.MMSDb
 {
     public partial class InitialDb : Migration
     {
@@ -83,9 +83,10 @@ namespace DataModel.Migrations
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     model = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    quantity = table.Column<int>(type: "int", nullable: false),
-                    requestApprovalDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    quantityRequest = table.Column<int>(type: "int", nullable: false),
                     status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    quantityApproved = table.Column<int>(type: "int", nullable: false),
+                    requestApprovalDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     requestHeaderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
