@@ -16,5 +16,6 @@ namespace DataModel.Models.Entities
         [ForeignKey(nameof(RequestHeader))]
         public int requestHeaderId { get; set; }
         public RequestHeader RequestHeader { get; set; }
+        //public string RequestingCompletedFlag { get; set; }
     }
 }

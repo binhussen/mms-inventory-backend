@@ -24,7 +24,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult?> GetRequestItemsForRequestHeader(int headerid, [FromQuery] RequestItemParameters requestItemParameters)
+        public async Task<IActionResult> GetRequestItemsForRequestHeader(int headerid, [FromQuery] RequestItemParameters requestItemParameters)
         {
 
 
@@ -36,9 +36,13 @@ namespace API.Controllers
             }
 
             var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false);
+
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestItemsFromDb.MetaData));
 
             var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb);
+            //.Select(s => s.status == "P" ? "Pending"
+            //      : s.status == "R" ? "Rejected"
+            //      : s.status == "C" ? "Canceled" : "Approved");
             return Ok(requestItemsDto);
 
 
@@ -195,7 +199,8 @@ namespace API.Controllers
 
             return NoContent();
         }
-        [HttpPost("approve")]
+        [HttpPost]
+        [Route("{id}")]
         public IActionResult RequestApproval(RequestItemApproveDto requestItemDto, string submit)
         {
             string value = string.Empty;
@@ -225,11 +230,11 @@ namespace API.Controllers
             {
                 if (submit == "Approve")
                 {
-                    _logger.LogInfo($"StatusMessage : {requestItemDto.id} has been Approved");
+                    _logger.LogInfo($"StatusMessage : {requestItemDto.model} has been Approved");
                 }
                 else if (submit == "Reject")
                 {
-                    _logger.LogInfo($"StatusMessage : {requestItemDto.id} has been Canceled");
+                    _logger.LogInfo($"StatusMessage : {requestItemDto.model} has been Canceled");
                 }
                 return RedirectToAction();
 

@@ -1,6 +1,4 @@
-﻿using DataModel.Models.Entities;
-
-namespace DataModel.Parameters
+﻿namespace DataModel.Parameters
 {
     public class PagedList<T> : List<T>
     {
@@ -29,9 +27,6 @@ namespace DataModel.Parameters
             return new PagedList<T>(items, count, pageNumber, pageSize);
         }
 
-        public static PagedList<StoreItem> ToPagedList(List<object> storeItem, int pageNumber, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }

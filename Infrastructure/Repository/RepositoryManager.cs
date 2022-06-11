@@ -118,5 +118,23 @@ namespace Infrastructure.Repository
         /// </summary>
         /// <returns>A Task.</returns>
         public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
+
+        //public int UpdateRequestItemStatus(int requestItemId)
+        //{
+        //    try
+        //    {
+        //        RequestItem requestitem = (from requstitems in _repositoryContext.RequestItems
+        //                                   where requstitems.id == requestItemId
+        //                                   select requstitems).Single();
+        //        requestitem.RequestingCompletedFlag = "C";
+        //        _repositoryContext.RequestItems.Attach(requestitem);
+        //        _repositoryContext.Entry(requestitem).Property(x => x.RequestingCompletedFlag).IsModified = true;
+        //        return _repositoryContext.SaveChanges();
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 }

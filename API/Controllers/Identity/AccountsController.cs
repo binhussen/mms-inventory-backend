@@ -34,7 +34,9 @@ namespace API.Controllers.Identity
         public async Task<IActionResult> GetListUsers()
         {
             var users = await _applicationDbContextt.Users.ToListAsync();
-            return Ok(users);
+            var usersDto = _mapper.Map<IEnumerable<AcountResponse>>(users);
+            return Ok(usersDto);
+
         }
 
         [HttpPut("{id}"), /*Authorize*/]

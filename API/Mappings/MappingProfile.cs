@@ -12,6 +12,7 @@ namespace API.Mappings
         public MappingProfile()
         {
             // Users
+            CreateMap<ApplicationUser, AcountResponse>();
             CreateMap<UserForRegistrationDto, ApplicationUser>();
             CreateMap<UserForUpdateDto, ApplicationUser>();
             //Notifies

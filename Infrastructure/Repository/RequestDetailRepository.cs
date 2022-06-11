@@ -30,9 +30,10 @@ namespace Infrastructure.Repository
         public async Task<PagedList<RequestItem>> GetRequestItemsAsync(int requestHeaderId, RequestItemParameters requestItemParameters, bool trackChanges)
         {
             var requestItems = await FindByCondition(e => e.requestHeaderId.Equals(requestHeaderId), trackChanges)
-            // .Where(x => x.status == RequestStatuses.Pending || x.status == RequestStatuses.Approved || x.status == RequestStatuses.Rejected)
-            .OrderBy(e => e.name)
-            .ToListAsync();
+                           .OrderBy(e => e.name)
+                            // .Select(s => s.status == "P" ? "Pending" : s.status == "R" ? "Rejected" : s.status == "C" ? "Canceled" : "Approved")
+
+                            .ToListAsync();
             return PagedList<RequestItem>
                 .ToPagedList(requestItems, requestItemParameters.PageNumber, requestItemParameters.PageSize);
         }

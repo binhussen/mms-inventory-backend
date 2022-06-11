@@ -8,7 +8,8 @@
         IStoreItem StoreItem { get; }
         IRequestHeader RequestHeader { get; }
         IRequestItem RequestItem { get; }
-        Task SaveAsync();
         int UpdateRequestItemStatus(string model, string RequestStatus);
+        //int UpdateRequestItemStatus(int requestItemId);
+        Task SaveAsync();
     }
 }
