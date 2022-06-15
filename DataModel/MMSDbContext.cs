@@ -21,6 +21,8 @@ namespace DataModel
         public DbSet<StoreItem> StoreItems { get; set; }
         public DbSet<RequestHeader> RequestHeaders { get; set; }
         public DbSet<RequestItem> RequestItems { get; set; }
+        public DbSet<Approve> Approves { get; set; }
+        public DbSet<Distribute> Distributes { get; set; }
 
 
     }

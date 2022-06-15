@@ -91,7 +91,7 @@ namespace Infrastructure.Repository
             }
         }
 
-        public int UpdateRequestItemStatus(string model, string RequestStatus)
+        /*public int UpdateRequestItemStatus(string model, string RequestStatus)
         {
             try
             {
@@ -99,7 +99,6 @@ namespace Infrastructure.Repository
                                   where BDs.model == model
                                   select BDs).Single();
 
-                BD.requestApprovalDate = DateTime.Now;
                 BD.status = RequestStatus;
                 _repositoryContext.RequestItems.Attach(BD);
                 _repositoryContext.Entry(BD).Property(x => x.requestApprovalDate).IsModified = true;
@@ -111,7 +110,7 @@ namespace Infrastructure.Repository
 
                 throw;
             }
-        }
+        }*/
 
         /// <summary>
         /// Saves the async.

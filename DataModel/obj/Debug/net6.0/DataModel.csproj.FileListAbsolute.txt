@@ -40,3 +40,17 @@ D:\MMS-Project\mms-backend\DataModel\obj\Debug\net6.0\refint\DataModel.dll
 D:\MMS-Project\mms-backend\DataModel\obj\Debug\net6.0\DataModel.pdb
 D:\MMS-Project\mms-backend\DataModel\obj\Debug\net6.0\DataModel.genruntimeconfig.cache
 D:\MMS-Project\mms-backend\DataModel\obj\Debug\net6.0\ref\DataModel.dll
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\bin\Debug\net6.0\DataModel.deps.json
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\bin\Debug\net6.0\DataModel.runtimeconfig.json
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\bin\Debug\net6.0\DataModel.dll
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\bin\Debug\net6.0\DataModel.pdb
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.csproj.AssemblyReference.cache
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.AssemblyInfoInputs.cache
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.AssemblyInfo.cs
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.csproj.CoreCompileInputs.cache
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.dll
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\refint\DataModel.dll
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.pdb
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\DataModel.genruntimeconfig.cache
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\DataModel\obj\Debug\net6.0\ref\DataModel.dll
