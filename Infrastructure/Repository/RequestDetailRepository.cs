@@ -27,6 +27,12 @@ namespace Infrastructure.Repository
             return await FindByCondition(e => e.requestHeaderId.Equals(requestHeaderId) && e.id.Equals(id), trackChanges)
               .SingleOrDefaultAsync();
         }
+
+        public async Task<RequestItem> GetRequestAsync(int id, bool trackChanges) =>
+            await FindByCondition(e => e.id.Equals(id), trackChanges)
+                           .SingleOrDefaultAsync();
+        
+
         public async Task<PagedList<RequestItem>> GetRequestItemsAsync(int requestHeaderId, RequestItemParameters requestItemParameters, bool trackChanges)
         {
             var requestItems = await FindByCondition(e => e.requestHeaderId.Equals(requestHeaderId), trackChanges)
