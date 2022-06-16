@@ -251,6 +251,15 @@ namespace API.Controllers
                         }
                         var approveItem = _mapper.Map<Approve>(approveDto);
                         _repository.Approve.CreateApprove(approveItem);
+
+                        //_repository.RequestItem.
+                        var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
+                        var requestDto = new RequestItemStatus()
+                        {
+                            status = "A",
+                        };
+                        _mapper.Map(requestDto, requestItemEntity);
+
                         await _repository.SaveAsync();
                     }
                     _logger.LogInfo($"StatusMessage : {id} has been Approved");

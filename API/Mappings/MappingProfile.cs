@@ -38,6 +38,7 @@ namespace API.Mappings
             CreateMap<RequestItemForCreationDto, RequestItem>();
             CreateMap<RequestHeaderForUpdateDto, RequestHeader>();
             CreateMap<RequestItemForUpdateDto, RequestItem>().ReverseMap();
+            CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
             //Approve
             CreateMap<ApproveForCreationDto, Approve>();
         }
