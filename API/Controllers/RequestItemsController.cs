@@ -199,23 +199,36 @@ namespace API.Controllers
             string value = status == "Approve" ?
                 "A" : status == "Reject" | qty<=0? 
                 "R" : "P";
-            //find by quantity
-            var result = _repository.StoreItem.GetStoreByQtyAsync(false);
-
-            if (result!=null)
+            if (value == "R")
             {
-                if (value == "R")
+                //PartiallyUpdateRequestItemForRequestHeader(id, reject);
+                _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
+            }
+            else if (value == "A")
+            {
+                //find by quantity
+                 var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
+                if (result != null)
                 {
-                    //PartiallyUpdateRequestItemForRequestHeader(id, reject);
-                    _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
-                }
-                else if (value == "A")
-                {
+                    var sum = 0;
+                    var remainToStore = 0;
+                    List<int> itemsId = new List<int>();
+                    foreach (var item in result)
+                    {
+                        itemsId.Add(item.quantity);
+                        sum += item.quantity;
+                        if(sum >= qty)
+                        {
+                            remainToStore=sum-qty;
+                            break;
+                        }
+                    }
+                    int[] items = itemsId.ToArray();
                     _logger.LogInfo($"StatusMessage : {id} has been Approved");
                 }
-
+                return Ok(result);
             }
-            return Ok(result);
+            return Ok();
         }
 
         /*[HttpPost]
