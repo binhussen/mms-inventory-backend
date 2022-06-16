@@ -8,6 +8,7 @@
         IStoreItem StoreItem { get; }
         IRequestHeader RequestHeader { get; }
         IRequestItem RequestItem { get; }
+        IApprove Approve { get; }
         //int UpdateRequestItemStatus(string model, string RequestStatus);
         //int UpdateRequestItemStatus(int requestItemId);
         Task SaveAsync();

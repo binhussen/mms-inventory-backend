@@ -6,7 +6,7 @@
         public string name { get; set; }
         public string type { get; set; }
         public string model { get; set; }
-        public int quantityRequest { get; set; }
+        public int requestedQuantity { get; set; }
         public string status { get; set; }
         public int quantityApproved { get; set; }
         public string requestApprovalDate { get; set; }

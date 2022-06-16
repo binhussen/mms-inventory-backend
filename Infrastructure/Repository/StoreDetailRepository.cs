@@ -45,9 +45,12 @@ namespace Infrastructure.Repository
              .ToPagedList(storeItems, storeItemParameters.PageNumber, storeItemParameters.PageSize);
         }
 
-        public async Task<List<StoreItem>> GetStoreByQtyAsync(bool trackChanges) =>
+        public async Task<IEnumerable<StoreItem>> GetStoreByQtyAsync(bool trackChanges) =>
             await FindAll(trackChanges)
                         .OrderByDescending(c => c.quantity)
                        .ToListAsync();
+        public async Task<StoreItem> GetStoreByIdAsync(int id, bool trackChanges) =>
+            await FindByCondition(e => e.id.Equals(id), trackChanges)
+             .SingleOrDefaultAsync();
     }
 }

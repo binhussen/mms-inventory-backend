@@ -340,9 +340,9 @@ C:\Users\yesuf\Videos\Project\mms-backend\API\bin\Debug\net6.0\Microsoft.Extensi
 C:\Users\yesuf\Videos\Project\mms-backend\API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\yesuf\Videos\Project\mms-backend\API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\yesuf\Videos\Project\mms-backend\API\bin\Debug\net6.0\NSwag.Annotations.dll
+C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\bin\Debug\net6.0\nlog.config
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\bin\Debug\net6.0\appsettings.json
-C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\bin\Debug\net6.0\nlog.config
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\bin\Debug\net6.0\API.exe
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\bin\Debug\net6.0\API.deps.json
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\API\bin\Debug\net6.0\API.runtimeconfig.json
