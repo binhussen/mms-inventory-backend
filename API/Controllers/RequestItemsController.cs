@@ -225,22 +225,36 @@ namespace API.Controllers
                         }
                     }
                     int[] items = itemsId.ToArray();
-                    foreach(var item in items)
+                    var last = items.LastOrDefault();
+                    foreach (var item in items)
                     {
                         var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
-                        var approveDto = new ApproveForCreationDto()
+                        var approveDto = new ApproveForCreationDto();
+                        if (item.Equals(last))
                         {
-                            approvedQuantity = storeItem.quantity,
-                            storeId = storeItem.id,
-                            requestId = id
-                        };
+                            approveDto = new ApproveForCreationDto()
+                            {
+                                approvedQuantity = storeItem.quantity- remainToStore,
+                                storeId = storeItem.id,
+                                requestId = id
+                            };
+
+                        }
+                        else
+                        {
+                            approveDto = new ApproveForCreationDto()
+                            {
+                                approvedQuantity = storeItem.quantity,
+                                storeId = storeItem.id,
+                                requestId = id
+                            };
+                        }
                         var approveItem = _mapper.Map<Approve>(approveDto);
                         _repository.Approve.CreateApprove(approveItem);
                         await _repository.SaveAsync();
                     }
                     _logger.LogInfo($"StatusMessage : {id} has been Approved");
                 }
-                return Ok(result);
             }
             return Ok();
         }
