@@ -10,7 +10,7 @@ namespace DataModel.Models.Entities
     public class Approve
     {
         [Column("approveId")]
-        public int id { get; set; }
+        public int? id { get; set; }
         public int approvedQuantity { get; set; }
         [ForeignKey(nameof(StoreItem))]
         public int storeId { get; set; }

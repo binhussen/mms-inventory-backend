@@ -31,7 +31,7 @@ namespace Infrastructure.Repository
          await FindByCondition(e => e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<Approve>> GetApprovesAsync(bool trackChanges)=>
+        public async Task<IEnumerable<Approve>> GetApproveAsync(bool trackChanges)=>
             await FindAll(trackChanges)
                         .OrderBy(c => c.approvedQuantity)
                        .ToListAsync();

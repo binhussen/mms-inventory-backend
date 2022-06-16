@@ -49,5 +49,8 @@ namespace Infrastructure.Repository
             await FindAll(trackChanges)
                         .OrderByDescending(c => c.quantity)
                        .ToListAsync();
+        public async Task<StoreItem> GetStoreByIdAsync(int id, bool trackChanges) =>
+            await FindByCondition(e => e.id.Equals(id), trackChanges)
+             .SingleOrDefaultAsync();
     }
 }

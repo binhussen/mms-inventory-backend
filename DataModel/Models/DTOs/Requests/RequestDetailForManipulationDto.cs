@@ -6,6 +6,6 @@
         public string type { get; set; }
         public string model { get; set; }
         public string? status { get; set; }
-        public int quantityRequest { get; set; }
+        public int requestedQuantity { get; set; }
     }
 }

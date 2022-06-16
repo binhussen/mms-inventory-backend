@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataModel.Models.DTOs.Approve
 {
-    internal class ApproveForManipulationDto
+    public class ApproveForManipulationDto
     {
+        public int approvedQuantity { get; set; }
+        public int storeId { get; set; }
+        public int requestId { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataModel.Models.DTOs.Approve
 {
-    internal class ApproveForCreationDto
+    public class ApproveForCreationDto:ApproveForManipulationDto
     {
     }
 }

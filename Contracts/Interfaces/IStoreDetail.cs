@@ -11,5 +11,7 @@ namespace Contracts.Interfaces
         Task<IEnumerable<StoreItem>> GetStoreByQtyAsync(bool trtrackChanges);
         void CreateStoreItemForStoreHeader(int storeHeaderId, StoreItem storeItem);
         void DeleteStoreItem(StoreItem storeItem);
+        Task<StoreItem> GetStoreByIdAsync(int id, bool trackChanges);
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
+using DataModel.Models.DTOs.Approve;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
@@ -215,7 +216,7 @@ namespace API.Controllers
                     List<int> itemsId = new List<int>();
                     foreach (var item in result)
                     {
-                        itemsId.Add(item.quantity);
+                        itemsId.Add(item.id);
                         sum += item.quantity;
                         if(sum >= qty)
                         {
@@ -224,6 +225,19 @@ namespace API.Controllers
                         }
                     }
                     int[] items = itemsId.ToArray();
+                    foreach(var item in items)
+                    {
+                        var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
+                        var approveDto = new ApproveForCreationDto()
+                        {
+                            approvedQuantity = storeItem.quantity,
+                            storeId = storeItem.id,
+                            requestId = id
+                        };
+                        var approveItem = _mapper.Map<Approve>(approveDto);
+                        _repository.Approve.CreateApprove(approveItem);
+                        await _repository.SaveAsync();
+                    }
                     _logger.LogInfo($"StatusMessage : {id} has been Approved");
                 }
                 return Ok(result);

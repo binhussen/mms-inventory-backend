@@ -9,13 +9,13 @@ namespace DataModel.Models.Entities
 {
     public class Distribute
     {
-        [Column("DistributeId")]
-        public int Id { get; set; }
+        [Column("distributeId")]
+        public int id { get; set; }
         [ForeignKey(nameof(Customer))]
-        public int UserId { get; set; }
+        public int userId { get; set; }
         public Customer Customer { get; set; }
         [ForeignKey(nameof(Approve))]
-        public int ApproveId { get; set; }
+        public int approveId { get; set; }
         public Approve Approve { get; set; }
 
         /*[ForeignKey(nameof(RequestItem))]

@@ -9,7 +9,7 @@ namespace DataModel.Models.Entities
 {
     public class Customer
     {
-        [Column("CustomerId")]
-        public int Id { get; set; }
+        [Column("customerId")]
+        public int id { get; set; }
     }
 }

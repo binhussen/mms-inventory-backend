@@ -16,6 +16,7 @@ namespace Infrastructure.Repository
         private IStoreItem _storeItemRepository;
         private IRequestItem _requestItemRepository;
         private IRequestHeader _requestHeaderRepository;
+        private IApprove _approveRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
         /// </summary>
@@ -88,6 +89,15 @@ namespace Infrastructure.Repository
                 if (_requestItemRepository == null)
                     _requestItemRepository = new RequestDetailRepository(_repositoryContext);
                 return _requestItemRepository;
+            }
+        }
+        public IApprove Approve
+        {
+            get
+            {
+                if (_approveRepository == null)
+                    _approveRepository = new ApproveRepository(_repositoryContext);
+                return _approveRepository;
             }
         }
 
