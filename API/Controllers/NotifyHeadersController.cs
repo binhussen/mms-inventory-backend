@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
-using DataModel.Models.DTOs;
+using DataModel.Models.DTOs.Notify;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
 using Microsoft.AspNetCore.Mvc;

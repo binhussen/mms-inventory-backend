@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
+using DataModel.Models.DTOs;
 using DataModel.Models.DTOs.Approve;
 using DataModel.Models.DTOs.Requests;
+using DataModel.Models.DTOs.Stores;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
 using Microsoft.AspNetCore.JsonPatch;
@@ -200,9 +202,14 @@ namespace API.Controllers
             string value = status == "Approve" ?
                 "A" : status == "Reject" | qty<=0? 
                 "R" : "P";
+            var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
             if (value == "R")
             {
-                //PartiallyUpdateRequestItemForRequestHeader(id, reject);
+                var requestDto = new RequestItemStatus()
+                {
+                    status = "R",
+                };
+                _mapper.Map(requestDto, requestItemEntity);
                 _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
             }
             else if (value == "A")
@@ -230,6 +237,7 @@ namespace API.Controllers
                     {
                         var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
                         var approveDto = new ApproveForCreationDto();
+                        var storeDto = new StoreItemAvailabieQuantity();
                         if (item.Equals(last))
                         {
                             approveDto = new ApproveForCreationDto()
@@ -237,6 +245,10 @@ namespace API.Controllers
                                 approvedQuantity = storeItem.quantity- remainToStore,
                                 storeId = storeItem.id,
                                 requestId = id
+                            };
+                            storeDto = new StoreItemAvailabieQuantity()
+                            {
+                                availableQuantity = remainToStore
                             };
 
                         }
@@ -248,23 +260,28 @@ namespace API.Controllers
                                 storeId = storeItem.id,
                                 requestId = id
                             };
+                            storeDto = new StoreItemAvailabieQuantity()
+                            {
+                                availableQuantity = 0
+                            };
                         }
                         var approveItem = _mapper.Map<Approve>(approveDto);
                         _repository.Approve.CreateApprove(approveItem);
 
-                        //_repository.RequestItem.
-                        var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
+                        //update request item status
                         var requestDto = new RequestItemStatus()
                         {
                             status = "A",
                         };
                         _mapper.Map(requestDto, requestItemEntity);
 
-                        await _repository.SaveAsync();
+                        //update store status
+                        _mapper.Map(storeDto, storeItem);
                     }
                     _logger.LogInfo($"StatusMessage : {id} has been Approved");
                 }
             }
+            await _repository.SaveAsync();
             return Ok();
         }
 
