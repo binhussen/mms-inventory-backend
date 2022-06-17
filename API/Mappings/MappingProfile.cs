@@ -2,6 +2,7 @@
 using DataModel.Identity.Models;
 using DataModel.Models.DTOs;
 using DataModel.Models.DTOs.Approve;
+using DataModel.Models.DTOs.Customers;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.User;
 using DataModel.Models.Entities;
@@ -15,7 +16,11 @@ namespace API.Mappings
             // Users
             CreateMap<ApplicationUser, AcountResponse>();
             CreateMap<UserForRegistrationDto, ApplicationUser>();
-            CreateMap<UserForUpdateDto, ApplicationUser>();
+            CreateMap<UserForUpdateDto, ApplicationUser>().ReverseMap();
+            //Customers
+            CreateMap<Customer, CustomerDto>();
+            CreateMap<CustomerForCreationDto, Customer>();
+            CreateMap<CustomerForUpdateDto, Customer>();
             //Notifies
             CreateMap<NotifyHeader, NotifyHeaderDto>();
             CreateMap<NotifyItem, NotifyItemDto>();

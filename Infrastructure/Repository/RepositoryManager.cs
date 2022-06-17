@@ -1,6 +1,5 @@
 ﻿using Contracts.Interfaces;
 using DataModel;
-using DataModel.Models.Entities;
 
 namespace Infrastructure.Repository
 {
@@ -17,6 +16,7 @@ namespace Infrastructure.Repository
         private IRequestItem _requestItemRepository;
         private IRequestHeader _requestHeaderRepository;
         private IApprove _approveRepository;
+        private ICustomer _customerRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
         /// </summary>
@@ -98,6 +98,15 @@ namespace Infrastructure.Repository
                 if (_approveRepository == null)
                     _approveRepository = new ApproveRepository(_repositoryContext);
                 return _approveRepository;
+            }
+        }
+        public ICustomer Customer
+        {
+            get
+            {
+                if (_customerRepository == null)
+                    _customerRepository = new CustomerRepository(_repositoryContext);
+                return _customerRepository;
             }
         }
 
