@@ -45,7 +45,6 @@ namespace API.Mappings
             //Requests
             CreateMap<RequestHeader, RequestHeaderDto>();
             CreateMap<RequestItem, RequestItemDto>();
-            CreateMap<RequestItem, RequestItemApproveDto>();
             CreateMap<RequestHeaderForCreationDto, RequestHeader>();
             CreateMap<RequestItemForCreationDto, RequestItem>();
             CreateMap<RequestHeaderForUpdateDto, RequestHeader>();
