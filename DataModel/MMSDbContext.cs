@@ -23,6 +23,7 @@ namespace DataModel
         public DbSet<RequestItem> RequestItems { get; set; }
         public DbSet<Approve> Approves { get; set; }
         public DbSet<Distribute> Distributes { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
 
     }

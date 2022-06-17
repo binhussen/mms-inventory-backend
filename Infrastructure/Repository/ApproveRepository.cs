@@ -2,11 +2,6 @@
 using DataModel;
 using DataModel.Models.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repository
 {
@@ -31,7 +26,7 @@ namespace Infrastructure.Repository
          await FindByCondition(e => e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<Approve>> GetApproveAsync(bool trackChanges)=>
+        public async Task<IEnumerable<Approve>> GetApproveAsync(bool trackChanges) =>
             await FindAll(trackChanges)
                         .OrderBy(c => c.approvedQuantity)
                        .ToListAsync();
