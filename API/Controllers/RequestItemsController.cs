@@ -272,7 +272,6 @@ namespace API.Controllers
 
                         var storeItemEntity = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
                         _mapper.Map(storeDto, storeItemEntity);
-                        _repository.SaveChanges();
 
                     }
                     //update request item status & approved Quantity

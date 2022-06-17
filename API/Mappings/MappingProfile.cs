@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DataModel.Identity.Models;
 using DataModel.Models.DTOs.Approve;
+using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Notify;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Stores;
@@ -44,6 +45,10 @@ namespace API.Mappings
             CreateMap<RequestItemForCreationDto, RequestItem>();
             CreateMap<RequestHeaderForUpdateDto, RequestHeader>();
             CreateMap<RequestItemForUpdateDto, RequestItem>().ReverseMap();
+            //Distributes
+            CreateMap<Distribute, DistributeDto>();
+            CreateMap<DistributeForCreationDto, Distribute>();
+            CreateMap<DistributeForUpdateDto, Distribute>();
         }
     }
 }

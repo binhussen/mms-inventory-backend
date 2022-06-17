@@ -17,6 +17,7 @@ namespace Infrastructure.Repository
         private IRequestItem _requestItemRepository;
         private IRequestHeader _requestHeaderRepository;
         private IApprove _approveRepository;
+        private IDistribute _distributeRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
         /// </summary>
@@ -98,6 +99,15 @@ namespace Infrastructure.Repository
                 if (_approveRepository == null)
                     _approveRepository = new ApproveRepository(_repositoryContext);
                 return _approveRepository;
+            }
+        }
+        public IDistribute Distribute
+        {
+            get
+            {
+                if (_distributeRepository == null)
+                    _distributeRepository = new DistributeRepository(_repositoryContext);
+                return _distributeRepository;
             }
         }
 
