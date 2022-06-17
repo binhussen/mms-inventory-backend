@@ -1,6 +1,6 @@
 ﻿namespace DataModel.Models.DTOs.Stores
 {
-    public class StoreItemAvailabieQuantity
+    public class StoreItemAvailableQuantity
     {
         public int availableQuantity { get; set; }
     }

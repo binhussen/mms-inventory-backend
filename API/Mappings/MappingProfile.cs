@@ -13,6 +13,11 @@ namespace API.Mappings
     {
         public MappingProfile()
         {
+            //Approve
+            CreateMap<ApproveForCreationDto, Approve>();
+            CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
+            //CreateMap<StoreItemAvailableQuantity, StoreItem>().ReverseMap();
+            CreateMap<StoreItemAvailableQuantity, StoreItem>();
             // Users
             CreateMap<ApplicationUser, AcountResponse>();
             CreateMap<UserForRegistrationDto, ApplicationUser>();
@@ -39,10 +44,6 @@ namespace API.Mappings
             CreateMap<RequestItemForCreationDto, RequestItem>();
             CreateMap<RequestHeaderForUpdateDto, RequestHeader>();
             CreateMap<RequestItemForUpdateDto, RequestItem>().ReverseMap();
-            //Approve
-            CreateMap<ApproveForCreationDto, Approve>();
-            CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
-            CreateMap<StoreItemAvailabieQuantity, StoreItem>().ReverseMap();
         }
     }
 }

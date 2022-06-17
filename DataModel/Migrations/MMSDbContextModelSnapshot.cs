@@ -170,6 +170,9 @@ namespace DataModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<int>("approvedQuantity")
+                        .HasColumnType("int");
+
                     b.Property<string>("model")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -177,9 +180,6 @@ namespace DataModel.Migrations
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("remainQuantity")
-                        .HasColumnType("int");
 
                     b.Property<int>("requestHeaderId")
                         .HasColumnType("int");
@@ -239,9 +239,6 @@ namespace DataModel.Migrations
                         .HasColumnName("storeItemId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<bool>("availability")
-                        .HasColumnType("bit");
 
                     b.Property<int>("availableQuantity")
                         .HasColumnType("int");

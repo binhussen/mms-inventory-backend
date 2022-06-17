@@ -200,7 +200,7 @@ namespace API.Controllers
         public async Task<IActionResult> RequestApproval(int id, int qty, string status)
         {
             string value = status == "Approve" ?
-                "A" : status == "Reject" | qty<=0? 
+                "A" : status == "Reject" | qty <= 0 ?
                 "R" : "P";
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
             if (value == "R")
@@ -215,7 +215,7 @@ namespace API.Controllers
             else if (value == "A")
             {
                 //find by quantity
-                 var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
+                var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
                 if (result != null)
                 {
                     var sum = 0;
@@ -225,9 +225,9 @@ namespace API.Controllers
                     {
                         itemsId.Add(item.id);
                         sum += item.quantity;
-                        if(sum >= qty)
+                        if (sum >= qty)
                         {
-                            remainToStore=sum-qty;
+                            remainToStore = sum - qty;
                             break;
                         }
                     }
@@ -236,19 +236,20 @@ namespace API.Controllers
                     foreach (var item in items)
                     {
                         var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
+                        var storeDto = new StoreItemAvailableQuantity();
                         var approveDto = new ApproveForCreationDto();
-                        var storeDto = new StoreItemAvailabieQuantity();
                         if (item.Equals(last))
                         {
                             approveDto = new ApproveForCreationDto()
                             {
-                                approvedQuantity = storeItem.quantity- remainToStore,
+                                approvedQuantity = storeItem.quantity - remainToStore,
                                 storeId = storeItem.id,
                                 requestId = id
                             };
-                            storeDto = new StoreItemAvailabieQuantity()
+                            //update store status
+                            storeDto = new StoreItemAvailableQuantity()
                             {
-                                availableQuantity = remainToStore
+                                availableQuantity = remainToStore,
                             };
 
                         }
@@ -260,75 +261,32 @@ namespace API.Controllers
                                 storeId = storeItem.id,
                                 requestId = id
                             };
-                            storeDto = new StoreItemAvailabieQuantity()
+                            //update store status
+                            storeDto = new StoreItemAvailableQuantity()
                             {
-                                availableQuantity = 0
+                                availableQuantity = 0,
                             };
                         }
                         var approveItem = _mapper.Map<Approve>(approveDto);
                         _repository.Approve.CreateApprove(approveItem);
 
-                        //update request item status
-                        var requestDto = new RequestItemStatus()
-                        {
-                            status = "A",
-                        };
-                        _mapper.Map(requestDto, requestItemEntity);
+                        var storeItemEntity = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
+                        _mapper.Map(storeDto, storeItemEntity);
+                        _repository.SaveChanges();
 
-                        //update store status
-                        _mapper.Map(storeDto, storeItem);
                     }
+                    //update request item status & approved Quantity
+                    var requestDto = new RequestItemStatus()
+                    {
+                        status = "A",
+                        approvedQuantity = qty
+                    };
+                    _mapper.Map(requestDto, requestItemEntity);
                     _logger.LogInfo($"StatusMessage : {id} has been Approved");
                 }
             }
             await _repository.SaveAsync();
             return Ok();
         }
-
-        /*[HttpPost]
-        [Route("{id}")]
-        public IActionResult RequestApproval(RequestItemApproveDto requestItemDto, string submit)
-        {
-            string value = string.Empty;
-
-            if (string.IsNullOrEmpty(requestItemDto.model))
-            {
-                return RedirectToAction("RequestHeaders", "RequestItems");
-            }
-
-            if (submit == "Approve")
-            {
-                value = "A";
-            }
-            else if (submit == "Reject")
-            {
-                value = "R";
-            }
-            else
-            {
-                value = "P";
-            }
-
-
-           // var result = _repository.UpdateRequestItemStatus(requestItemDto.model, value);
-
-            /*if (result > 0)
-            {
-                if (submit == "Approve")
-                {
-                    _logger.LogInfo($"StatusMessage : {requestItemDto.model} has been Approved");
-                }
-                else if (submit == "Reject")
-                {
-                    _logger.LogInfo($"StatusMessage : {requestItemDto.model} has been Canceled");
-                }
-                return RedirectToAction();
-
-            }
-            else
-            {
-                return RedirectToAction();
-            }*//*
-        }*/
     }
 }
