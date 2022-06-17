@@ -198,7 +198,7 @@ namespace API.Controllers
         public async Task<IActionResult> RequestApproval(int id, int qty, string status)
         {
             string value = status == "Approve" ?
-                "A" : status == "Reject" | qty<=0? 
+                "A" : status == "Reject" | qty <= 0 ?
                 "R" : "P";
             if (value == "R")
             {
@@ -208,7 +208,7 @@ namespace API.Controllers
             else if (value == "A")
             {
                 //find by quantity
-                 var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
+                var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
                 if (result != null)
                 {
                     var sum = 0;
@@ -218,9 +218,9 @@ namespace API.Controllers
                     {
                         itemsId.Add(item.id);
                         sum += item.quantity;
-                        if(sum >= qty)
+                        if (sum >= qty)
                         {
-                            remainToStore=sum-qty;
+                            remainToStore = sum - qty;
                             break;
                         }
                     }
@@ -234,7 +234,7 @@ namespace API.Controllers
                         {
                             approveDto = new ApproveForCreationDto()
                             {
-                                approvedQuantity = storeItem.quantity- remainToStore,
+                                approvedQuantity = storeItem.quantity - remainToStore,
                                 storeId = storeItem.id,
                                 requestId = id
                             };
