@@ -29,14 +29,7 @@ namespace API.Controllers
 
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItems.MetaData));
 
-            var storeItemDtos = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems)
-                               .GroupBy(m => m.model)
-                               .Select(g => new
-                               {
-                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
-                                   model = g.Key,
-                                   quantity = g.Sum(x => x.quantity)
-                               }).ToList();
+            var storeItemDtos = _mapper.Map<IEnumerable<StoreItemDto>>(storeItems);
             return Ok(storeItemDtos);
         }
 

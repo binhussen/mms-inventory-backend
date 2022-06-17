@@ -1,6 +1,5 @@
 ﻿using Contracts.Interfaces;
 using DataModel;
-using DataModel.Models.Entities;
 
 namespace Infrastructure.Repository
 {
@@ -18,6 +17,7 @@ namespace Infrastructure.Repository
         private IRequestHeader _requestHeaderRepository;
         private IApprove _approveRepository;
         private IDistribute _distributeRepository;
+        private ICustomer _customerRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
         /// </summary>
@@ -108,6 +108,15 @@ namespace Infrastructure.Repository
                 if (_distributeRepository == null)
                     _distributeRepository = new DistributeRepository(_repositoryContext);
                 return _distributeRepository;
+            }
+        }
+        public ICustomer Customer
+        {
+            get
+            {
+                if (_customerRepository == null)
+                    _customerRepository = new CustomerRepository(_repositoryContext);
+                return _customerRepository;
             }
         }
 

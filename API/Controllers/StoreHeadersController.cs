@@ -1,12 +1,16 @@
 ﻿using AutoMapper;
-using Newtonsoft.Json;
-using Contracts.Service;
 using Contracts.Interfaces;
 using DataModel.Parameters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using DataModel.Models.Entities;
 using DataModel.Models.DTOs.Stores;
+using Contracts.Service;
+using DataModel.Models.DTOs;
+using DataModel.Models.Entities;
+using DataModel.Parameters;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {

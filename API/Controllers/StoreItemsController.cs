@@ -37,14 +37,7 @@ namespace API.Controllers
             var storeItemsFromDb = await _repository.StoreItem.GetStoreItemsAsync(headerid, storeItemParameters, trackChanges: false);
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(storeItemsFromDb.MetaData));
 
-            var storeItemsDto = _mapper.Map<IEnumerable<StoreItemDto>>(storeItemsFromDb)
-                                .GroupBy(m => m.model)
-                               .Select(g => new
-                               {
-                                   ItemType = g.Select(x => x.type).FirstOrDefault(),
-                                   model = g.Key,
-                                   quantity = g.Sum(x => x.quantity)
-                               }).ToList();
+            var storeItemsDto = _mapper.Map<IEnumerable<StoreItemDto>>(storeItemsFromDb);
             return Ok(storeItemsDto);
 
         }

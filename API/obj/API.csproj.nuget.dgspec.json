@@ -285,6 +285,9 @@
             "projectReferences": {
               "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\Contracts.csproj": {
                 "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\Contracts.csproj"
+              },
+              "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj": {
+                "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj"
               }
             }
           }

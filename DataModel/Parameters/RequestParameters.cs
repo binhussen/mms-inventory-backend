@@ -1,11 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-
-namespace DataModel.Parameters
+﻿namespace DataModel.Parameters
 {
     public abstract class RequestParameters
     {

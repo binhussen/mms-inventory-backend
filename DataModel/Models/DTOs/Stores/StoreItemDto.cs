@@ -9,7 +9,8 @@
         public string type { get; set; }
         public string storeNo { get; set; }
         public string shelfNo { get; set; }
-        public string availability { get; set; }
+        public bool availability { get; set; } = true;
         public int quantity { get; set; }
+        public int availableQuantity { get; set; }
     }
 }

@@ -12,6 +12,6 @@ namespace Contracts.Interfaces
         void CreateStoreItemForStoreHeader(int storeHeaderId, StoreItem storeItem);
         void DeleteStoreItem(StoreItem storeItem);
         Task<StoreItem> GetStoreByIdAsync(int id, bool trackChanges);
-        
+
     }
 }
