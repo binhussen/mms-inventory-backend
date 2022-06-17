@@ -23,8 +23,8 @@ namespace API.Controllers
             _mapper = mapper;
 
         }
-        [HttpGet(Name = "GetCustomers")]
-        public async Task<IActionResult> GetAlCustomers([FromQuery] CustomerParameters customerParameters)
+        [HttpGet(Name = "GetAllCustomers")]
+        public async Task<IActionResult> GetAllCustomers([FromQuery] CustomerParameters customerParameters)
         {
             var customers = await _repository.Customer.GetAllCustomersAsync(customerParameters, trackChanges: false);
 
@@ -33,8 +33,8 @@ namespace API.Controllers
             var customerDtos = _mapper.Map<IEnumerable<CustomerDto>>(customers);
             return Ok(customerDtos);
         }
-        [HttpPost(Name = "CreateStoreHeader")]
-        public async Task<IActionResult> CreateStoreHeader([FromBody] CustomerForCreationDto customer)
+        [HttpPost(Name = "CreateCustomer")]
+        public async Task<IActionResult> CreateCustomers([FromBody] CustomerForCreationDto customer)
         {
             if (customer == null)
             {
@@ -56,7 +56,7 @@ namespace API.Controllers
             var customerToReturn = _mapper.Map<CustomerDto>(customerEntity);
 
             // Disable BCC4002
-            return CreatedAtRoute("customerById", new { id = customerToReturn.id }, customerToReturn);
+            return CreatedAtRoute("GetAllCustomers", new { id = customerToReturn.id }, customerToReturn);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] CustomerForUpdateDto customer)

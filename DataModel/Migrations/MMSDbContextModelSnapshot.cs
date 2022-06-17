@@ -58,9 +58,60 @@ namespace DataModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<string>("birthDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("bithPlace")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("date")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("homeNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("occupation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("region")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sex")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("sub_City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("timeLimit")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("warantiyAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("warantiyRegion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("warantiySubCity")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("warantiyWoreda")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("warantiyname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("woreda")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("id");
 
-                    b.ToTable("Customer");
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.Distribute", b =>
