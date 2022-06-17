@@ -235,7 +235,7 @@ namespace API.Controllers
                     var last = items.LastOrDefault();
                     foreach (var item in items)
                     {
-                        var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
+                        var storeItem = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: true);
                         var storeDto = new StoreItemAvailableQuantity();
                         var approveDto = new ApproveForCreationDto();
                         if (item.Equals(last))
@@ -270,8 +270,7 @@ namespace API.Controllers
                         var approveItem = _mapper.Map<Approve>(approveDto);
                         _repository.Approve.CreateApprove(approveItem);
 
-                        var storeItemEntity = await _repository.StoreItem.GetStoreByIdAsync(item, trackChanges: false);
-                        _mapper.Map(storeDto, storeItemEntity);
+                        _mapper.Map(storeDto, storeItem);
 
                     }
                     //update request item status & approved Quantity

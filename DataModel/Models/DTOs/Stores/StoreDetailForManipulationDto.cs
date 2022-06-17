@@ -10,6 +10,5 @@
         public string shelfNo { get; set; }
         public bool availability { get; set; } = true;
         public int quantity { get; set; }
-        public int availableQuantity { get; set; }
     }
 }

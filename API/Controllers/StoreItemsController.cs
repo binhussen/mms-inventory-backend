@@ -113,6 +113,8 @@ namespace API.Controllers
                 return NotFound();
             }
             var storeItemEntity = await _repository.StoreItem.GetStoreItemAsync(headerid, id, trackChanges: true);
+            storeItemEntity.availableQuantity = storeItemEntity.quantity;
+
             if (storeItemEntity == null)
             {
                 _logger.LogInfo($"StoreItem with id: {id} doesn't exist in the database.");
