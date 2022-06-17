@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using DataModel.Identity.Models;
-using DataModel.Models.DTOs;
 using DataModel.Models.DTOs.Approve;
+using DataModel.Models.DTOs.Distribute;
+using DataModel.Models.DTOs.Notify;
 using DataModel.Models.DTOs.Customers;
 using DataModel.Models.DTOs.Requests;
+using DataModel.Models.DTOs.Stores;
 using DataModel.Models.DTOs.User;
 using DataModel.Models.Entities;
 
@@ -13,6 +15,11 @@ namespace API.Mappings
     {
         public MappingProfile()
         {
+            //Approve
+            CreateMap<ApproveForCreationDto, Approve>();
+            CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
+            //CreateMap<StoreItemAvailableQuantity, StoreItem>().ReverseMap();
+            CreateMap<StoreItemAvailableQuantity, StoreItem>();
             // Users
             CreateMap<ApplicationUser, AcountResponse>();
             CreateMap<UserForRegistrationDto, ApplicationUser>();
@@ -43,9 +50,10 @@ namespace API.Mappings
             CreateMap<RequestItemForCreationDto, RequestItem>();
             CreateMap<RequestHeaderForUpdateDto, RequestHeader>();
             CreateMap<RequestItemForUpdateDto, RequestItem>().ReverseMap();
-            CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
-            //Approve
-            CreateMap<ApproveForCreationDto, Approve>();
+            //Distributes
+            CreateMap<Distribute, DistributeDto>();
+            CreateMap<DistributeForCreationDto, Distribute>();
+            CreateMap<DistributeForUpdateDto, Distribute>();
         }
     }
 }

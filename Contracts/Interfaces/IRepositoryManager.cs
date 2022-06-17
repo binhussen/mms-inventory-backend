@@ -9,7 +9,9 @@
         IRequestHeader RequestHeader { get; }
         IRequestItem RequestItem { get; }
         IApprove Approve { get; }
+        IDistribute Distribute { get; }
         ICustomer Customer { get; }
+
         //int UpdateRequestItemStatus(string model, string RequestStatus);
         //int UpdateRequestItemStatus(int requestItemId);
         Task SaveAsync();

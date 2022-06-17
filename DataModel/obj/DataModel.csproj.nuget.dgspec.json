@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj": {}
+    "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj": {
+    "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj",
+        "projectUniqueName": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj",
         "projectName": "DataModel",
-        "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj",
-        "packagesPath": "C:\\Users\\yesuf\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\obj\\",
+        "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj",
+        "packagesPath": "C:\\Users\\mhdbi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\yesuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mhdbi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

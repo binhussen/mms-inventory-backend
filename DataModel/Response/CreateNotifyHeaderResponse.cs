@@ -1,4 +1,4 @@
-﻿using DataModel.Models.DTOs;
+﻿using DataModel.Models.DTOs.Notify;
 
 namespace DataModel.Response
 {

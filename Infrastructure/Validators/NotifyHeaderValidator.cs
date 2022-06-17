@@ -3,9 +3,9 @@ using DataModel;
 using System.Linq;
 using System.Text;
 using FluentValidation;
-using DataModel.Models.DTOs;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using DataModel.Models.DTOs.Notify;
 
 namespace Infrastructure.Validators
 {

@@ -5558,19 +5558,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yesuf\\.nuget\\packages\\": {}
+    "C:\\Users\\mhdbi\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj",
+      "projectUniqueName": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\Contracts.csproj",
       "projectName": "Contracts",
-      "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj",
-      "packagesPath": "C:\\Users\\yesuf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\obj\\",
+      "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\Contracts.csproj",
+      "packagesPath": "C:\\Users\\mhdbi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\yesuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mhdbi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5584,8 +5588,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj": {
-              "projectPath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj"
+            "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj": {
+              "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj"
             }
           }
         }

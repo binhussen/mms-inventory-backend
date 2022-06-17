@@ -1,4 +1,4 @@
-﻿namespace DataModel.Models.DTOs
+﻿namespace DataModel.Models.DTOs.Notify
 {
     public class NotifyHeaderForUpdateDto : NotifyHeaderForManipulationDto
     {

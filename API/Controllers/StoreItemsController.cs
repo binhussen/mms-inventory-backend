@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
-using DataModel.Models.DTOs;
+using DataModel.Models.DTOs.Stores;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
 using Microsoft.AspNetCore.JsonPatch;
@@ -82,8 +82,8 @@ namespace API.Controllers
                 _logger.LogInfo($"StoreHeader with id: {headerid} doesn't exist in the database.");
                 return NotFound();
             }
-
             var storeItemEntity = _mapper.Map<StoreItem>(storeItem);
+            storeItemEntity.availableQuantity = storeItemEntity.quantity;
 
             _repository.StoreItem.CreateStoreItemForStoreHeader(headerid, storeItemEntity);
             await _repository.SaveAsync();
