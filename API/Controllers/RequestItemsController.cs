@@ -224,7 +224,7 @@ namespace API.Controllers
                     foreach (var item in result)
                     {
                         itemsId.Add(item.id);
-                        sum += item.quantity;
+                        sum += item.availableQuantity;
                         if (sum >= qty)
                         {
                             remainToStore = sum - qty;
@@ -242,7 +242,7 @@ namespace API.Controllers
                         {
                             approveDto = new ApproveForCreationDto()
                             {
-                                approvedQuantity = storeItem.quantity - remainToStore,
+                                approvedQuantity = storeItem.availableQuantity - remainToStore,
                                 storeId = storeItem.id,
                                 requestId = id
                             };
@@ -251,13 +251,12 @@ namespace API.Controllers
                             {
                                 availableQuantity = remainToStore,
                             };
-
                         }
                         else
                         {
                             approveDto = new ApproveForCreationDto()
                             {
-                                approvedQuantity = storeItem.quantity,
+                                approvedQuantity = storeItem.availableQuantity,
                                 storeId = storeItem.id,
                                 requestId = id
                             };

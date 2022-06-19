@@ -47,7 +47,7 @@ namespace Infrastructure.Repository
 
         public async Task<IEnumerable<StoreItem>> GetStoreByQtyAsync(bool trackChanges) =>
             await FindAll(trackChanges)
-                        .OrderByDescending(c => c.quantity)
+                        .OrderByDescending(c => c.availableQuantity)
                        .ToListAsync();
         public async Task<StoreItem> GetStoreByIdAsync(int id, bool trackChanges) =>
             await FindByCondition(e => e.id.Equals(id), trackChanges)
