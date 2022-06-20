@@ -31,7 +31,7 @@ namespace Infrastructure.Repository
         public async Task<RequestItem> GetRequestAsync(int id, bool trackChanges) =>
             await FindByCondition(e => e.id.Equals(id), trackChanges)
                            .SingleOrDefaultAsync();
-        
+
 
         public async Task<PagedList<RequestItem>> GetRequestItemsAsync(int requestHeaderId, RequestItemParameters requestItemParameters, bool trackChanges)
         {

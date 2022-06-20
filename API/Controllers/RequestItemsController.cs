@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
-using DataModel.Models.DTOs;
 using DataModel.Models.DTOs.Approve;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Stores;
