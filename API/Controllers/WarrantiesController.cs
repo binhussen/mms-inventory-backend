@@ -120,7 +120,7 @@ namespace API.Controllers
                 return NotFound();
             }
 
-            _mapper.Map(customer, warrantEntity);
+            _mapper.Map(warranty, warrantEntity);
             await _repository.SaveAsync();
 
             return NoContent();
