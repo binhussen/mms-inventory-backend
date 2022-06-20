@@ -9,9 +9,9 @@ namespace DataModel.Models.Entities
         public string name { get; set; }
         public string type { get; set; }
         public string model { get; set; }
-        public string status { get; set; } = "P";
+        public string status { get; set; } = "Pending";
         public int requestedQuantity { get; set; }
-        public int approvedQuantity { get; set; }
+        public int approvedQuantity { get; set; } = 0;
         [ForeignKey(nameof(RequestHeader))]
         public int requestHeaderId { get; set; }
         public RequestHeader RequestHeader { get; set; }
