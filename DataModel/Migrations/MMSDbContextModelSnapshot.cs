@@ -64,9 +64,6 @@ namespace DataModel.Migrations
                     b.Property<string>("bithPlace")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTimeOffset?>("date")
-                        .HasColumnType("datetimeoffset");
-
                     b.Property<string>("homeNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -85,11 +82,31 @@ namespace DataModel.Migrations
                     b.Property<string>("sex")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("sub_City")
+                    b.Property<string>("subCity")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset?>("timeLimit")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("woreda")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.CustomerWarranty", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("warrantyId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int>("customerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("warantiyAddress")
                         .HasColumnType("nvarchar(max)");
@@ -106,12 +123,11 @@ namespace DataModel.Migrations
                     b.Property<string>("warantiyname")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("woreda")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("id");
 
-                    b.ToTable("Customers");
+                    b.HasIndex("customerId");
+
+                    b.ToTable("CustemerWarranties");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.Distribute", b =>
@@ -350,6 +366,17 @@ namespace DataModel.Migrations
                     b.Navigation("StoreItem");
                 });
 
+            modelBuilder.Entity("DataModel.Models.Entities.CustomerWarranty", b =>
+                {
+                    b.HasOne("DataModel.Models.Entities.Customer", "Customer")
+                        .WithMany("CustomerWarranties")
+                        .HasForeignKey("customerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("DataModel.Models.Entities.Distribute", b =>
                 {
                     b.HasOne("DataModel.Models.Entities.Approve", "Approve")
@@ -400,6 +427,11 @@ namespace DataModel.Migrations
                         .IsRequired();
 
                     b.Navigation("StoreHeader");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.Customer", b =>
+                {
+                    b.Navigation("CustomerWarranties");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyHeader", b =>

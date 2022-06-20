@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataModel.Migrations
 {
-    public partial class initial : Migration
+    public partial class InitialDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,20 +17,14 @@ namespace DataModel.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     sex = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    date = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     region = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    sub_City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    subCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     woreda = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     homeNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     bithPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     birthDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     occupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     phoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    warantiyname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    warantiyAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    warantiySubCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    warantiyWoreda = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    warantiyRegion = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     timeLimit = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
@@ -80,6 +74,30 @@ namespace DataModel.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StoreHeaders", x => x.storeHeaderId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CustemerWarranties",
+                columns: table => new
+                {
+                    warrantyId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    warantiyname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    warantiyAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    warantiySubCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    warantiyWoreda = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    warantiyRegion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    customerId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CustemerWarranties", x => x.warrantyId);
+                    table.ForeignKey(
+                        name: "FK_CustemerWarranties_Customers_customerId",
+                        column: x => x.customerId,
+                        principalTable: "Customers",
+                        principalColumn: "customerId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -220,6 +238,11 @@ namespace DataModel.Migrations
                 column: "storeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CustemerWarranties_customerId",
+                table: "CustemerWarranties",
+                column: "customerId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Distributes_approveId",
                 table: "Distributes",
                 column: "approveId");
@@ -247,6 +270,9 @@ namespace DataModel.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CustemerWarranties");
+
             migrationBuilder.DropTable(
                 name: "Distributes");
 

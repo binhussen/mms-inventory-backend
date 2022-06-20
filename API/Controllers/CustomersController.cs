@@ -33,6 +33,21 @@ namespace API.Controllers
             var customerDtos = _mapper.Map<IEnumerable<CustomerDto>>(customers);
             return Ok(customerDtos);
         }
+        [HttpGet("{id}", Name = "CustomerById")]
+        public async Task<IActionResult> GetCustomer(int id)
+        {
+            var customer = await _repository.Customer.GetCustomerByIdAsync(id, trackChanges: false);
+            if (customer == null)
+            {
+                _logger.LogInfo($"Customer with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+            else
+            {
+                var customerDto = _mapper.Map<CustomerDto>(customer);
+                return Ok(customerDto);
+            }
+        }
         [HttpPost(Name = "CreateCustomer")]
         public async Task<IActionResult> CreateCustomers([FromBody] CustomerForCreationDto customer)
         {
@@ -56,7 +71,7 @@ namespace API.Controllers
             var customerToReturn = _mapper.Map<CustomerDto>(customerEntity);
 
             // Disable BCC4002
-            return CreatedAtRoute("GetAllCustomers", new { id = customerToReturn.id }, customerToReturn);
+            return CreatedAtRoute("customerByID", new { id = customerToReturn.id }, customerToReturn);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateCustomer(int id, [FromBody] CustomerForUpdateDto customer)

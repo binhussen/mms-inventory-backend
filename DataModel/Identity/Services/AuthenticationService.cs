@@ -51,9 +51,8 @@ namespace DataModel.Identity.Services
 
             AuthenticationResponse response = new()
             {
-                Id = _user.Id,
+
                 Token = new JwtSecurityTokenHandler().WriteToken(tokenOptions),
-                Country = _user.Country,
                 UserName = _user.UserName,
                 Expiration = tokenOptions.ValidTo
             };
