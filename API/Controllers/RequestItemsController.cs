@@ -199,20 +199,17 @@ namespace API.Controllers
         [Route("requestapprove/{id}")]
         public async Task<IActionResult> RequestApproval(int id, int qty, string status)
         {
-            string value = status == "Approve" ?
-                "A" : status == "Reject" | qty <= 0 ?
-                "R" : "P";
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
-            if (value == "R")
+            if (status == "Reject" | qty <= 0)
             {
                 var requestDto = new RequestItemStatus()
                 {
-                    status = "R",
+                    status = "Reject",
                 };
                 _mapper.Map(requestDto, requestItemEntity);
                 _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
             }
-            else if (value == "A")
+            else if (status == "Approve")
             {
                 //find by quantity
                 var result = await _repository.StoreItem.GetStoreByQtyAsync(false);
@@ -275,7 +272,7 @@ namespace API.Controllers
                     //update request item status & approved Quantity
                     var requestDto = new RequestItemStatus()
                     {
-                        status = "A",
+                        status = "Approve",
                         approvedQuantity = qty
                     };
                     _mapper.Map(requestDto, requestItemEntity);

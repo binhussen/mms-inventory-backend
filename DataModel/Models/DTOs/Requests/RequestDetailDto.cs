@@ -8,7 +8,7 @@
         public string model { get; set; }
         public int requestedQuantity { get; set; }
         public string status { get; set; }
-        public int quantityApproved { get; set; }
+        public int approvedQuantity { get; set; }
     }
 
 }
