@@ -35,7 +35,7 @@ namespace API.Controllers
                                {
                                    ItemType = g.Select(x => x.type).FirstOrDefault(),
                                    model = g.Key,
-                                   quantity = g.Sum(x => x.availableQuantity)
+                                   Availablequantity = g.Sum(x => x.availableQuantity)
                                }).ToList();
             return Ok(storeItemDtos);
         }
