@@ -18,6 +18,7 @@ namespace Infrastructure.Repository
         private IApprove _approveRepository;
         private IDistribute _distributeRepository;
         private ICustomer _customerRepository;
+        private IWarranty _warrantyRepository;
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
         /// </summary>
@@ -117,6 +118,16 @@ namespace Infrastructure.Repository
                 if (_customerRepository == null)
                     _customerRepository = new CustomerRepository(_repositoryContext);
                 return _customerRepository;
+            }
+        }
+
+        public IWarranty CustomerWarranty
+        {
+            get
+            {
+                if (_warrantyRepository == null)
+                    _warrantyRepository = new WarrantyRepository(_repositoryContext);
+                return _warrantyRepository;
             }
         }
 

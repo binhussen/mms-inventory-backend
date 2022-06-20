@@ -24,6 +24,7 @@ namespace DataModel
         public DbSet<Approve> Approves { get; set; }
         public DbSet<Distribute> Distributes { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerWarranty> CustemerWarranties { get; set; }
 
 
     }

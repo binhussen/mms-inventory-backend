@@ -11,6 +11,7 @@
         IApprove Approve { get; }
         IDistribute Distribute { get; }
         ICustomer Customer { get; }
+        IWarranty CustomerWarranty { get; }
 
         //int UpdateRequestItemStatus(string model, string RequestStatus);
         //int UpdateRequestItemStatus(int requestItemId);
