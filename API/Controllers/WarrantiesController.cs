@@ -88,10 +88,66 @@ namespace API.Controllers
             _repository.CustomerWarranty.CreateCustomerWarrantyForCustomer(customerid, warrantyEntity);
             await _repository.SaveAsync();
             var warrantyToReturn = _mapper.Map<WarrantyDto>(warrantyEntity);
-            return CreatedAtRoute("GetNotifyItemForNotifyHeader", new { customerid, id = warrantyToReturn.id }, warrantyToReturn);
+            return CreatedAtRoute("GetWarrantyForCustomer", new { customerid, id = warrantyToReturn.id }, warrantyToReturn);
 
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateWarrantyForCustomer(int customerid, int id, [FromBody] WarrantyForUpdateDto warranty)
+        {
+            if (warranty == null)
+            {
+                _logger.LogError("WarrantyForUpdateDto object sent from client is null.");
+                return BadRequest("WarrantyForUpdateDto object is null");
+            }
 
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the WarrantyForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+
+            var customer = await _repository.Customer.GetCustomerByIdAsync(customerid, trackChanges: false);
+            if (customer == null)
+            {
+                _logger.LogInfo($"NotifyHeader with id: {customerid} doesn't exist in the database.");
+                return NotFound();
+            }
+            var warrantEntity = await _repository.CustomerWarranty.GetCustomerWarrantyAsync(customerid, id, trackChanges: true);
+            if (warrantEntity == null)
+            {
+                _logger.LogInfo($"Warranty with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            _mapper.Map(customer, warrantEntity);
+            await _repository.SaveAsync();
+
+            return NoContent();
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteWarranty(int customerid, int id)
+        {
+            var customer = await _repository.Customer.GetCustomerByIdAsync(customerid, trackChanges: false);
+            if (customer == null)
+            {
+                _logger.LogInfo($"Customer with id: {customerid} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            var warrantyForCustomer = await _repository.CustomerWarranty.GetCustomerWarrantyAsync(customerid, id, trackChanges: false);
+            if (warrantyForCustomer == null)
+            {
+                _logger.LogInfo($"NotifyItem with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            _repository.CustomerWarranty.DeleteCustomerWarranty(warrantyForCustomer);
+            await _repository.SaveAsync();
+
+            return NoContent();
+        }
     }
 }

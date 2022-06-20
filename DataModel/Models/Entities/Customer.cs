@@ -17,6 +17,6 @@ namespace DataModel.Models.Entities
         public string? occupation { get; set; }
         public string? phoneNumber { get; set; }
         public DateTimeOffset? timeLimit { get; set; }
-        public ICollection<CustomerWarranty> CustemerWarranties { get; set; }
+        public ICollection<CustomerWarranty> CustomerWarranties { get; set; }
     }
 }
