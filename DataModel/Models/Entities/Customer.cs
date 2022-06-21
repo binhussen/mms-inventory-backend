@@ -12,7 +12,7 @@ namespace DataModel.Models.Entities
         public string? subCity { get; set; }
         public string? woreda { get; set; }
         public string? homeNumber { get; set; }
-        public string? bithPlace { get; set; }
+        public string? birthPlace { get; set; }
         public string? birthDate { get; set; }
         public string? occupation { get; set; }
         public string? phoneNumber { get; set; }

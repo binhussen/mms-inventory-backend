@@ -66,9 +66,9 @@ namespace API.Controllers
                 _logger.LogError("Invalid model state for the StoreHeaderForCreationDto object");
                 return UnprocessableEntity(ModelState);
             }
-
+            storeHeader.StoreItems.ToList().ForEach(item =>
+            item.availableQuantity = item.quantity);
             var storeHeaderEntity = _mapper.Map<StoreHeader>(storeHeader);
-
             _repository.StoreHeader.CreateStoreHeader(storeHeaderEntity);
             await _repository.SaveAsync();
 
@@ -97,7 +97,8 @@ namespace API.Controllers
                 _logger.LogInfo($"StoreHeader with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
-
+            storeHeader.StoreItems.ToList().ForEach(item =>
+            item.availableQuantity = item.quantity);
             _mapper.Map(storeHeader, storeHeaderEntity);
             await _repository.SaveAsync();
 

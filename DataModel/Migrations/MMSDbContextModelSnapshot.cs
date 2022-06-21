@@ -61,7 +61,7 @@ namespace DataModel.Migrations
                     b.Property<string>("birthDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("bithPlace")
+                    b.Property<string>("birthPlace")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("homeNumber")
@@ -306,6 +306,9 @@ namespace DataModel.Migrations
                         .HasColumnName("storeItemId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<bool>("availability")
+                        .HasColumnType("bit");
 
                     b.Property<int>("availableQuantity")
                         .HasColumnType("int");
