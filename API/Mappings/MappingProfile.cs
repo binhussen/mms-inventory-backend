@@ -17,6 +17,7 @@ namespace API.Mappings
         public MappingProfile()
         {
             //Approve
+            CreateMap<Approve, ApproveDto>();
             CreateMap<ApproveForCreationDto, Approve>();
             CreateMap<RequestItemStatus, RequestItem>().ReverseMap();
             //CreateMap<StoreItemAvailableQuantity, StoreItem>().ReverseMap();

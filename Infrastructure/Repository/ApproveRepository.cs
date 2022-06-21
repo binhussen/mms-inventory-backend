@@ -1,6 +1,7 @@
 ﻿using Contracts.Interfaces;
 using DataModel;
 using DataModel.Models.Entities;
+using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -22,14 +23,30 @@ namespace Infrastructure.Repository
             Delete(approve);
         }
 
-        public async Task<Approve> GetApproveAsync(int id, bool trackChanges) =>
+        public async Task<Approve> GetApproveByIdAsync(int id, bool trackChanges) =>
          await FindByCondition(e => e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
 
-        public async Task<IEnumerable<Approve>> GetApproveAsync(bool trackChanges) =>
-            await FindAll(trackChanges)
-                        .OrderBy(c => c.approvedQuantity)
-                       .ToListAsync();
+        public async Task<PagedList<Approve>> GetAllApprovesAsync(ApproveParameters approveParameters, bool trackChanges)
+        {
+            var approve = await FindAll(trackChanges)
+                       .OrderBy(c => c.approvedQuantity)
+                      .ToListAsync();
+            return PagedList<Approve>
+                .ToPagedList(approve, approveParameters.PageNumber, approveParameters.PageSize);
+
+        }
+
+        public async Task<PagedList<Approve>> GetAllApprovesAsync(int requestId, ApproveParameters approveParameters, bool trackChanges)
+        {
+            var approves = await FindByCondition(e => e.requestId.Equals(requestId), trackChanges)
+                          .OrderBy(e => e.storeId)
+                           // .Select(s => s.status == "P" ? "Pending" : s.status == "R" ? "Rejected" : s.status == "C" ? "Canceled" : "Approved")
+
+                           .ToListAsync();
+            return PagedList<Approve>
+                .ToPagedList(approves, approveParameters.PageNumber, approveParameters.PageSize);
+        }
     }
 }
 
