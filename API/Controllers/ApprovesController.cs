@@ -21,7 +21,7 @@ namespace API.Controllers
             _logger = logger;
             _mapper = mapper;
         }
-        [HttpGet("Approves", Name = "GetAllApproves")]
+        [HttpGet("approves", Name = "GetAllApproves")]
         public async Task<IActionResult> GetAllApproves([FromQuery] ApproveParameters approveParameters)
         {
             var approves = await _repository.Approve.GetAllApprovesAsync(approveParameters, trackChanges: false);
@@ -31,7 +31,7 @@ namespace API.Controllers
             var approveDtos = _mapper.Map<IEnumerable<ApproveDto>>(approves);
             return Ok(approveDtos);
         }
-        [HttpGet("{id}", Name = "ApproveById")]
+        [HttpGet("approve/{id}", Name = "ApproveById")]
         public async Task<IActionResult> GetApproveById(int id)
         {
             var approve = await _repository.Approve.GetApproveByIdAsync(id, trackChanges: false);
@@ -46,7 +46,7 @@ namespace API.Controllers
                 return Ok(approveDto);
             }
         }
-        [HttpGet("requests/{requestid}/approves", Name = "GetApproveForRequest")]
+        [HttpGet("approves/{requestid}", Name = "GetApproveForRequest")]
         public async Task<IActionResult> GetApprovesForRequest(int requestid, [FromQuery] ApproveParameters approveParameters)
         {
             var request = await _repository.RequestItem.GetRequestAsync(requestid, trackChanges: false);

@@ -14,6 +14,7 @@ namespace DataModel.Models.Entities
         public string shelfNo { get; set; }
         public int quantity { get; set; }
         public int availableQuantity { get; set; }
+        public bool availability { get; set; } = true;
 
         [ForeignKey(nameof(StoreHeader))]
         public int storeHeaderId { get; set; }
