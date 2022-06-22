@@ -4,18 +4,16 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataModel.Migrations
+namespace DataModel.Migrations.MMSDb
 {
     [DbContext(typeof(MMSDbContext))]
-    [Migration("20220621072559_initial")]
-    partial class initial
+    partial class MMSDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,7 +61,7 @@ namespace DataModel.Migrations
                     b.Property<string>("birthDate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("bithPlace")
+                    b.Property<string>("birthPlace")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("homeNumber")
@@ -308,6 +306,9 @@ namespace DataModel.Migrations
                         .HasColumnName("storeItemId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<bool>("availability")
+                        .HasColumnType("bit");
 
                     b.Property<int>("availableQuantity")
                         .HasColumnType("int");

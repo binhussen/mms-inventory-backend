@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DataModel.Migrations.ApplicationDb
+namespace DataModel.Migrations
 {
-    public partial class auth : Migration
+    public partial class IntialIdentityDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,10 +29,7 @@ namespace DataModel.Migrations.ApplicationDb
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -164,12 +160,17 @@ namespace DataModel.Migrations.ApplicationDb
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1c5d4209-492e-4941-966e-12fc20adc3ce", "c95541f5-1931-45f1-8f35-2674a48eeb3a", "Manager", "MANAGER" });
+                values: new object[] { "83c561c9-d6a1-43fc-93c1-f6e457d21531", "ce4d9a9d-2520-4405-86fb-1dee671dcd05", "storeman", "storeman" });
 
             migrationBuilder.InsertData(
                 table: "Roles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "b7577da8-a3db-443c-955a-345a3d94cd28", "4108bff8-6817-450b-8152-6e661a06a544", "Administrator", "ADMINISTRATOR" });
+                values: new object[] { "fbf7f8cb-8a40-486d-a436-e2bb47b95d24", "4a26931a-7acf-4c76-b5aa-2ed81b09a071", "Admin", "Admin" });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "fd53c4c4-ee2d-4785-8ab6-7136c40cbcbd", "ee65bbfa-101a-43ae-9630-135dfeae9a8b", "mmd", "MMD" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",

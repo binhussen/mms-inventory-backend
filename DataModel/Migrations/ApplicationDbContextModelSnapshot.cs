@@ -4,18 +4,16 @@ using DataModel.Identity.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataModel.Migrations.ApplicationDb
+namespace DataModel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220621072705_auth")]
-    partial class auth
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,14 +30,8 @@ namespace DataModel.Migrations.ApplicationDb
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DateOfBirth")
@@ -53,9 +45,6 @@ namespace DataModel.Migrations.ApplicationDb
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -139,17 +128,24 @@ namespace DataModel.Migrations.ApplicationDb
                     b.HasData(
                         new
                         {
-                            Id = "1c5d4209-492e-4941-966e-12fc20adc3ce",
-                            ConcurrencyStamp = "c95541f5-1931-45f1-8f35-2674a48eeb3a",
-                            Name = "Manager",
-                            NormalizedName = "MANAGER"
+                            Id = "fd53c4c4-ee2d-4785-8ab6-7136c40cbcbd",
+                            ConcurrencyStamp = "ee65bbfa-101a-43ae-9630-135dfeae9a8b",
+                            Name = "mmd",
+                            NormalizedName = "MMD"
                         },
                         new
                         {
-                            Id = "b7577da8-a3db-443c-955a-345a3d94cd28",
-                            ConcurrencyStamp = "4108bff8-6817-450b-8152-6e661a06a544",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
+                            Id = "fbf7f8cb-8a40-486d-a436-e2bb47b95d24",
+                            ConcurrencyStamp = "4a26931a-7acf-4c76-b5aa-2ed81b09a071",
+                            Name = "Admin",
+                            NormalizedName = "Admin"
+                        },
+                        new
+                        {
+                            Id = "83c561c9-d6a1-43fc-93c1-f6e457d21531",
+                            ConcurrencyStamp = "ce4d9a9d-2520-4405-86fb-1dee671dcd05",
+                            Name = "storeman",
+                            NormalizedName = "storeman"
                         });
                 });
 

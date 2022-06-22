@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DataModel.Migrations
+namespace DataModel.Migrations.MMSDb
 {
-    public partial class initial : Migration
+    public partial class InitialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,7 +20,7 @@ namespace DataModel.Migrations
                     subCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     woreda = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     homeNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    bithPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    birthPlace = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     birthDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     occupation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     phoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -161,6 +160,7 @@ namespace DataModel.Migrations
                     shelfNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     availableQuantity = table.Column<int>(type: "int", nullable: false),
+                    availability = table.Column<bool>(type: "bit", nullable: false),
                     storeHeaderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataModel.Migrations
+namespace DataModel.Migrations.MMSDb
 {
     [DbContext(typeof(MMSDbContext))]
-    [Migration("20220621103714_property")]
-    partial class property
+    [Migration("20220622073455_InitialDB")]
+    partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
