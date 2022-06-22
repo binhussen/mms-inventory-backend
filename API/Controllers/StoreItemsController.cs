@@ -26,6 +26,8 @@ namespace API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetStoreItemsForStoreHeader(int headerid, [FromQuery] StoreItemParameters storeItemParameters)
         {
+            if (!storeItemParameters.ValidQuantityRange)
+                return BadRequest("Max quantity can't be less than min quantity.");
 
             var storeHeader = await _repository.StoreHeader.GetStoreHeaderAsync(headerid, trackChanges: false);
             if (storeHeader == null)
