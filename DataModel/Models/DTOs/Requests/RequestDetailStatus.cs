@@ -4,5 +4,6 @@
     {
         public string status { get; set; }
         public int approvedQuantity { get; set; }
+        public string attachments { get; set; }
     }
 }

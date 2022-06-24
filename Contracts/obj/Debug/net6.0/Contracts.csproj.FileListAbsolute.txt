@@ -58,3 +58,18 @@ C:\Users\mhdbi\Documents\Projects\Work\mms-backend\Contracts\obj\Debug\net6.0\Co
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\Contracts\obj\Debug\net6.0\refint\Contracts.dll
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\Contracts\obj\Debug\net6.0\Contracts.pdb
 C:\Users\mhdbi\Documents\Projects\Work\mms-backend\Contracts\obj\Debug\net6.0\ref\Contracts.dll
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\bin\Debug\net6.0\Contracts.deps.json
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\bin\Debug\net6.0\Contracts.dll
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\bin\Debug\net6.0\Contracts.pdb
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\bin\Debug\net6.0\DataModel.dll
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\bin\Debug\net6.0\DataModel.pdb
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.csproj.AssemblyReference.cache
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfoInputs.cache
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfo.cs
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.csproj.CoreCompileInputs.cache
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.csproj.CopyComplete
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.dll
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\refint\Contracts.dll
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.pdb
+C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\ref\Contracts.dll
