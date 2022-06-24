@@ -5727,11 +5727,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\mhdbi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5751,11 +5751,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\Contracts\\Contracts.csproj": {
-              "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\Contracts\\Contracts.csproj"
+            "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\Contracts.csproj"
             },
-            "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\DataModel\\DataModel.csproj": {
-              "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\DataModel\\DataModel.csproj"
+            "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj": {
+              "projectPath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\DataModel\\DataModel.csproj"
             }
           }
         }

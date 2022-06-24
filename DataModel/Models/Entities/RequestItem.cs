@@ -14,6 +14,7 @@ namespace DataModel.Models.Entities
         public int approvedQuantity { get; set; } = 0;
         [ForeignKey(nameof(RequestHeader))]
         public int requestHeaderId { get; set; }
+        public string? attachments { get; set; }
         public RequestHeader RequestHeader { get; set; }
         //public string RequestingCompletedFlag { get; set; }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4x273aNlTRN/DmOilDOXg38yOEjq+k51Rl0/3BTIj+NQvyd716RD6gJkPDiNWNYKuEnzidMrByFKQN2ow5o3fA==",
+  "dgSpecHash": "4VUhOqdE7Lzkw6ZXcvPWLVYg4GVsFP5FGvGzChbRob7P79sQXF7Ef4TrioGYBoZ/O9dOMMHm1//u24fVoiKbNg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mhdbi\\Documents\\Projects\\New folder\\mms-backend\\Contracts\\Contracts.csproj",
+  "projectFilePath": "C:\\Users\\mhdbi\\Documents\\Projects\\Work\\mms-backend\\Contracts\\Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mhdbi\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\mhdbi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

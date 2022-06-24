@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DataModel.Migrations.MMSDb
+namespace DataModel.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class initaial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -133,7 +134,8 @@ namespace DataModel.Migrations.MMSDb
                     status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     requestedQuantity = table.Column<int>(type: "int", nullable: false),
                     approvedQuantity = table.Column<int>(type: "int", nullable: false),
-                    requestHeaderId = table.Column<int>(type: "int", nullable: false)
+                    requestHeaderId = table.Column<int>(type: "int", nullable: false),
+                    attachments = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

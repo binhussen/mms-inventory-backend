@@ -18,7 +18,6 @@ namespace DataModel.Models.Entities
 
         [ForeignKey(nameof(StoreHeader))]
         public int storeHeaderId { get; set; }
-        public string? attachments { get; set; }
         public StoreHeader StoreHeader { get; set; }
     }
 }
