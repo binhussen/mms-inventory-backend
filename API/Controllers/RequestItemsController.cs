@@ -196,7 +196,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("requestapprove/{id}")]
-        public async Task<IActionResult> RequestApproval(int id, int qty, string status)
+        public async Task<IActionResult> RequestApproval(int id, int qty, string status,string attachments)
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
             if (status == "Reject" | qty <= 0)
@@ -204,6 +204,7 @@ namespace API.Controllers
                 var requestDto = new RequestItemStatus()
                 {
                     status = "Reject",
+                    attachments = attachments
                 };
                 _mapper.Map(requestDto, requestItemEntity);
                 _logger.LogInfo($"StatusMessage : Request with {id} has been Rejected");
@@ -246,6 +247,7 @@ namespace API.Controllers
                             storeDto = new StoreItemAvailableQuantity()
                             {
                                 availableQuantity = remainToStore,
+                                availability = remainToStore == 0 ? false : true
                             };
                         }
                         else
@@ -260,6 +262,7 @@ namespace API.Controllers
                             storeDto = new StoreItemAvailableQuantity()
                             {
                                 availableQuantity = 0,
+                                availability = false
                             };
                         }
                         var approveItem = _mapper.Map<Approve>(approveDto);
@@ -272,7 +275,8 @@ namespace API.Controllers
                     var requestDto = new RequestItemStatus()
                     {
                         status = "Approve",
-                        approvedQuantity = qty
+                        approvedQuantity = qty,
+                        attachments = attachments
                     };
                     _mapper.Map(requestDto, requestItemEntity);
                     _logger.LogInfo($"StatusMessage : {id} has been Approved");

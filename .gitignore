@@ -4,6 +4,13 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+*.dll
+*.exe
+*.pdb
+*.cache
+*.txt
+*.props
+*.editorconfig
 *.rsuser
 *.suo
 *.user
