@@ -4,16 +4,18 @@ using DataModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace DataModel.Migrations.MMSDb
+namespace DataModel.Migrations
 {
     [DbContext(typeof(MMSDbContext))]
-    partial class MMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220624110155_initaial")]
+    partial class initaial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -239,6 +241,9 @@ namespace DataModel.Migrations.MMSDb
 
                     b.Property<int>("approvedQuantity")
                         .HasColumnType("int");
+
+                    b.Property<string>("attachments")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("model")
                         .IsRequired()

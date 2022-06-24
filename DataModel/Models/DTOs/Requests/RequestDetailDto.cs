@@ -9,6 +9,7 @@
         public int requestedQuantity { get; set; }
         public string status { get; set; }
         public int approvedQuantity { get; set; }
+        public string? attachments { get; set; }
     }
 
 }
