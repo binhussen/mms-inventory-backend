@@ -12,6 +12,8 @@
         IDistribute Distribute { get; }
         ICustomer Customer { get; }
         IWarranty CustomerWarranty { get; }
+        IReturnHeader ReturnHeader { get; }
+        IReturnItem ReturnItem { get; }
 
         //int UpdateRequestItemStatus(string model, string RequestStatus);
         //int UpdateRequestItemStatus(int requestItemId);

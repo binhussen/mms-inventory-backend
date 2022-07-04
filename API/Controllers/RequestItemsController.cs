@@ -196,7 +196,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("requestapprove/{id}")]
-        public async Task<IActionResult> RequestApproval(int id, int qty, string status,string attachments)
+        public async Task<IActionResult> RequestApproval(int id, int qty, string status, string attachments)
         {
             var requestItemEntity = await _repository.RequestItem.GetRequestAsync(id, trackChanges: true);
             if (status == "Reject" | qty <= 0)
