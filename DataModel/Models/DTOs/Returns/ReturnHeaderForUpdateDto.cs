@@ -1,6 +1,6 @@
 ﻿namespace DataModel.Models.DTOs.Returns
 {
-    public class ReturnHeaderForUpdateDto
+    public class ReturnHeaderForUpdateDto : ReturnHeaderForManupulationDto
     {
         public IEnumerable<ReturnItemForCreationDto>? ReturnItems { get; set; }
     }
