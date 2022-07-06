@@ -23,7 +23,7 @@ namespace API
             services.AddSwaggerExtension();
             services.ConfigureDI();
             services.ConfigureCors();
-            services.ConfigureIdentitySqlContext(Configuration);
+            //services.ConfigureIdentitySqlContext(Configuration);
             services.ConfigureSqlContext(Configuration);
             services.ConfigureLoggerService();
             services.AddAutoMapper(typeof(Startup));

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Contracts.Service;
-using DataModel.Identity.Contexts;
+using DataModel;
 using DataModel.Identity.Models;
 using DataModel.Models.DTOs.User;
 using Microsoft.AspNetCore.Identity;
@@ -19,21 +19,21 @@ namespace API.Controllers.Identity
         private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly ApplicationDbContext _applicationDbContextt;
-        public AccountsController(ILoggerManager logger, IMapper mapper, UserManager<ApplicationUser> userManager, ApplicationDbContext applicationDbContext,
+        private readonly MMSDbContext _mmsDbContext;
+        public AccountsController(ILoggerManager logger, IMapper mapper, UserManager<ApplicationUser> userManager, MMSDbContext mmsDbContext,
                                  SignInManager<ApplicationUser> signInManager)
         {
             _logger = logger;
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
-            _applicationDbContextt = applicationDbContext;
+            _mmsDbContext = mmsDbContext;
         }
 
         [HttpGet(Name = "users")/*, Authorize*/]
         public async Task<IActionResult> GetListUsers()
         {
-            var users = await _applicationDbContextt.Users.ToListAsync();
+            var users = await _mmsDbContext.Users.ToListAsync();
             var usersDto = _mapper.Map<IEnumerable<AcountResponse>>(users);
             return Ok(usersDto);
 

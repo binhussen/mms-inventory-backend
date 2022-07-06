@@ -47,8 +47,8 @@ namespace API.Controllers
                 return Ok(returnHeaderDto);
             }
         }
-        [HttpPost(Name = "CreateRequestHeader")]
-        public async Task<IActionResult> CreateNotifyHeader([FromBody] ReturnHeaderForCreationDto returnHeader)
+        [HttpPost(Name = "CreateReturnHeader")]
+        public async Task<IActionResult> CreateReturnHeader([FromBody] ReturnHeaderForCreationDto returnHeader)
         {
             if (returnHeader == null)
             {
@@ -70,7 +70,7 @@ namespace API.Controllers
             var returnHeaderToReturn = _mapper.Map<ReturnHeaderDto>(returnHeaderEntity);
 
             // Disable BCC4002
-            return CreatedAtRoute("requestHeaderById", new { id = returnHeaderToReturn.id }, returnHeaderToReturn);
+            return CreatedAtRoute("returnHeaderById", new { id = returnHeaderToReturn.id }, returnHeaderToReturn);
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateReturnHeader(int id, [FromBody] ReturnHeaderForUpdateDto returnHeader)

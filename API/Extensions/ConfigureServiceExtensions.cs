@@ -1,7 +1,6 @@
 ﻿using Contracts.Interfaces;
 using Contracts.Service;
 using DataModel;
-using DataModel.Identity.Contexts;
 using DataModel.Identity.Models;
 using Infrastructure.Repository;
 using Infrastructure.Service;
@@ -73,11 +72,11 @@ namespace API.Extensions
             });
         }
 
-        public static void ConfigureIdentitySqlContext(this IServiceCollection services, IConfiguration configuration) =>
-           services.AddDbContext<ApplicationDbContext>(opts =>
-               opts.UseSqlServer(configuration.GetConnectionString("IdentityConnection"),
-                  b => b.MigrationsAssembly("DataModel")));
-        //sql server configration
+        //public static void ConfigureIdentitySqlContext(this IServiceCollection services, IConfiguration configuration) =>
+        //   services.AddDbContext<ApplicationDbContext>(opts =>
+        //       opts.UseSqlServer(configuration.GetConnectionString("IdentityConnection"),
+        //          b => b.MigrationsAssembly("DataModel")));
+        ////sql server configration
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<MMSDbContext>(opts =>
                 opts.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
@@ -109,7 +108,7 @@ namespace API.Extensions
                 opt.Lockout.MaxFailedAccessAttempts = 3;
             })
 
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<MMSDbContext>()
                 .AddDefaultTokenProviders();
         }
         public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)

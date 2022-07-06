@@ -1,9 +1,13 @@
+using DataModel.Identity.Configuration;
+using DataModel.Identity.Models;
 using DataModel.Models.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataModel
 {
-    public class MMSDbContext : DbContext
+    public class MMSDbContext : IdentityDbContext<ApplicationUser>
     {
 
         public MMSDbContext(DbContextOptions<MMSDbContext> options) : base(options)
@@ -12,6 +16,42 @@ namespace DataModel
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.Entity<ApplicationUser>(entity =>
+           {
+               entity.ToTable(name: "Users");
+           });
+
+            modelBuilder.Entity<IdentityRole>(entity =>
+            {
+                entity.ToTable(name: "Roles");
+            });
+            modelBuilder.Entity<IdentityUserRole<string>>(entity =>
+            {
+                entity.ToTable("UserRoles");
+            });
+
+            modelBuilder.Entity<IdentityUserClaim<string>>(entity =>
+            {
+                entity.ToTable("UserClaims");
+            });
+
+            modelBuilder.Entity<IdentityUserLogin<string>>(entity =>
+            {
+                entity.ToTable("UserLogins");
+            });
+
+            modelBuilder.Entity<IdentityRoleClaim<string>>(entity =>
+            {
+                entity.ToTable("RoleClaims");
+
+            });
+
+            modelBuilder.Entity<IdentityUserToken<string>>(entity =>
+            {
+                entity.ToTable("UsersTokens");
+            });
 
         }
 
@@ -25,6 +65,8 @@ namespace DataModel
         public DbSet<Distribute> Distributes { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerWarranty> CustemerWarranties { get; set; }
+        public DbSet<ReturnHeader> ReturnHeaders { get; set; }
+        public DbSet<ReturnItem> ReturnItems { get; set; }
 
 
     }
