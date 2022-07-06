@@ -19,6 +19,9 @@ namespace Infrastructure.Repository
         private IDistribute _distributeRepository;
         private ICustomer _customerRepository;
         private IWarranty _warrantyRepository;
+        private IReturnHeader _returnHeaderRepository;
+        private IReturnItem _returnItemRepository;
+        /// <summary>
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
         /// </summary>
@@ -128,6 +131,24 @@ namespace Infrastructure.Repository
                 if (_warrantyRepository == null)
                     _warrantyRepository = new WarrantyRepository(_repositoryContext);
                 return _warrantyRepository;
+            }
+        }
+        public IReturnHeader ReturnHeader
+        {
+            get
+            {
+                if (_returnHeaderRepository == null)
+                    _returnHeaderRepository = new ReturnHeaderRepository(_repositoryContext);
+                return _returnHeaderRepository;
+            }
+        }
+        public IReturnItem ReturnItem
+        {
+            get
+            {
+                if (_returnItemRepository == null)
+                    _returnItemRepository = new ReturnItemRepository(_repositoryContext);
+                return _returnItemRepository;
             }
         }
 

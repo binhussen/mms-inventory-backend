@@ -5,6 +5,7 @@ using DataModel.Models.DTOs.Customers;
 using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Notify;
 using DataModel.Models.DTOs.Requests;
+using DataModel.Models.DTOs.Returns;
 using DataModel.Models.DTOs.Stores;
 using DataModel.Models.DTOs.User;
 using DataModel.Models.DTOs.Warranty;
@@ -60,6 +61,13 @@ namespace API.Mappings
             CreateMap<Distribute, DistributeDto>();
             CreateMap<DistributeForCreationDto, Distribute>();
             CreateMap<DistributeForUpdateDto, Distribute>();
+            //Returns
+            CreateMap<ReturnHeader, ReturnHeaderDto>();
+            CreateMap<ReturnItem, ReturnItemDto>();
+            CreateMap<ReturnHeaderForCreationDto, ReturnHeader>();
+            CreateMap<ReturnItemForCreationDto, ReturnItem>();
+            CreateMap<ReturnHeaderForUpdateDto, ReturnHeader>();
+            CreateMap<ReturnItemForUpdateDto, ReturnItem>().ReverseMap();
         }
     }
 }

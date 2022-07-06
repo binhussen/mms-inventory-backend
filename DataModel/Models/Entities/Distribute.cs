@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataModel.Models.Entities
 {
@@ -24,6 +19,6 @@ namespace DataModel.Models.Entities
 
         /*[ForeignKey(nameof(StoreItem))]
         public int StoreId { get; set; }
-        public StoreItem StoreItem { get; set; } */   
+        public StoreItem StoreItem { get; set; } */
     }
 }
