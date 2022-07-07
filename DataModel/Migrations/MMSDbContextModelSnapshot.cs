@@ -144,6 +144,9 @@ namespace DataModel.Migrations
                     b.Property<string>("homeNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("hrId")
+                        .HasColumnType("int");
+
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
@@ -169,6 +172,8 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("hrId");
 
                     b.ToTable("Customers");
                 });
@@ -219,16 +224,63 @@ namespace DataModel.Migrations
                     b.Property<int>("approveId")
                         .HasColumnType("int");
 
-                    b.Property<int>("userId")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
                     b.HasIndex("approveId");
 
-                    b.HasIndex("userId");
-
                     b.ToTable("Distributes");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.HR", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("hrId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("birthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("fpId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("higherDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("middleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("occpation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("rank")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("reponsibilty")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Hrs");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyHeader", b =>
@@ -300,7 +352,12 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("hrId")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
+
+                    b.HasIndex("hrId");
 
                     b.ToTable("RequestHeaders");
                 });
@@ -366,7 +423,12 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("hrId")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
+
+                    b.HasIndex("hrId");
 
                     b.ToTable("ReturnHeaders");
                 });
@@ -385,9 +447,6 @@ namespace DataModel.Migrations
 
                     b.Property<string>("attachments")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("distributeId")
-                        .HasColumnType("int");
 
                     b.Property<string>("model")
                         .IsRequired()
@@ -412,8 +471,6 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
-
-                    b.HasIndex("distributeId");
 
                     b.HasIndex("returnHeaderId");
 
@@ -530,22 +587,22 @@ namespace DataModel.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f16fc276-174a-459e-8711-68e2cbfe57a9",
-                            ConcurrencyStamp = "0cc21aea-0021-4cda-b6ad-55c0db6b969e",
+                            Id = "a5ab1c48-5973-42fc-b7bb-0132992224e8",
+                            ConcurrencyStamp = "c43eb8fb-1970-4243-b85c-517936cbc76e",
                             Name = "mmd",
                             NormalizedName = "MMD"
                         },
                         new
                         {
-                            Id = "86e3c755-d0f9-42ef-beb1-74f0ef94d370",
-                            ConcurrencyStamp = "655e704a-7391-4dfa-ae37-99b0cd983673",
+                            Id = "661570c2-38eb-4940-802c-20b0ded9f93c",
+                            ConcurrencyStamp = "0695cb14-d062-4bad-9032-fc763d74b713",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "b214b233-21db-4f3f-ad33-165e426d616d",
-                            ConcurrencyStamp = "3e94b224-5617-4196-8e21-219ee36d127a",
+                            Id = "97800d19-6a7f-410b-9e13-67256559de91",
+                            ConcurrencyStamp = "ae5693c3-4be4-4e22-8163-e100da365853",
                             Name = "storeman",
                             NormalizedName = "storeman"
                         });
@@ -676,6 +733,17 @@ namespace DataModel.Migrations
                     b.Navigation("StoreItem");
                 });
 
+            modelBuilder.Entity("DataModel.Models.Entities.Customer", b =>
+                {
+                    b.HasOne("DataModel.Models.Entities.HR", "HR")
+                        .WithMany()
+                        .HasForeignKey("hrId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HR");
+                });
+
             modelBuilder.Entity("DataModel.Models.Entities.CustomerWarranty", b =>
                 {
                     b.HasOne("DataModel.Models.Entities.Customer", "Customer")
@@ -695,15 +763,7 @@ namespace DataModel.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DataModel.Models.Entities.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Approve");
-
-                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyItem", b =>
@@ -717,6 +777,17 @@ namespace DataModel.Migrations
                     b.Navigation("NotifyHeader");
                 });
 
+            modelBuilder.Entity("DataModel.Models.Entities.RequestHeader", b =>
+                {
+                    b.HasOne("DataModel.Models.Entities.HR", "HR")
+                        .WithMany()
+                        .HasForeignKey("hrId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HR");
+                });
+
             modelBuilder.Entity("DataModel.Models.Entities.RequestItem", b =>
                 {
                     b.HasOne("DataModel.Models.Entities.RequestHeader", "RequestHeader")
@@ -728,21 +799,24 @@ namespace DataModel.Migrations
                     b.Navigation("RequestHeader");
                 });
 
-            modelBuilder.Entity("DataModel.Models.Entities.ReturnItem", b =>
+            modelBuilder.Entity("DataModel.Models.Entities.ReturnHeader", b =>
                 {
-                    b.HasOne("DataModel.Models.Entities.Distribute", "Distribute")
+                    b.HasOne("DataModel.Models.Entities.HR", "HR")
                         .WithMany()
-                        .HasForeignKey("distributeId")
+                        .HasForeignKey("hrId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("HR");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.ReturnItem", b =>
+                {
                     b.HasOne("DataModel.Models.Entities.ReturnHeader", "ReturnHeader")
                         .WithMany("ReturnItems")
                         .HasForeignKey("returnHeaderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Distribute");
 
                     b.Navigation("ReturnHeader");
                 });

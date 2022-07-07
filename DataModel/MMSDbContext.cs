@@ -67,6 +67,7 @@ namespace DataModel
         public DbSet<CustomerWarranty> CustemerWarranties { get; set; }
         public DbSet<ReturnHeader> ReturnHeaders { get; set; }
         public DbSet<ReturnItem> ReturnItems { get; set; }
+        public DbSet<HR> Hrs { get; set; }
 
 
     }

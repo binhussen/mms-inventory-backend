@@ -21,6 +21,7 @@ namespace Infrastructure.Repository
         private IWarranty _warrantyRepository;
         private IReturnHeader _returnHeaderRepository;
         private IReturnItem _returnItemRepository;
+        private IHr _hrRepository;
         /// <summary>
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
@@ -151,6 +152,17 @@ namespace Infrastructure.Repository
                 return _returnItemRepository;
             }
         }
+
+        public IHr HR
+        {
+            get
+            {
+                if (_hrRepository == null)
+                    _hrRepository = new HrRepository(_repositoryContext);
+                return _hrRepository;
+            }
+        }
+
 
         /*public int UpdateRequestItemStatus(string model, string RequestStatus)
         {
