@@ -6,9 +6,9 @@ namespace DataModel.Models.Entities
     {
         [Column("distributeId")]
         public int id { get; set; }
-        [ForeignKey(nameof(Customer))]
-        public int userId { get; set; }
-        public Customer Customer { get; set; }
+        //[ForeignKey(nameof(HR))]
+        //public int hrId { get; set; }
+        //public HR HR { get; set; }
         [ForeignKey(nameof(Approve))]
         public int approveId { get; set; }
         public Approve Approve { get; set; }

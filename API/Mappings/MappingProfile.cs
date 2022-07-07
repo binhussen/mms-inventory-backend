@@ -3,6 +3,7 @@ using DataModel.Identity.Models;
 using DataModel.Models.DTOs.Approve;
 using DataModel.Models.DTOs.Customers;
 using DataModel.Models.DTOs.Distribute;
+using DataModel.Models.DTOs.Hrs;
 using DataModel.Models.DTOs.Notify;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Returns;
@@ -68,6 +69,10 @@ namespace API.Mappings
             CreateMap<ReturnItemForCreationDto, ReturnItem>();
             CreateMap<ReturnHeaderForUpdateDto, ReturnHeader>();
             CreateMap<ReturnItemForUpdateDto, ReturnItem>().ReverseMap();
+            //Hrs
+            CreateMap<HR, HrDto>();
+            CreateMap<HrForCreationDto, HR>();
+            CreateMap<HrForUpdateDto, HR>().ReverseMap();
         }
     }
 }

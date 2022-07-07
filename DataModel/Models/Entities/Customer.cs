@@ -17,6 +17,10 @@ namespace DataModel.Models.Entities
         public string? occupation { get; set; }
         public string? phoneNumber { get; set; }
         public DateTimeOffset? timeLimit { get; set; }
+        [ForeignKey(nameof(HR))]
+
+        public int hrId { get; set; }
+        public HR HR { get; set; }
         public ICollection<CustomerWarranty> CustomerWarranties { get; set; }
     }
 }

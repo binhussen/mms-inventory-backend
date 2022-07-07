@@ -16,8 +16,8 @@ namespace DataModel.Models.Entities
         [ForeignKey(nameof(ReturnHeader))]
         public int returnHeaderId { get; set; }
         public ReturnHeader ReturnHeader { get; set; }
-        [ForeignKey(nameof(Distribute))]
-        public int distributeId { get; set; }
-        public Distribute Distribute { get; set; }
+        //[ForeignKey(nameof(Distribute))]
+        //public int distributeId { get; set; }
+        //public Distribute Distribute { get; set; }
     }
 }

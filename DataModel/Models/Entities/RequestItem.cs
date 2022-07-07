@@ -12,9 +12,10 @@ namespace DataModel.Models.Entities
         public string status { get; set; } = "Pending";
         public int requestedQuantity { get; set; }
         public int approvedQuantity { get; set; } = 0;
+        public string? attachments { get; set; }
+
         [ForeignKey(nameof(RequestHeader))]
         public int requestHeaderId { get; set; }
-        public string? attachments { get; set; }
         public RequestHeader RequestHeader { get; set; }
         //public string RequestingCompletedFlag { get; set; }
     }
