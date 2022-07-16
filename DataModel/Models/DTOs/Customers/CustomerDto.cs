@@ -14,5 +14,6 @@
         public string? occupation { get; set; }
         public string? phoneNumber { get; set; }
         public DateTimeOffset? timeLimit { get; set; }
+        public int hrId { get; set; }
     }
 }
