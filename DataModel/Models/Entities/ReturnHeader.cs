@@ -7,7 +7,7 @@ namespace DataModel.Models.Entities
         [Column("returnHeaderId")]
         public int id { get; set; }
         public string description { get; set; }
-        public string attachments { get; set; }
+        public string? attachments { get; set; }
         [ForeignKey(nameof(HR))]
 
         public int hrId { get; set; }
