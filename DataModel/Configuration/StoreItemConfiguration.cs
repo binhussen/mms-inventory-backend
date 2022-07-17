@@ -45,8 +45,8 @@ namespace DataModel.Configuration
                      model = "የፒኬአም መተረየስ",
                      serialNo = "serial 3",
                      type = "የፒኬአም መተረየስ",
-                     storeNo = "",
-                     shelfNo = "",
+                     storeNo = "N0 2",
+                     shelfNo = "No. 1",
                      quantity = 10,
                      availableQuantity = 10,
                      availability = true,
@@ -73,13 +73,27 @@ namespace DataModel.Configuration
                      model = "ካኑኒ ኤስ ሽጉጥ",
                      serialNo = "serial 5",
                      type = "ካኑኒ ኤስ ሽጉጥ",
-                     storeNo = "",
-                     shelfNo = "",
+                     storeNo = "N0 2",
+                     shelfNo = "No. 1",
                      quantity = 10,
                      availableQuantity = 10,
                      availability = true,
                      storeHeaderId = 2
-                 }
+                 },
+                   new StoreItem
+                   {
+                       id = 5,
+                       itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
+                       model = "ካኑኒ ኤስ ሽጉጥ",
+                       serialNo = "serial 6",
+                       type = "ካኑኒ ኤስ ሽጉጥ",
+                       storeNo = "N0 2",
+                       shelfNo = "No. 1",
+                       quantity = 10,
+                       availableQuantity = 10,
+                       availability = true,
+                       storeHeaderId = 1
+                   }
             );
         }
     }
