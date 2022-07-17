@@ -5,6 +5,6 @@
         public string name { get; set; }
         public string type { get; set; }
         public string model { get; set; }
-        public int requestedQuantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

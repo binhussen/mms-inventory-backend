@@ -1,3 +1,4 @@
+using DataModel.Configuration;
 using DataModel.Identity.Configuration;
 using DataModel.Identity.Models;
 using DataModel.Models.Entities;
@@ -18,6 +19,10 @@ namespace DataModel
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new NotifyHeaderConfiguration());
+            modelBuilder.ApplyConfiguration(new NotifyItemConfiguration());
+            modelBuilder.ApplyConfiguration(new StoreHeaderConfiguration());
+            modelBuilder.ApplyConfiguration(new StoreItemConfiguration());
             modelBuilder.Entity<ApplicationUser>(entity =>
            {
                entity.ToTable(name: "Users");

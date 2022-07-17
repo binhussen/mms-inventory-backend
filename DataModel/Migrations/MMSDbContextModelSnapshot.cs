@@ -303,6 +303,20 @@ namespace DataModel.Migrations
                     b.HasKey("id");
 
                     b.ToTable("NotifyHeaders");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            attachments = "Upload your Attachment",
+                            itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች"
+                        },
+                        new
+                        {
+                            id = 2,
+                            attachments = "Upload your Attachment",
+                            itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች"
+                        });
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.NotifyItem", b =>
@@ -313,6 +327,10 @@ namespace DataModel.Migrations
                         .HasColumnName("notifyItemId");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<string>("model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name")
                         .IsRequired()
@@ -333,6 +351,53 @@ namespace DataModel.Migrations
                     b.HasIndex("notifyHeaderId");
 
                     b.ToTable("NotifyItems");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            model = "ክላሽ ጠብመንጃ",
+                            name = "ክላሽ ጠብመንጃ",
+                            notifyHeaderId = 1,
+                            quantity = 10,
+                            type = "ክላሽ ጠብመንጃ"
+                        },
+                        new
+                        {
+                            id = 2,
+                            model = "ክላሽ ጠብመንጃ ካርታ",
+                            name = "ክላሽ ጠብመንጃ ካርታ",
+                            notifyHeaderId = 2,
+                            quantity = 10,
+                            type = "ክላሽ ጠብመንጃ ካርታ"
+                        },
+                        new
+                        {
+                            id = 3,
+                            model = "የፒኬአም መተረየስ",
+                            name = "የፒኬአም መተረየስ",
+                            notifyHeaderId = 1,
+                            quantity = 10,
+                            type = "የፒኬአም መተረየስ"
+                        },
+                        new
+                        {
+                            id = 4,
+                            model = "ካኑኒ ኤስ ሽጉጥ",
+                            name = "ካኑኒ ኤስ ሽጉጥ",
+                            notifyHeaderId = 2,
+                            quantity = 10,
+                            type = "ካኑኒ ኤስ ሽጉጥ"
+                        },
+                        new
+                        {
+                            id = 5,
+                            model = "ጠብመንጃ AK-47",
+                            name = "ክላሽ ጠብመንጃ AK-47",
+                            notifyHeaderId = 2,
+                            quantity = 10,
+                            type = "ክላሽ ጠብመንጃ"
+                        });
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.RequestHeader", b =>
@@ -442,7 +507,7 @@ namespace DataModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<int>("approvedQuantity")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<string>("attachments")
@@ -456,15 +521,8 @@ namespace DataModel.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("requestedQuantity")
-                        .HasColumnType("int");
-
                     b.Property<int>("returnHeaderId")
                         .HasColumnType("int");
-
-                    b.Property<string>("status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("type")
                         .IsRequired()
@@ -504,6 +562,24 @@ namespace DataModel.Migrations
                     b.HasKey("id");
 
                     b.ToTable("StoreHeaders");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            donor = "የኢትዮጵያ መከላከያ",
+                            itemNoInExpenditureRegister = "no. 1",
+                            noOfEntryInTheRegisterOfIncomingGoods = "10 items",
+                            notifyHeaderId = 0
+                        },
+                        new
+                        {
+                            id = 2,
+                            donor = "የኢትዮጵያ መከላከያ",
+                            itemNoInExpenditureRegister = "no. 2",
+                            noOfEntryInTheRegisterOfIncomingGoods = "10 items",
+                            notifyHeaderId = 0
+                        });
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.StoreItem", b =>
@@ -556,6 +632,78 @@ namespace DataModel.Migrations
                     b.HasIndex("storeHeaderId");
 
                     b.ToTable("StoreItems");
+
+                    b.HasData(
+                        new
+                        {
+                            id = 1,
+                            availability = true,
+                            availableQuantity = 10,
+                            itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
+                            model = "ክላሽ ጠብመንጃ",
+                            quantity = 10,
+                            serialNo = "serial 1",
+                            shelfNo = "No. 1",
+                            storeHeaderId = 1,
+                            storeNo = "No. 1",
+                            type = "ክላሽ ጠብመንጃ"
+                        },
+                        new
+                        {
+                            id = 2,
+                            availability = true,
+                            availableQuantity = 10,
+                            itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
+                            model = "ክላሽ ጠብመንጃ ካርታ",
+                            quantity = 10,
+                            serialNo = "serial 2",
+                            shelfNo = "No 2",
+                            storeHeaderId = 1,
+                            storeNo = "No. 1",
+                            type = "ክላሽ ጠብመንጃ ካርታ"
+                        },
+                        new
+                        {
+                            id = 3,
+                            availability = true,
+                            availableQuantity = 10,
+                            itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
+                            model = "የፒኬአም መተረየስ",
+                            quantity = 10,
+                            serialNo = "serial 3",
+                            shelfNo = "",
+                            storeHeaderId = 2,
+                            storeNo = "",
+                            type = "የፒኬአም መተረየስ"
+                        },
+                        new
+                        {
+                            id = 4,
+                            availability = true,
+                            availableQuantity = 10,
+                            itemDescription = "የኢትዮጵያ መከላከያ መሳሪያዎችና ጥይቶች",
+                            model = "ክላሽ ጠብመንጃ AK-47",
+                            quantity = 10,
+                            serialNo = "serial 4",
+                            shelfNo = "No 2",
+                            storeHeaderId = 1,
+                            storeNo = "No. 1",
+                            type = "ክላሽ ጠብመንጃ"
+                        },
+                        new
+                        {
+                            id = 5,
+                            availability = true,
+                            availableQuantity = 10,
+                            itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
+                            model = "ካኑኒ ኤስ ሽጉጥ",
+                            quantity = 10,
+                            serialNo = "serial 5",
+                            shelfNo = "",
+                            storeHeaderId = 2,
+                            storeNo = "",
+                            type = "ካኑኒ ኤስ ሽጉጥ"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -587,22 +735,22 @@ namespace DataModel.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a5ab1c48-5973-42fc-b7bb-0132992224e8",
-                            ConcurrencyStamp = "c43eb8fb-1970-4243-b85c-517936cbc76e",
+                            Id = "0998dc8d-5837-4102-b664-16bd16d8000d",
+                            ConcurrencyStamp = "c646d99f-9202-408b-ac21-e4572c4acc60",
                             Name = "mmd",
                             NormalizedName = "MMD"
                         },
                         new
                         {
-                            Id = "661570c2-38eb-4940-802c-20b0ded9f93c",
-                            ConcurrencyStamp = "0695cb14-d062-4bad-9032-fc763d74b713",
+                            Id = "c0371e35-5cb2-4bea-ad0c-d737fbdb927f",
+                            ConcurrencyStamp = "0f68b6fc-dd9e-48ef-9556-a1b2779a04c4",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "97800d19-6a7f-410b-9e13-67256559de91",
-                            ConcurrencyStamp = "ae5693c3-4be4-4e22-8163-e100da365853",
+                            Id = "00a59825-d944-401e-920c-3d38e55147da",
+                            ConcurrencyStamp = "a808cddb-b208-4709-ad79-bba647d64460",
                             Name = "storeman",
                             NormalizedName = "storeman"
                         });
