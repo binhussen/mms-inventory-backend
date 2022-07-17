@@ -8,6 +8,7 @@ namespace DataModel.Models.Entities
         public int id { get; set; }
         public string type { get; set; }
         public string name { get; set; }
+        public string model { get; set; }
         public int quantity { get; set; }
         [ForeignKey(nameof(NotifyHeader))]
         public int notifyHeaderId { get; set; }
