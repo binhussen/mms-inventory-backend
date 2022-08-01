@@ -7,6 +7,5 @@
         public string type { get; set; }
         public string model { get; set; }
         public int Quantity { get; set; }
-        public string? attachments { get; set; }
     }
 }

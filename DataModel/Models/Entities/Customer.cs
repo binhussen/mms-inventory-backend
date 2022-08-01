@@ -13,7 +13,7 @@ namespace DataModel.Models.Entities
         public string? woreda { get; set; }
         public string? homeNumber { get; set; }
         public string? birthPlace { get; set; }
-        public string? birthDate { get; set; }
+        public DateTimeOffset? birthDate { get; set; }
         public string? occupation { get; set; }
         public string? phoneNumber { get; set; }
         public DateTimeOffset? timeLimit { get; set; }

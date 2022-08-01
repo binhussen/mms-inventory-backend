@@ -82,7 +82,7 @@ namespace DataModel.Configuration
                  },
                    new StoreItem
                    {
-                       id = 5,
+                       id = 6,
                        itemDescription = "የፌደራል ፖሊስ የክላሽ ጠብመንጃዎችና ጥይች",
                        model = "ካኑኒ ኤስ ሽጉጥ",
                        serialNo = "serial 6",

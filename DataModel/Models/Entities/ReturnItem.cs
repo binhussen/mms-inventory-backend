@@ -10,7 +10,6 @@ namespace DataModel.Models.Entities
         public string type { get; set; }
         public string model { get; set; }
         public int Quantity { get; set; }
-        public string? attachments { get; set; }
         [ForeignKey(nameof(ReturnHeader))]
         public int returnHeaderId { get; set; }
         public ReturnHeader ReturnHeader { get; set; }

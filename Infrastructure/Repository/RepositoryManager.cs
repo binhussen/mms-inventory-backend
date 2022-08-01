@@ -153,7 +153,7 @@ namespace Infrastructure.Repository
             }
         }
 
-        public IHr HR
+        public IHr Hrs
         {
             get
             {
@@ -163,50 +163,7 @@ namespace Infrastructure.Repository
             }
         }
 
-
-        /*public int UpdateRequestItemStatus(string model, string RequestStatus)
-        {
-            try
-            {
-                RequestItem BD = (from BDs in _repositoryContext.RequestItems
-                                  where BDs.model == model
-                                  select BDs).Single();
-
-                BD.status = RequestStatus;
-                _repositoryContext.RequestItems.Attach(BD);
-                _repositoryContext.Entry(BD).Property(x => x.requestApprovalDate).IsModified = true;
-                _repositoryContext.Entry(BD).Property(x => x.status).IsModified = true;
-                return _repositoryContext.SaveChanges();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }*/
-
-        /// <summary>
-        /// Saves the async.
-        /// </summary>
-        /// <returns>A Task.</returns>
         public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
 
-        //public int UpdateRequestItemStatus(int requestItemId)
-        //{
-        //    try
-        //    {
-        //        RequestItem requestitem = (from requstitems in _repositoryContext.RequestItems
-        //                                   where requstitems.id == requestItemId
-        //                                   select requstitems).Single();
-        //        requestitem.RequestingCompletedFlag = "C";
-        //        _repositoryContext.RequestItems.Attach(requestitem);
-        //        _repositoryContext.Entry(requestitem).Property(x => x.RequestingCompletedFlag).IsModified = true;
-        //        return _repositoryContext.SaveChanges();
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //}
     }
 }

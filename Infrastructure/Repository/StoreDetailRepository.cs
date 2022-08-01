@@ -55,5 +55,28 @@ namespace Infrastructure.Repository
         public async Task<StoreItem> GetStoreByIdAsync(int id, bool trackChanges) =>
             await FindByCondition(e => e.id.Equals(id), trackChanges)
              .SingleOrDefaultAsync();
+
+        public async Task UpdateStoreAsync(StoreItem storeItem)
+        {
+            if (RepositoryContext.StoreItems.Any(x => x.id != storeItem.id &&
+                                   x.model.ToLower() == storeItem.model.ToLower())) return;
+
+
+            var inv = await this.RepositoryContext.StoreItems.FindAsync(storeItem.id);
+            if (inv != null)
+            {
+                inv.model = storeItem.model;
+                inv.storeNo = storeItem.storeNo;
+                inv.quantity = storeItem.quantity;
+                inv.type = storeItem.type;
+                inv.availableQuantity = storeItem.availableQuantity;
+                inv.availability = storeItem.availability;
+                inv.serialNo = storeItem.serialNo;
+                inv.storeHeaderId = storeItem.storeHeaderId;
+                inv.shelfNo = storeItem.shelfNo;
+                inv.itemDescription = storeItem.itemDescription;
+                await RepositoryContext.SaveChangesAsync();
+            }
+        }
     }
 }

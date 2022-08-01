@@ -4,7 +4,7 @@
     {
         public int id { get; set; }
         public string fpId { get; set; }
-        public string name { get; set; }
+        public string firstName { get; set; }
         public string middleName { get; set; }
         public string LastName { get; set; }
         public string gender { get; set; }
