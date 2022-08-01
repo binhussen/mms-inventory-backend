@@ -15,7 +15,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<HR>> GetAllHrsAsync(HrParameters hrParameters, bool trackChanges)
         {
             var hr = await FindAll(trackChanges)
-                      .OrderBy(c => c.name)
+                      .OrderBy(c => c.firstName)
                      .ToListAsync();
             return PagedList<HR>
                 .ToPagedList(hr, hrParameters.PageNumber, hrParameters.PageSize);

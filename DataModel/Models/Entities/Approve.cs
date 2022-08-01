@@ -8,7 +8,7 @@ namespace DataModel.Models.Entities
         public int? id { get; set; }
         public int approvedQuantity { get; set; }
         [ForeignKey(nameof(StoreItem))]
-        public int storeId { get; set; }
+        public int storeItemId { get; set; }
         public StoreItem StoreItem { get; set; }
         [ForeignKey(nameof(RequestItem))]
         public int requestId { get; set; }

@@ -46,7 +46,9 @@ namespace API.Controllers
                 var returnHeaderDto = _mapper.Map<ReturnHeaderDto>(returnHeader);
                 return Ok(returnHeaderDto);
             }
+
         }
+
         [HttpPost(Name = "CreateReturnHeader")]
         public async Task<IActionResult> CreateReturnHeader([FromBody] ReturnHeaderForCreationDto returnHeader)
         {
@@ -65,13 +67,13 @@ namespace API.Controllers
             var returnHeaderEntity = _mapper.Map<ReturnHeader>(returnHeader);
 
             _repository.ReturnHeader.CreateReturnHeader(returnHeaderEntity);
+
             await _repository.SaveAsync();
 
             var returnHeaderToReturn = _mapper.Map<ReturnHeaderDto>(returnHeaderEntity);
-
-            // Disable BCC4002
             return CreatedAtRoute("returnHeaderById", new { id = returnHeaderToReturn.id }, returnHeaderToReturn);
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateReturnHeader(int id, [FromBody] ReturnHeaderForUpdateDto returnHeader)
         {

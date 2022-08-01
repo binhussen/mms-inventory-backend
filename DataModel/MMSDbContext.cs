@@ -23,6 +23,11 @@ namespace DataModel
             modelBuilder.ApplyConfiguration(new NotifyItemConfiguration());
             modelBuilder.ApplyConfiguration(new StoreHeaderConfiguration());
             modelBuilder.ApplyConfiguration(new StoreItemConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestHeaderConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestItemConfiguration());
+            modelBuilder.ApplyConfiguration(new HrConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerConfiguration());
+            modelBuilder.ApplyConfiguration(new CustomerWarrantyConfiguration());
             modelBuilder.Entity<ApplicationUser>(entity =>
            {
                entity.ToTable(name: "Users");

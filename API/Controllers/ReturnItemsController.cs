@@ -16,11 +16,13 @@ namespace API.Controllers
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
-        public ReturnItemsController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper)
+        private readonly IReturnToStore returnToStore;
+        public ReturnItemsController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper, IReturnToStore returnToStore)
         {
             _repository = repository;
             _logger = logger;
             _mapper = mapper;
+            this.returnToStore = returnToStore;
         }
         [HttpGet("returnheaders/{headerid}/items")]
         public async Task<IActionResult> GetReturnItemsForReturnHeader(int headerid, [FromQuery] ReturnItemParameters returnItemParameters)
@@ -154,5 +156,13 @@ namespace API.Controllers
 
             return NoContent();
         }
+        //[HttpPost]
+        //public async Task<IActionResult> ReturnToStore([FromBody] string rtnNumber, StoreItem storeItem, int quantity, string doneBy)
+        //{
+        //    returnToStore.ExecuteAsync(rtnNumber, storeItem, quantity, doneBy);
+        //    await _repository.SaveAsync();
+        //    return NoContent();
+
+        //}
     }
 }

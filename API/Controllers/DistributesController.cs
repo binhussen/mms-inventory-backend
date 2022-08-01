@@ -5,7 +5,6 @@ using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.Entities;
 using DataModel.Parameters;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -101,7 +100,7 @@ namespace API.Controllers
             var distribute = await _repository.Distribute.GetDistributeAsync(id, trackChanges: false);
             if (distribute == null)
             {
-                _logger.LogInfo($"Dsitribute with id: {id} doesn't exist in the database.");
+                _logger.LogInfo($"Distribute with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 

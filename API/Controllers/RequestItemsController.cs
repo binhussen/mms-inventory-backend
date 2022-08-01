@@ -40,14 +40,8 @@ namespace API.Controllers
             var requestItemsFromDb = await _repository.RequestItem.GetRequestItemsAsync(headerid, requestItemParameters, trackChanges: false);
 
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(requestItemsFromDb.MetaData));
-
             var requestItemsDto = _mapper.Map<IEnumerable<RequestItemDto>>(requestItemsFromDb);
-            //.Select(s => s.status == "P" ? "Pending"
-            //      : s.status == "R" ? "Rejected"
-            //      : s.status == "C" ? "Canceled" : "Approved");
             return Ok(requestItemsDto);
-
-
         }
 
         [HttpGet("requestheaders/{headerid}/items/{id}", Name = "GetRequestItemForRequestHeader")]
@@ -71,7 +65,6 @@ namespace API.Controllers
 
             return Ok(requestItem);
         }
-
         [HttpPost("requestheaders/{headerid}/items")]
         public async Task<IActionResult> CreateRequestItemForRequestHeader(int headerid, [FromBody] RequestItemForCreationDto requestItem)
         {
@@ -101,8 +94,6 @@ namespace API.Controllers
             return CreatedAtRoute("GetRequestItemForRequestHeader", new { headerid, id = requestItemToReturn.id }, requestItemToReturn);
 
         }
-
-
         [HttpPut("requestheaders/{headerid}/items/{id}")]
         public async Task<IActionResult> UpdateRequestItemForRequestHeader(int headerid, int id, [FromBody] RequestItemForUpdateDto requestItem)
         {
@@ -240,7 +231,7 @@ namespace API.Controllers
                             approveDto = new ApproveForCreationDto()
                             {
                                 approvedQuantity = storeItem.availableQuantity - remainToStore,
-                                storeId = storeItem.id,
+                                storeItemId = storeItem.id,
                                 requestId = id
                             };
                             //update store status
@@ -255,7 +246,7 @@ namespace API.Controllers
                             approveDto = new ApproveForCreationDto()
                             {
                                 approvedQuantity = storeItem.availableQuantity,
-                                storeId = storeItem.id,
+                                storeItemId = storeItem.id,
                                 requestId = id
                             };
                             //update store status

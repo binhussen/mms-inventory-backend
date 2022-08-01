@@ -40,7 +40,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<Approve>> GetAllApprovesAsync(int requestId, ApproveParameters approveParameters, bool trackChanges)
         {
             var approves = await FindByCondition(e => e.requestId.Equals(requestId), trackChanges)
-                          .OrderBy(e => e.storeId)
+                          .OrderBy(e => e.storeItemId)
                            // .Select(s => s.status == "P" ? "Pending" : s.status == "R" ? "Rejected" : s.status == "C" ? "Canceled" : "Approved")
 
                            .ToListAsync();

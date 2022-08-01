@@ -25,7 +25,7 @@ namespace API.Controllers
         [HttpGet(Name = "GetAllHrs")]
         public async Task<IActionResult> GetAllHrs([FromQuery] HrParameters hrParameters)
         {
-            var hrs = await _repository.HR.GetAllHrsAsync(hrParameters, trackChanges: false);
+            var hrs = await _repository.Hrs.GetAllHrsAsync(hrParameters, trackChanges: false);
 
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(hrs.MetaData));
 
@@ -35,7 +35,7 @@ namespace API.Controllers
         [HttpGet("{id}", Name = "HrById")]
         public async Task<IActionResult> GetHr(int id)
         {
-            var hr = await _repository.HR.GetHrByIdAsync(id, trackChanges: false);
+            var hr = await _repository.Hrs.GetHrByIdAsync(id, trackChanges: false);
             if (hr == null)
             {
                 _logger.LogInfo($"HR with id: {id} doesn't exist in the database.");
@@ -64,7 +64,7 @@ namespace API.Controllers
 
             var hrEntity = _mapper.Map<HR>(hr);
 
-            _repository.HR.CreateHr(hrEntity);
+            _repository.Hrs.CreateHr(hrEntity);
             await _repository.SaveAsync();
 
             var hrToReturn = _mapper.Map<HrDto>(hrEntity);
@@ -86,7 +86,7 @@ namespace API.Controllers
                 _logger.LogError("Invalid model state for the HrForUpdateDto object");
                 return UnprocessableEntity(ModelState);
             }
-            var hrEntity = await _repository.HR.GetHrByIdAsync(id, trackChanges: true);
+            var hrEntity = await _repository.Hrs.GetHrByIdAsync(id, trackChanges: true);
             if (hrEntity == null)
             {
                 _logger.LogInfo($"HR with id: {id} doesn't exist in the database.");
@@ -101,14 +101,14 @@ namespace API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Deletehr(int id)
         {
-            var hr = await _repository.HR.GetHrByIdAsync(id, trackChanges: false);
+            var hr = await _repository.Hrs.GetHrByIdAsync(id, trackChanges: false);
             if (hr == null)
             {
                 _logger.LogInfo($"HR with id: {id} doesn't exist in the database.");
                 return NotFound();
             }
 
-            _repository.HR.DeleteHr(hr);
+            _repository.Hrs.DeleteHr(hr);
             await _repository.SaveAsync();
 
             return NoContent();
