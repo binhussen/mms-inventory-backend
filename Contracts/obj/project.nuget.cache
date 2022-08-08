@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GX3ANU2CkKt6iqOWOzMQuzeJBM6pFwhOEKyNa4GjpTC8DKKxNvl6PV0kamZ7rzOyL9S4GNJ3iFNVjTaXS9PU6g==",
+  "dgSpecHash": "D8ZnyvcUh5+vfMJaCZiqO/S5jSqj/Wgph+AHtj9e+BoIaeftbZAgZSJnX9A3lCdeLbUWAsuwwjxDvZO55W/hzA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-backend\\Contracts\\Contracts.csproj",
+  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-inventory-backend\\Contracts\\Contracts.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o0nQjvK1SSPxDB1Qu0HN2KngYilastgaeVuWkG5CpGy/PS6nJJ+hRgzX6BeBD4QQuC3fNQyMMFqVjZpjmwFE+A==",
+  "dgSpecHash": "BKqJ0a+Rb4gK8FXEP1Sb734Pcq/XGhF+Q6TxrtnDL7a6QAt2dWelhUQ/1IUYrVvp5YVhyQWR0C+DV5GF6ucCBw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-backend\\DataModel\\DataModel.csproj",
+  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-inventory-backend\\DataModel\\DataModel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yesuf\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",

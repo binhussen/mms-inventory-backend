@@ -1,4 +1,24 @@
 # Inventory module
+## procurement Fields:{
+### procurement header:
+    {
+        id
+        refNo
+        date
+        attachments
+    },
+### procurement items:
+    {
+       id
+       name
+       type
+       unitMeasure
+       quantity
+       totalQuantity
+       explanation
+       procurementId
+    }
+};
 ## Notify Fields:{
 ### Notify header:
     {
@@ -76,19 +96,50 @@
         assetType
         unitMeasurement
         officeNumber
-        description
+        examination
     }
 };
 
 ## Fixed Assets Transfer Form(FATF):{
 ## Transfer asset:header
-{
-
-},
+    {
+          id
+          reasonOfTransferOfTheAsset
+          signatureOfTransfer
+          signatureOfRecipient
+          observer
+          headerOfFAM
+          dateOfTransfer
+### Asset transferred from:
+    {
+       name
+       premises
+       department
+       buildingNo
+       roomNo
+       userNo
+    },
+### Asset transferred to:
+    {
+       name
+       premises
+       department
+       buildingNo
+       roomNo
+       userNo
+    },
+    },
 ## Transfer asset items:
-{
-
-}
+      {
+         id
+         name
+         description
+         pin(መለያ ቁጥር)
+         serialNO(የፋብሪካ ቁጥር)
+         unitMeasure
+         price/cost
+         remark
+      }
 };
 
 # **Actors**

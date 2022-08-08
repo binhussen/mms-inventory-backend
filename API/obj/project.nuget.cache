@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZlPiZp3wVjwXNVV7llhKKTyiwn/L2bnasZkYYDN5xd9dJqxsYQ2SqXK7TpWZr+hXcOe8+8/49qH9eEwSnt96Vg==",
+  "dgSpecHash": "4FXnqr6p3SujqreDdP/2CuftfNYO3SXHGeXYiiXjFWHZmKGgz4k6819dmYs/tSGmJW5rBVdHLCN2olVKOXF+QQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-backend\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\yesuf\\Music\\mms-inventory-backend\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yesuf\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\yesuf\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
