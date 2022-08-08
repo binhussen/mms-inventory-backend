@@ -73,3 +73,18 @@ C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net
 C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\refint\Contracts.dll
 C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\Contracts.pdb
 C:\Users\mhdbi\Documents\Projects\New folder\mms-backend\Contracts\obj\Debug\net6.0\ref\Contracts.dll
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\bin\Debug\net6.0\Contracts.deps.json
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\bin\Debug\net6.0\Contracts.dll
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\bin\Debug\net6.0\Contracts.pdb
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\bin\Debug\net6.0\DataModel.dll
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\bin\Debug\net6.0\DataModel.pdb
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.csproj.AssemblyReference.cache
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfoInputs.cache
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.AssemblyInfo.cs
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.csproj.CoreCompileInputs.cache
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.csproj.CopyComplete
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.dll
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\refint\Contracts.dll
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\Contracts.pdb
+C:\Users\yesuf\Music\mms-inventory-backend\Contracts\obj\Debug\net6.0\ref\Contracts.dll
