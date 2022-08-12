@@ -1,7 +1,7 @@
-﻿using DataModel;
-using Contracts.Interfaces;
-using DataModel.Parameters;
+﻿using Contracts.Interfaces;
+using DataModel;
 using DataModel.Models.Entities;
+using DataModel.Parameters;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repository
@@ -21,11 +21,11 @@ namespace Infrastructure.Repository
 
         public async Task<PagedList<NotifyHeader>> GetAllNotifyHeadersAsync(NotifyHeaderParameters notifyHeaderParameters, bool trackChanges)
         {
-           var notifyHeader= await FindAll(trackChanges)
-                   .OrderBy(c => c.itemDescription)
-                   .ToListAsync();
+            var notifyHeader = await FindAll(trackChanges)
+                    .OrderBy(c => c.itemDescription)
+                    .ToListAsync();
             return PagedList<NotifyHeader>
-                .ToPagedList(notifyHeader,notifyHeaderParameters.PageNumber, notifyHeaderParameters.PageSize);
+                .ToPagedList(notifyHeader, notifyHeaderParameters.PageNumber, notifyHeaderParameters.PageSize);
         }
     }
 }
