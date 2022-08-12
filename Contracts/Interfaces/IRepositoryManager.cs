@@ -15,6 +15,8 @@
         IReturnHeader ReturnHeader { get; }
         IReturnItem ReturnItem { get; }
         IHr Hrs { get; }
+        IProcurement Procurement { get; }
+        IProcurementItem ProcurementItem { get; }
         Task SaveAsync();
     }
 }

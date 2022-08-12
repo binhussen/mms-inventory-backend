@@ -22,6 +22,8 @@ namespace Infrastructure.Repository
         private IReturnHeader _returnHeaderRepository;
         private IReturnItem _returnItemRepository;
         private IHr _hrRepository;
+        private IProcurement _procurementRepository;
+        private IProcurementItem _procurementItemRepository;
         /// <summary>
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
@@ -160,6 +162,25 @@ namespace Infrastructure.Repository
                 if (_hrRepository == null)
                     _hrRepository = new HrRepository(_repositoryContext);
                 return _hrRepository;
+            }
+        }
+        public IProcurement Procurement
+        {
+            get
+            {
+                if (_procurementRepository == null)
+                    _procurementRepository = new ProcurementRepository(_repositoryContext);
+                return _procurementRepository;
+            }
+        }
+
+        public IProcurementItem ProcurementItem
+        {
+            get
+            {
+                if (_procurementItemRepository == null)
+                    _procurementItemRepository = new ProcurementItemRepository(_repositoryContext);
+                return _procurementItemRepository;
             }
         }
 

@@ -78,6 +78,8 @@ namespace DataModel
         public DbSet<ReturnHeader> ReturnHeaders { get; set; }
         public DbSet<ReturnItem> ReturnItems { get; set; }
         public DbSet<HR> Hrs { get; set; }
+        public DbSet<Procurement> Procurements { get; set; }
+        public DbSet<ProcurementItem> ProcurementItems { get; set; }
 
 
     }

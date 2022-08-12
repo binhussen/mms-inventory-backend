@@ -99,7 +99,6 @@
         examination
     }
 };
-
 ## Fixed Assets Transfer Form(FATF):{
 ## Transfer asset:header
     {
@@ -141,7 +140,23 @@
          remark
       }
 };
-
+## Types:{
+    id
+    Accessories
+    Belts
+    pipes
+    Motors Machine
+    furniture
+},
+## unit-measurement:{
+    id
+    box
+    pcs
+    kilo
+    meter
+},
+category(electronics,like)
+asset groups(consumable, non-consumable)
 # **Actors**
 {
 * MMD
@@ -150,7 +165,7 @@
 * Fixed store man
 * Non-fixed store man
 * Fixed-non-fixed store man
-  };
+  },
   };
 
 

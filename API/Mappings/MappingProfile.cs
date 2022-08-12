@@ -5,6 +5,7 @@ using DataModel.Models.DTOs.Customers;
 using DataModel.Models.DTOs.Distribute;
 using DataModel.Models.DTOs.Hrs;
 using DataModel.Models.DTOs.Notify;
+using DataModel.Models.DTOs.Procurements;
 using DataModel.Models.DTOs.Requests;
 using DataModel.Models.DTOs.Returns;
 using DataModel.Models.DTOs.Stores;
@@ -73,6 +74,13 @@ namespace API.Mappings
             CreateMap<HR, HrDto>();
             CreateMap<HrForCreationDto, HR>();
             CreateMap<HrForUpdateDto, HR>().ReverseMap();
+            //Procurement
+            CreateMap<Procurement, ProcurementDto>();
+            CreateMap<ProcurementItem, ProcurementItemDto>();
+            CreateMap<ProcurementForCreationDto, Procurement>();
+            CreateMap<ProcurementItemForCreationDto, ProcurementItem>();
+            CreateMap<ProcurementForUpdateDto, Procurement>();
+            CreateMap<ProcurementItemForUpdateDto, ProcurementItem>().ReverseMap();
         }
     }
 }
