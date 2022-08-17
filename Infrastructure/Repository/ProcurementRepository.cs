@@ -19,7 +19,7 @@ namespace Infrastructure.Repository
         public async Task<PagedList<Procurement>> GetAllProcurementsAsync(ProcurementParameters procurementParameters, bool trackChanges)
         {
             var procurement = await FindAll(trackChanges)
-                    .OrderBy(c => c.refNo)
+                    .OrderBy(c => c.description)
                     .ToListAsync();
             return PagedList<Procurement>
                 .ToPagedList(procurement, procurementParameters.PageNumber, procurementParameters.PageSize);
