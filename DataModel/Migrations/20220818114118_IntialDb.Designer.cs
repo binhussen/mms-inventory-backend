@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataModel.Migrations
 {
     [DbContext(typeof(MMSDbContext))]
-    [Migration("20220817110051_IntialDb ")]
+    [Migration("20220818114118_IntialDb")]
     partial class IntialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -183,7 +183,7 @@ namespace DataModel.Migrations
                         new
                         {
                             id = 1,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3187), new TimeSpan(0, 3, 0, 0, 0)),
+                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7541), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ብቸና ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
@@ -193,13 +193,13 @@ namespace DataModel.Migrations
                             region = "አማራ",
                             sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3205), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7556), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 2,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3208), new TimeSpan(0, 3, 0, 0, 0)),
+                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7558), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ባቲ ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
@@ -209,13 +209,13 @@ namespace DataModel.Migrations
                             region = "አማራ",
                             sex = "ወንድ",
                             subCity = "ቦሌ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3208), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7559), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 3,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3210), new TimeSpan(0, 3, 0, 0, 0)),
+                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7560), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ጊንጪ ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 2,
@@ -225,13 +225,13 @@ namespace DataModel.Migrations
                             region = "ኦሮሚያ",
                             sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3210), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7561), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 4,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3213), new TimeSpan(0, 3, 0, 0, 0)),
+                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7562), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ብቸና ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
@@ -241,13 +241,13 @@ namespace DataModel.Migrations
                             region = "አማራ",
                             sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3214), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7563), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         },
                         new
                         {
                             id = 5,
-                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3215), new TimeSpan(0, 3, 0, 0, 0)),
+                            birthDate = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7564), new TimeSpan(0, 3, 0, 0, 0)),
                             birthPlace = "ብቸና ከተማ",
                             homeNumber = "+251923531946",
                             hrId = 1,
@@ -257,7 +257,7 @@ namespace DataModel.Migrations
                             region = "አማራ",
                             sex = "ወንድ",
                             subCity = "ንፋስ ስልክ ላፍቶ",
-                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Unspecified).AddTicks(3216), new TimeSpan(0, 3, 0, 0, 0)),
+                            timeLimit = new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7564), new TimeSpan(0, 3, 0, 0, 0)),
                             woreda = "02"
                         });
                 });
@@ -413,11 +413,11 @@ namespace DataModel.Migrations
                         {
                             id = 1,
                             LastName = "አለሙ",
-                            birthDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3123),
+                            birthDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7476),
                             firstName = "የሱፍ",
                             fpId = "26505157",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3132),
+                            higherDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7485),
                             middleName = "ፈንታ",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -427,11 +427,11 @@ namespace DataModel.Migrations
                         {
                             id = 2,
                             LastName = "አሊ",
-                            birthDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3134),
+                            birthDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7487),
                             firstName = "ሙሀመድ",
                             fpId = "26505152",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3134),
+                            higherDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7487),
                             middleName = "ሁሴን",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -441,11 +441,11 @@ namespace DataModel.Migrations
                         {
                             id = 3,
                             LastName = "ኦርጌሳ",
-                            birthDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3135),
+                            birthDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7489),
                             firstName = "ሁንዴ",
                             fpId = "26505156",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3135),
+                            higherDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7489),
                             middleName = "ረጋሳ",
                             occpation = "ጀማሪ የሶፍትዌር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -455,11 +455,11 @@ namespace DataModel.Migrations
                         {
                             id = 4,
                             LastName = "ታደሰ",
-                            birthDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3136),
+                            birthDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7490),
                             firstName = "ሰማይነህ",
                             fpId = "26505155",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3137),
+                            higherDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7490),
                             middleName = "ከበደ",
                             occpation = "ጀማሪ የዌብሳይት አስተዳደር ባለሙያ",
                             rank = "J_V / ጀማሪ",
@@ -469,11 +469,11 @@ namespace DataModel.Migrations
                         {
                             id = 5,
                             LastName = "ተንኮሉ",
-                            birthDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3137),
+                            birthDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7491),
                             firstName = "ተረፈ",
                             fpId = "fp2650",
                             gender = "ወንድ",
-                            higherDate = new DateTime(2022, 8, 17, 14, 0, 51, 615, DateTimeKind.Local).AddTicks(3138),
+                            higherDate = new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7491),
                             middleName = "በከለ",
                             occpation = "ዋና ክፍል ሀላፊ",
                             rank = "ዋና ክፍል",
@@ -633,6 +633,10 @@ namespace DataModel.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<string>("category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("explanation")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -659,6 +663,8 @@ namespace DataModel.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("procurementId");
 
                     b.ToTable("ProcurementItems");
                 });
@@ -1099,22 +1105,22 @@ namespace DataModel.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1da73c34-0929-4114-83be-0c5e13656f2c",
-                            ConcurrencyStamp = "2d1eac2b-4951-4143-9cba-3282bebe738d",
+                            Id = "c1a9b5b3-8940-437d-acfa-2981b1531ff3",
+                            ConcurrencyStamp = "e75e7549-6110-4f2d-b52f-67471b2d127c",
                             Name = "mmd",
                             NormalizedName = "MMD"
                         },
                         new
                         {
-                            Id = "0495ed0e-0903-4ae3-add2-b500eea9ae3b",
-                            ConcurrencyStamp = "2ad5bf14-74a5-4926-b40f-5985cd17f019",
+                            Id = "a9e03f4c-205d-49bd-8fe4-c5bf713859ff",
+                            ConcurrencyStamp = "d15ce614-3ded-4208-9412-7632fc87bcbe",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "931e2a2a-983e-4b97-ae22-2dcce473e0a4",
-                            ConcurrencyStamp = "0c041d99-af2f-42bb-8510-3c3a9aa36362",
+                            Id = "e179a0c2-5238-4a99-911b-97ecadbf4869",
+                            ConcurrencyStamp = "25cad9b3-4742-46cc-a0ce-4a51ff6e7e38",
                             Name = "storeman",
                             NormalizedName = "storeman"
                         });
@@ -1289,6 +1295,17 @@ namespace DataModel.Migrations
                     b.Navigation("NotifyHeader");
                 });
 
+            modelBuilder.Entity("DataModel.Models.Entities.ProcurementItem", b =>
+                {
+                    b.HasOne("DataModel.Models.Entities.Procurement", "Procurement")
+                        .WithMany("ProcurementItems")
+                        .HasForeignKey("procurementId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Procurement");
+                });
+
             modelBuilder.Entity("DataModel.Models.Entities.RequestHeader", b =>
                 {
                     b.HasOne("DataModel.Models.Entities.HR", "HR")
@@ -1403,6 +1420,11 @@ namespace DataModel.Migrations
             modelBuilder.Entity("DataModel.Models.Entities.NotifyHeader", b =>
                 {
                     b.Navigation("NotifyItems");
+                });
+
+            modelBuilder.Entity("DataModel.Models.Entities.Procurement", b =>
+                {
+                    b.Navigation("ProcurementItems");
                 });
 
             modelBuilder.Entity("DataModel.Models.Entities.RequestHeader", b =>
