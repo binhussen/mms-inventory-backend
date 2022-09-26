@@ -5,9 +5,10 @@
         public int id { get; set; }
         public string Name { get; set; }
         public string type { get; set; }
+        public string category { get; set; }
         public string unitMeasure { get; set; }
         public int quantity { get; set; }
         public int totalQuantity { get; set; }
-        public string explanation { get; set; }
+        public string? explanation { get; set; }
     }
 }
