@@ -8,6 +8,6 @@
         public string unitMeasure { get; set; }
         public int quantity { get; set; }
         public int totalQuantity { get; set; }
-        public string explanation { get; set; }
+        public string? explanation { get; set; }
     }
 }

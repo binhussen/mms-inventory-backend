@@ -4,7 +4,7 @@
 
 namespace DataModel.Migrations
 {
-    public partial class IntialDb : Migration
+    public partial class Intial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -224,7 +224,7 @@ namespace DataModel.Migrations
                     unitMeasure = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     quantity = table.Column<int>(type: "int", nullable: false),
                     totalQuantity = table.Column<int>(type: "int", nullable: false),
-                    explanation = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    explanation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     procurementId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -496,11 +496,11 @@ namespace DataModel.Migrations
                 columns: new[] { "hrId", "LastName", "birthDate", "firstName", "fpId", "gender", "higherDate", "middleName", "occpation", "rank", "reponsibilty" },
                 values: new object[,]
                 {
-                    { 1, "አለሙ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7476), "የሱፍ", "26505157", "ወንድ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7485), "ፈንታ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 2, "አሊ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7487), "ሙሀመድ", "26505152", "ወንድ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7487), "ሁሴን", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 3, "ኦርጌሳ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7489), "ሁንዴ", "26505156", "ወንድ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7489), "ረጋሳ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 4, "ታደሰ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7490), "ሰማይነህ", "26505155", "ወንድ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7490), "ከበደ", "ጀማሪ የዌብሳይት አስተዳደር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
-                    { 5, "ተንኮሉ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7491), "ተረፈ", "fp2650", "ወንድ", new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Local).AddTicks(7491), "በከለ", "ዋና ክፍል ሀላፊ", "ዋና ክፍል", "ዋና ክፍል" }
+                    { 1, "አለሙ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8028), "የሱፍ", "26505157", "ወንድ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8038), "ፈንታ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 2, "አሊ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8040), "ሙሀመድ", "26505152", "ወንድ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8041), "ሁሴን", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 3, "ኦርጌሳ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8042), "ሁንዴ", "26505156", "ወንድ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8042), "ረጋሳ", "ጀማሪ የሶፍትዌር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 4, "ታደሰ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8044), "ሰማይነህ", "26505155", "ወንድ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8044), "ከበደ", "ጀማሪ የዌብሳይት አስተዳደር ባለሙያ", "J_V / ጀማሪ", "የሲቪል ሰራተኛ" },
+                    { 5, "ተንኮሉ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8045), "ተረፈ", "fp2650", "ወንድ", new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Local).AddTicks(8045), "በከለ", "ዋና ክፍል ሀላፊ", "ዋና ክፍል", "ዋና ክፍል" }
                 });
 
             migrationBuilder.InsertData(
@@ -517,9 +517,9 @@ namespace DataModel.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "a9e03f4c-205d-49bd-8fe4-c5bf713859ff", "d15ce614-3ded-4208-9412-7632fc87bcbe", "Admin", "Admin" },
-                    { "c1a9b5b3-8940-437d-acfa-2981b1531ff3", "e75e7549-6110-4f2d-b52f-67471b2d127c", "mmd", "MMD" },
-                    { "e179a0c2-5238-4a99-911b-97ecadbf4869", "25cad9b3-4742-46cc-a0ce-4a51ff6e7e38", "storeman", "storeman" }
+                    { "0bd9778d-2990-4ce8-a527-18a3fdda79f5", "a57d1625-f6c1-47d5-9e71-f5d5bd30254d", "mmd", "MMD" },
+                    { "122486af-3b3f-47d2-82c0-c1ab7943bce0", "a58f3b12-aa01-4528-a763-7a185b536b20", "storeman", "storeman" },
+                    { "34a1c610-5d5b-4547-a857-a01fa23c0c29", "eee7a813-f72b-464d-b018-98ae3cc4bba6", "Admin", "Admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -536,11 +536,11 @@ namespace DataModel.Migrations
                 columns: new[] { "customerId", "birthDate", "birthPlace", "homeNumber", "hrId", "name", "occupation", "phoneNumber", "region", "sex", "subCity", "timeLimit", "woreda" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7541), new TimeSpan(0, 3, 0, 0, 0)), "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7556), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 2, new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7558), new TimeSpan(0, 3, 0, 0, 0)), "ባቲ ከተማ", "+251923531946", 1, "ሙሀመድ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ቦሌ", new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7559), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 3, new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7560), new TimeSpan(0, 3, 0, 0, 0)), "ጊንጪ ከተማ", "+251923531946", 2, "ሁንዴ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "ኦሮሚያ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7561), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 4, new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7562), new TimeSpan(0, 3, 0, 0, 0)), "ብቸና ከተማ", "+251923531946", 1, "ሰማይነህ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7563), new TimeSpan(0, 3, 0, 0, 0)), "02" },
-                    { 5, new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7564), new TimeSpan(0, 3, 0, 0, 0)), "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 8, 18, 14, 41, 18, 610, DateTimeKind.Unspecified).AddTicks(7564), new TimeSpan(0, 3, 0, 0, 0)), "02" }
+                    { 1, new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8101), new TimeSpan(0, 3, 0, 0, 0)), "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8117), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 2, new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8120), new TimeSpan(0, 3, 0, 0, 0)), "ባቲ ከተማ", "+251923531946", 1, "ሙሀመድ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ቦሌ", new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8121), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 3, new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8123), new TimeSpan(0, 3, 0, 0, 0)), "ጊንጪ ከተማ", "+251923531946", 2, "ሁንዴ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "ኦሮሚያ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8124), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 4, new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8126), new TimeSpan(0, 3, 0, 0, 0)), "ብቸና ከተማ", "+251923531946", 1, "ሰማይነህ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8126), new TimeSpan(0, 3, 0, 0, 0)), "02" },
+                    { 5, new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8128), new TimeSpan(0, 3, 0, 0, 0)), "ብቸና ከተማ", "+251923531946", 1, "የሱፍ", "ጀማሪ የሶፍትዌር ባለሙያ", "+251923531946", "አማራ", "ወንድ", "ንፋስ ስልክ ላፍቶ", new DateTimeOffset(new DateTime(2022, 9, 21, 15, 9, 20, 352, DateTimeKind.Unspecified).AddTicks(8129), new TimeSpan(0, 3, 0, 0, 0)), "02" }
                 });
 
             migrationBuilder.InsertData(

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using Contracts.Interfaces;
 using Contracts.Service;
 using DataModel.Models.DTOs.Procurements;
@@ -71,6 +72,32 @@ namespace API.Controllers
 
             // Disable BCC4002
             return CreatedAtRoute("procurementById", new { id = procurementToReturn.id }, procurementToReturn);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProcurement(int id, [FromBody] ProcurementForUpdateDto procurement)
+        {
+            if (procurement == null)
+            {
+                _logger.LogError("ProcurementForUpdateDto object sent from client is null.");
+                return BadRequest("ProcurementForUpdateDto object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                _logger.LogError("Invalid model state for the ProcurementForUpdateDto object");
+                return UnprocessableEntity(ModelState);
+            }
+            var procurementEntity = await _repository.Procurement.GetProcurementAsync(id, trackChanges: true);
+            if (procurementEntity == null)
+            {
+                _logger.LogInfo($"Procurement with id: {id} doesn't exist in the database.");
+                return NotFound();
+            }
+
+            _mapper.Map(procurement, procurementEntity);
+            await _repository.SaveAsync();
+
+            return NoContent();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProcurement(int id)
